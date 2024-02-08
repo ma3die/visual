@@ -28,11 +28,34 @@ class AccountManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def create_superuser(self, first_name, last_name, username, email, password=None):
+        '''
+        Создаем и сохраняем суперюзера
+        '''
+        if not email:
+            raise ValueError('У пользователя нет электронного адреса')
+        if not username:
+            raise ValueError('У пользователя нет имени пользователя')
+
+        user = self.model(
+            email=self.normalize_email(email),
+            first_name=first_name,
+            last_name=last_name,
+            username=username
+        )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.is_active = True
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
 
 class Account(AbstractBaseUser):
     first_name = models.CharField(max_length=50, verbose_name='Имя')
     last_name = models.CharField(max_length=50, verbose_name='Фамилия')
-    username = models.CharField(max_length=50, unique=True, verbose_name='Имя пользователя')
+    username = models.CharField(max_length=50, unique=True, verbose_name='Никнейм')
     email = models.EmailField(max_length=50, unique=True, verbose_name='Электронная почта')
     phone = models.CharField(max_length=50, verbose_name='Телефон')
     date_register = models.DateTimeField(auto_now_add=True, verbose_name='Дата регистрации')
