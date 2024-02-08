@@ -70,7 +70,7 @@ class Account(AbstractBaseUser):
 
     objects = AccountManager()
 
-    def has_perm(self, perm, obj=None):
+    def has_perms(self, perm, obj=None):
         return self.is_admin
 
     def has_module_perms(self, package_name):
