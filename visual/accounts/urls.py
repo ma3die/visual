@@ -3,8 +3,8 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from .views import AccountViewSet, RegisterView, ProfileView
 
-router = DefaultRouter()
-router.register(r'auth', AccountViewSet, basename='auth')
+# router = DefaultRouter()
+# router.register(r'auth', AccountViewSet, basename='auth')
 
 urlpatterns = [
     path('reg/', RegisterView.as_view(), name='register'),
