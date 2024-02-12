@@ -14,7 +14,6 @@ class Post(models.Model):
     tags = TaggableManager()
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
 
-
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
@@ -23,6 +22,20 @@ class Post(models.Model):
         self.slug = slugify(self.name)
         super(Post, self).save(*args, **kwargs)
 
-
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Пост')
+    author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
+    text = models.TextField(verbose_name='Комментарий')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'
+        ordering = ['-created_date']
+
+    def __str__(self):
+        return self.text
