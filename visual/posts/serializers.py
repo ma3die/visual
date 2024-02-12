@@ -23,6 +23,6 @@ class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = '__all__'
-        read_only_fields = ('created_date',)
+        read_only_fields = ('created_date', 'author')
         lookup_field = 'id'
         extra_kwargs = {'url': {'lookup_field': 'id'}}

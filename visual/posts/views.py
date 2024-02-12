@@ -39,7 +39,7 @@ class CommentView(generics.ListCreateAPIView):
             post = Post.objects.get(slug=post_slug)
             return Comment.objects.filter(post=post)
         else:
-            pass
+            return Comment.objects.all()
 
-    # def perform_create(self, serializer):
-    #     serializer.save(username=self.request.user)
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
