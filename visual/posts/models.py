@@ -11,6 +11,7 @@ class Post(models.Model):
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     slug = models.CharField(max_length=200, unique=True, verbose_name='Слаг')
     avialable_comment = models.BooleanField(default=True, verbose_name='Доступ к комментариям')
+    view_count = models.IntegerField(default=0, verbose_name='Счетчик просмотров')
     tags = TaggableManager()
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
 
