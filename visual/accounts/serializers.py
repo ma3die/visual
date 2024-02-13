@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Account
+from .models import Account, Follower
 from rest_framework.serializers import ValidationError
 
 
@@ -40,3 +40,26 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.is_active = True
         user.save()
         return user
+
+
+class FollowerSerializer(serializers.ModelSerializer):
+    def create(self, validated_data):
+        try:
+            author = Follower.objects.create(
+                author=validated_data['author'], follower=validated_data['follower'])
+            return author
+        except:
+            return {'ошибка': 'Пользователь не найден'}
+
+    def delete(self, validated_data):
+        try:
+            author = Follower.objects.get(
+                author=validated_data['author'], follower=validated_data['follower'])
+            author.delete()
+            return author
+        except:
+            return {'ошибка': 'Пользователь не найден'}
+
+    class Meta:
+        model = Follower
+        fields = ('author', 'follower')

@@ -31,7 +31,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permissions = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         if 'post_slug' in self.kwargs:
