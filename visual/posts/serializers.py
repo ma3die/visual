@@ -2,18 +2,28 @@ from rest_framework import serializers
 from .models import Post, Comment
 from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
 from accounts.models import Account
+from . import services
+
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
+    is_like = serializers.SerializerMethodField()
     tags = TagListSerializerField()
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
 
     class Meta:
         model = Post
-        fields = '__all__'
-            # ('name', 'image', 'text', 'tags', 'author')
+        fields = (
+            'name', 'image', 'text', 'created_date', 'slug', 'avialable_comment',
+            'tags', 'view_count', 'author', 'is_like', 'total_likes')
+        # ('name', 'image', 'text', 'tags', 'author')
         read_only_fields = ('created_date', 'slug', 'avialable_comment')
         lookup_field = 'slug'
         extra_kwargs = {'url': {'lookup_field': 'slug'}}
+
+    def get_is_like(self, obj) -> bool:
+        '''Проверяет, лайкнул ли `request.user` post'''
+        user = self.context.get('request').user
+        return services.is_like(obj, user)
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -26,3 +36,9 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only_fields = ('created_date', 'author')
         lookup_field = 'id'
         extra_kwargs = {'url': {'lookup_field': 'id'}}
+
+
+class LikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Account
+        fields = '__all__'

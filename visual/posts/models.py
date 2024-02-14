@@ -1,8 +1,16 @@
 from django.db import models
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.fields import GenericRelation
+from django.contrib.contenttypes.models import ContentType
 from taggit.managers import TaggableManager
 from pytils.translit import slugify
 from accounts.models import Account
 
+class Like(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='likes', verbose_name='Пользователь')
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 
 class Post(models.Model):
     name = models.CharField(max_length=50, verbose_name='Название поста')
@@ -12,6 +20,7 @@ class Post(models.Model):
     slug = models.CharField(max_length=200, unique=True, verbose_name='Слаг')
     avialable_comment = models.BooleanField(default=True, verbose_name='Доступ к комментариям')
     view_count = models.IntegerField(default=0, verbose_name='Счетчик просмотров')
+    likes = GenericRelation(Like)
     tags = TaggableManager()
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
 
@@ -25,6 +34,10 @@ class Post(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def total_likes(self):
+        return self.likes.count()
 
 
 class Comment(models.Model):
@@ -40,3 +53,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+

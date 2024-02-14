@@ -3,9 +3,10 @@ from rest_framework import generics
 from .serializers import PostSerializer, CommentSerializer
 from rest_framework import permissions
 from .models import Post, Comment
+from .mixins import LikedMixin
 from rest_framework.response import Response
 
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
