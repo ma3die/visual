@@ -3,6 +3,8 @@ from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from rest_framework.exceptions import NotFound
 from .models import Account, Follower
 from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer
 
@@ -19,12 +21,12 @@ class AccountViewSet(viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
     def retrieve(self, request, pk=None):
-        queryset = User.objects.all()
+        queryset = Account.objects.all()
         try:
             user = get_object_or_404(queryset, pk=pk)
         except:
             raise NotFound
-        serializer = UserSerializer(user)
+        serializer = AccountSerializer(user)
         return Response(serializer.data)
 
 

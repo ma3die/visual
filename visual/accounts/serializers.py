@@ -11,6 +11,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     password2 = serializers.CharField(write_only=True)
+
     class Meta:
         model = Account
         fields = [
@@ -22,7 +23,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             'password',
             'password2'
         ]
-        extra_kwargs = {'password':{'write_only': True}}
+        extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         first_name = validated_data['first_name']
