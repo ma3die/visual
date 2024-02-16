@@ -10,23 +10,32 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    permission_classes = [permissions.AllowAny]
 
-    def create(self, request):
-        serializer = PostSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
 
-        post = Post.objects.create(
-            name=serializer.validated_data['name'],
-            # tags=serializer.validated_data['tags'],
-            text=serializer.validated_data['text'],
-            image=serializer.validated_data['image'],
-            author=serializer.validated_data['author'],
-        )
+    # def perform_create(self, serializer):
+    #     post = 3
+    #     tag = serializer.validated_data['tags']
+    #     instance = serializer.save()
+    #     if 'tags' in self.request.data:
+    #         instance.tags.set(*self.request.data['tags'])
+    #         post = 2
 
-        return Response({
-            'post_id': post.id,
-        })
+    # def create(self, request):
+    #     serializer = PostSerializer(data=request.data)
+    #     serializer.is_valid(raise_exception=True)
+    #
+    #     post = Post.objects.create(
+    #         name=serializer.validated_data['name'],
+    #         tags=serializer.validated_data['tags'],
+    #         text=serializer.validated_data['text'],
+    #         image=serializer.validated_data['image'],
+    #         author=serializer.validated_data['author'],
+    #     )
+    #
+    #     return Response({
+    #         'post_id': post.id,
+    #     })
 
     def retrieve(self, request, slug):
         post = Post.objects.get(slug=slug)

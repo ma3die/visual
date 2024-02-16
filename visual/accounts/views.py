@@ -57,6 +57,7 @@ class ProfileView(generics.GenericAPIView):
 class FollowerViewSet(viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = FollowerSerializer
+
     def subscribe(self, request):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
