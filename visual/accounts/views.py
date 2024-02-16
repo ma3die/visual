@@ -7,27 +7,31 @@ from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from .models import Account, Follower
 from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer
+from posts.serializers import PostSerializer
+from .mixins import UserPostMixin
 
 
-class AccountViewSet(viewsets.ModelViewSet):
+class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             permission_classes = [permissions.AllowAny]
+        elif self.action in ['my_posts']:
+            permission_classes = [permissions.IsAuthenticated]
         else:
             permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
 
-    def retrieve(self, request, pk=None):
-        queryset = Account.objects.all()
-        try:
-            user = get_object_or_404(queryset, pk=pk)
-        except:
-            raise NotFound
-        serializer = AccountSerializer(user)
-        return Response(serializer.data)
+    # def retrieve(self, request, pk=None):
+    #     queryset = Account.objects.all()
+    #     try:
+    #         user = get_object_or_404(queryset, pk=pk)
+    #     except:
+    #         raise NotFound
+    #     serializer = AccountSerializer(user)
+    #     return Response(serializer.data)
 
 
 class RegisterView(generics.GenericAPIView):
