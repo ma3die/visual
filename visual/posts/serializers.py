@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Post, Comment
-from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
+# from taggit_serializer.serializers import TagListSerializerField, TaggitSerializer
+from taggit.serializers import TagListSerializerField, TaggitSerializer
 from accounts.models import Account
 from . import services
 
