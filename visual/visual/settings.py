@@ -58,7 +58,7 @@ MIDDLEWARE = [
 ]
 
 # ниже настройки JWT токена
-LOGIN_URL = "/auth/login"
+LOGIN_URL = "api/auth/login"
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),

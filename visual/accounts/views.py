@@ -50,7 +50,7 @@ class RegisterView(generics.GenericAPIView):
         })
 
 
-class ProfileViewSet(viewsets.ViewSet):
+class ProfileViewSet(viewsets.ModelViewSet):
     """
     Профиль пользователя
     """

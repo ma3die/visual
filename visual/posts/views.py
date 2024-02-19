@@ -1,6 +1,7 @@
 from rest_framework import viewsets
 from rest_framework import generics
 from .serializers import PostSerializer, CommentSerializer
+from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
 from rest_framework import permissions
 from .models import Post, Comment
 from .mixins import LikedMixin
@@ -10,8 +11,16 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [IsOwnerOrReadOnly]
 
+    def get_permissions(self):
+        if self.action in ['likes']:
+            permission_classes = [permissions.AllowAny]
+        elif self.action in ['like', 'unlike']:
+            permission_classes = [permissions.IsAuthenticated]
+        else:
+            permission_classes = [IsOwnerOrReadOnly]
+        return [permission() for permission in permission_classes]
 
     # def perform_create(self, serializer):
     #     post = 3
@@ -43,6 +52,9 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
         post.save(update_fields=['view_count', ])
         serializer = self.get_serializer(post)
         return Response(serializer.data, status=200)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 class CommentView(generics.ListCreateAPIView):
     queryset = Comment.objects.all()
