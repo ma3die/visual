@@ -34,9 +34,9 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
 
     def get_is_like(self, obj) -> bool:
         pass
-        # '''Проверяет, лайкнул ли `request.user` post'''
-        # user = self.context.get('request').user
-        # return services.is_like(obj, user)
+        '''Проверяет, лайкнул ли `request.user` post'''
+        user = self.context.get('request').user
+        return services.is_like(obj, user)
 
     # def create(self, validated_data):
     #     tags = validated_data.pop('tags')
