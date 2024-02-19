@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from accounts.views import AccountViewSet
+from accounts.views import AccountViewSet, ProfileViewSet
 from django.conf.urls.static import static
 from django.conf import settings
 from drf_spectacular.views import (
@@ -26,14 +26,16 @@ from drf_spectacular.views import (
     SpectacularRedocView
 )
 
-router = DefaultRouter()
-router.register(r'auth', AccountViewSet, basename='auth')
+# router = DefaultRouter()
+# router.register(r'auth', AccountViewSet, basename='auth')
+# router.register(r'me', ProfileViewSet, basename='me')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('accounts.urls')),
-    path('', include('posts.urls')),
-    path('', include(router.urls)),
+    path('api/', include('accounts.urls')),
+    # path('me/', include('accounts.urls')),
+    path('api/', include('posts.urls')),
+    # path('', include(router.urls)),
 
 
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),

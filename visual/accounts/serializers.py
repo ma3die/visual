@@ -37,11 +37,21 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'password': 'Пароли не совпадают'})
         user = Account(first_name=first_name, last_name=last_name,
                        username=username, email=email, phone=phone)
+        if 'avatar' in validated_data:
+            avatar = validated_data['avatar']
+            user.avatar = avatar
         user.set_password(password)
         user.is_active = True
         user.save()
         return user
 
+
+class ProfileSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
+    class Meta:
+        model = Account
+        fields = '__all__'
 
 class FollowerSerializer(serializers.ModelSerializer):
     def create(self, validated_data):

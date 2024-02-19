@@ -6,9 +6,11 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from .models import Account, Follower
-from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer
+from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer, ProfileSerializer
 from posts.serializers import PostSerializer
 from .mixins import UserPostMixin
+from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin
+from .permissions import IsOwnerOrReadOnly
 
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
@@ -24,14 +26,14 @@ class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
             permission_classes = [permissions.IsAdminUser]
         return [permission() for permission in permission_classes]
 
-    # def retrieve(self, request, pk=None):
-    #     queryset = Account.objects.all()
-    #     try:
-    #         user = get_object_or_404(queryset, pk=pk)
-    #     except:
-    #         raise NotFound
-    #     serializer = AccountSerializer(user)
-    #     return Response(serializer.data)
+    def retrieve(self, request, pk=None):
+        queryset = Account.objects.all()
+        try:
+            user = get_object_or_404(queryset, pk=pk)
+        except:
+            raise NotFound
+        serializer = AccountSerializer(user)
+        return Response(serializer.data)
 
 
 class RegisterView(generics.GenericAPIView):
@@ -48,14 +50,31 @@ class RegisterView(generics.GenericAPIView):
         })
 
 
-class ProfileView(generics.GenericAPIView):
-    permission_classes = [permissions.IsAuthenticated]
+class ProfileViewSet(viewsets.ViewSet):
+    """
+    Профиль пользователя
+    """
+    permission_classes = [IsOwnerOrReadOnly]
     serializer_class = AccountSerializer
+    queryset = Account.objects.all()
 
-    def get(self, request, *args, **kwargs):
+    def retrive(self, request):
+        """
+        Данные пользователя
+        """
+        serializer = AccountSerializer(instance=request.user)
         return Response({
-            'user': AccountSerializer(request.user, context=self.get_serializer_context()).data
+            'user': serializer.data
         })
+
+    def partial_update(self, request, author_id):
+        """
+        Изменить данные пользователя
+        """
+        serializer = ProfileSerializer(instance=request.user, data=request.data, partial=True)
+        serializer.is_valid()
+        serializer.save()
+        return Response(serializer.data)
 
 
 class FollowerViewSet(viewsets.ViewSet):
@@ -70,7 +89,7 @@ class FollowerViewSet(viewsets.ViewSet):
         else:
             serializer.delete(request.data)
             return Response(serializer.data)
-        return Response(serializer.data)
+
 
     def my_subscriptions(self, request, follower_id):
         current_follower = Account.objects.get(id=follower_id)

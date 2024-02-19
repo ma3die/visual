@@ -1,16 +1,20 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from .views import AccountViewSet, RegisterView, ProfileView, FollowerViewSet
+from .views import AccountViewSet, RegisterView, ProfileViewSet, FollowerViewSet
 
-# router = DefaultRouter()
-# router.register(r'auth', AccountViewSet, basename='auth')
+router = DefaultRouter()
+router.register(r'auth', AccountViewSet, basename='auth')
+router.register(r'me', ProfileViewSet, basename='me')
 
 urlpatterns = [
-    path('reg/', RegisterView.as_view(), name='register'),
-    path('login/', TokenObtainPairView.as_view(), name='token'),
-    path('me/', ProfileView.as_view(), name='profile'),
-    path('refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    path('', include(router.urls)),
+    path('auth/reg/', RegisterView.as_view(), name='register'),
+    path('auth/login/', TokenObtainPairView.as_view(), name='token'),
+    path('auth/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
+    path('me/', ProfileViewSet.as_view({'get': 'retrive'}), name='profile'),
+    path('me/<int:author_id>/', ProfileViewSet.as_view({'patch': 'partial_update'}), name='partial_update'),
+
 
     #Follower
     path('subscribe/', FollowerViewSet.as_view({'post': 'subscribe'}), name='subscribted'),
