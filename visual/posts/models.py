@@ -4,15 +4,18 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
 from taggit.managers import TaggableManager
 from pytils.translit import slugify
+from mptt.models import MPTTModel, TreeForeignKey
 from accounts.models import Account
 
 class Like(models.Model):
+    """Модель лайков"""
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='likes', verbose_name='Пользователь')
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
 
 class Post(models.Model):
+    """Модель поста"""
     name = models.CharField(max_length=50, verbose_name='Название поста')
     image = models.ImageField(max_length=50, verbose_name='Изображение')
     text = models.TextField(blank=True, verbose_name='Описание')
@@ -32,6 +35,12 @@ class Post(models.Model):
         self.slug = slugify(self.name)
         super(Post, self).save(*args, **kwargs)
 
+    def get_count_comments(self):
+        return f'{self.comments.all().count()}'
+
+    def get_comments(self):
+        return self.comments.filter(parent=None)
+
     def __str__(self):
         return self.name
 
@@ -40,11 +49,16 @@ class Post(models.Model):
         return self.likes.count()
 
 
-class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name='Пост')
+class Comment(MPTTModel):
+    """Модель комментариев"""
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', verbose_name='Пост')
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
+    parent = TreeForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children',
+                            verbose_name='Родительский комментарий')
     text = models.TextField(verbose_name='Комментарий')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    update_date = models.DateTimeField(auto_now=True, verbose_name='Обновлен')
+    deleted = models.BooleanField(default=False, verbose_name='Удален')
 
     class Meta:
         verbose_name = 'Комментарий'

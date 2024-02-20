@@ -1,11 +1,20 @@
 from rest_framework import viewsets
 from rest_framework import generics
-from .serializers import PostSerializer, CommentSerializer
-from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly
+from .serializers import PostSerializer, CommentSerializer, CreateCommentSerializer, ListPostSerializer
+    # , PostDetailSerializer
+from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
 from rest_framework import permissions
 from .models import Post, Comment
 from .mixins import LikedMixin
 from rest_framework.response import Response
+
+
+# class PostDetailView(generics.RetrieveAPIView):
+#     """Вывод полной статьи"""
+#     permission_classes = [permissions.AllowAny]
+#     queryset = Post.objects.all()
+#     serializer_class = PostDetailSerializer
+#     lookup_field = "pk"
 
 class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     serializer_class = PostSerializer
@@ -22,6 +31,11 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
             permission_classes = [IsOwnerOrReadOnly]
         return [permission() for permission in permission_classes]
 
+    def list(self, request):
+        queryset = Post.objects.all()
+        permission_classes = [permissions.AllowAny]
+        serializer = ListPostSerializer(queryset, many=True)
+        return Response(serializer.data)
     # def perform_create(self, serializer):
     #     post = 3
     #     tag = serializer.validated_data['tags']
@@ -46,28 +60,33 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     #         'post_id': post.id,
     #     })
 
-    def retrieve(self, request, slug):
-        post = Post.objects.get(slug=slug)
-        post.view_count = post.view_count + 1
-        post.save(update_fields=['view_count', ])
-        serializer = self.get_serializer(post)
-        return Response(serializer.data, status=200)
+    # def retrieve(self, request, slug):
+    #     post = Post.objects.get(slug=slug)
+    #     post.view_count = post.view_count + 1
+    #     post.save(update_fields=['view_count', ])
+    #     serializer = self.get_serializer(post)
+    #     return Response(serializer.data, status=200)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
-class CommentView(generics.ListCreateAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
+    """CRUD комментарии"""
+    queryset = Comment.objects.filter(deleted=False)
+    serializer_class = CreateCommentSerializer
+    permission_classes = [IsAuthorComment]
 
-    def get_queryset(self):
-        if 'post_slug' in self.kwargs:
-            post_slug = self.kwargs['post_slug'].lower()
-            post = Post.objects.get(slug=post_slug)
-            return Comment.objects.filter(post=post)
-        else:
-            return Comment.objects.all()
+    # def get_queryset(self):
+    #     if 'post_slug' in self.kwargs:
+    #         post_slug = self.kwargs['post_slug'].lower()
+    #         post = Post.objects.get(slug=post_slug)
+    #         return Comment.objects.filter(post=post)
+    #     else:
+    #         return Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
+
+    def perform_destroy(self, instance):
+        instance.deleted = True
+        instance.save()
