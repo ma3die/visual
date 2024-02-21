@@ -24,6 +24,7 @@ class RecursiveSerializer(serializers.Serializer):
 class CommentSerializer(serializers.ModelSerializer):
     # author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
+    author_avatar = serializers.CharField(source='author.avatar')
     # post = serializers.SlugRelatedField(slug_field='slug', queryset=Post.objects.all())
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)

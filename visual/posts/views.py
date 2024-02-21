@@ -60,12 +60,12 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     #         'post_id': post.id,
     #     })
 
-    # def retrieve(self, request, slug):
-    #     post = Post.objects.get(slug=slug)
-    #     post.view_count = post.view_count + 1
-    #     post.save(update_fields=['view_count', ])
-    #     serializer = self.get_serializer(post)
-    #     return Response(serializer.data, status=200)
+    def retrieve(self, request, slug):
+        post = Post.objects.get(slug=slug)
+        post.view_count = post.view_count + 1
+        post.save(update_fields=['view_count', ])
+        serializer = self.get_serializer(post)
+        return Response(serializer.data, status=200)
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)

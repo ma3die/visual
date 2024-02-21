@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.fields import GenericRelation
 from django.contrib.contenttypes.models import ContentType
+from .utils import unique_slugify
 from taggit.managers import TaggableManager
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
@@ -32,7 +33,7 @@ class Post(models.Model):
         verbose_name_plural = 'Посты'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
+        self.slug = unique_slugify(self, self.name)
         super(Post, self).save(*args, **kwargs)
 
     def get_count_comments(self):
