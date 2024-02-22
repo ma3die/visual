@@ -1,6 +1,8 @@
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.decorators import action
 from rest_framework import permissions
+from .permissions import IsUserProfile
 from rest_framework.response import Response
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -9,8 +11,8 @@ from .models import Account, Follower
 from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer, ProfileSerializer
 from posts.serializers import PostSerializer
 from .mixins import UserPostMixin
-from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin
-from .permissions import IsOwnerOrReadOnly
+from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+
 
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
@@ -50,13 +52,15 @@ class RegisterView(generics.GenericAPIView):
         })
 
 
-class ProfileViewSet(viewsets.ModelViewSet):
+# class ProfileViewSet(viewsets.ModelViewSet):
+class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, viewsets.GenericViewSet):
     """
     Профиль пользователя
     """
-    permission_classes = [IsOwnerOrReadOnly]
+    permission_classes = [IsUserProfile]
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
+    http_method_names = ['get', 'patch', 'delete']
 
     def retrive(self, request):
         """
@@ -67,14 +71,19 @@ class ProfileViewSet(viewsets.ModelViewSet):
             'user': serializer.data
         })
 
-    def partial_update(self, request, author_id):
-        """
-        Изменить данные пользователя
-        """
-        serializer = ProfileSerializer(instance=request.user, data=request.data, partial=True)
-        serializer.is_valid()
-        serializer.save()
-        return Response(serializer.data)
+    # def partial_update(self, request, author_id):
+    #     """
+    #     Изменить данные пользователя
+    #     """
+    #     serializer = ProfileSerializer(instance=request.user, data=request.data, partial=True)
+    #     serializer.is_valid()
+    #     serializer.save()
+    #     return Response(serializer.data)
+    # @action(detail=True, methods=['DELETE'])
+    # def delete(self, request, *args, **kwargs):
+    #     instance = self.get_object()
+    #     self.perform_destroy(instance)
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class FollowerViewSet(viewsets.ViewSet):

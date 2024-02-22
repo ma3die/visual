@@ -13,7 +13,10 @@ urlpatterns = [
     path('auth/login/', TokenObtainPairView.as_view(), name='token'),
     path('auth/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
     path('me/', ProfileViewSet.as_view({'get': 'retrive'}), name='profile'),
-    path('me/<int:author_id>/', ProfileViewSet.as_view({'patch': 'partial_update'}), name='partial_update'),
+    path('me/<int:pk>/', ProfileViewSet.as_view({'patch': 'partial_update'}), name='partial_update'),
+    path('me/delete/<int:pk>/', ProfileViewSet.as_view({'delete': 'destroy'}), name='destroy'),
+
+
 
 
     #Follower

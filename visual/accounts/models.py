@@ -59,6 +59,8 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=50, unique=True, verbose_name='Никнейм')
     email = models.EmailField(max_length=50, unique=True, verbose_name='Электронная почта')
     phone = models.CharField(max_length=50, verbose_name='Телефон')
+    birthday = models.DateTimeField(blank=True, null=True, verbose_name='День рождения')
+    gender = models.CharField(max_length=10, blank=True, verbose_name='Пол')
     description = models.TextField(blank=True, verbose_name='О себе')
     url = models.CharField(blank=True, max_length=100, verbose_name='Cсылка на другие сайты')
     avatar = models.ImageField(upload_to='avatar/', blank=True, verbose_name='Аватарка',

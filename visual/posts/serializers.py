@@ -53,14 +53,7 @@ class ListPostSerializer(TaggitSerializer, serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
-#
-# class PostDetailSerializer(ListPostSerializer):
-#     """Сериализация полной статьи"""
-#     comments = CommentSerializer(many=True, read_only=True)
-#
-#     class Meta:
-#         model = Post
-#         fields = '__all__'
+
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     is_like = serializers.SerializerMethodField()
@@ -73,7 +66,6 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         fields = (
             'name', 'image', 'text', 'comments', 'created_date', 'slug', 'avialable_comment',
             'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes')
-        # ('name', 'image', 'text', 'tags', 'author')
         read_only_fields = ('created_date', 'slug', 'author_id')
         lookup_field = 'slug'
         extra_kwargs = {
