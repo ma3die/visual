@@ -8,12 +8,14 @@ from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 from accounts.models import Account
 
+
 class Like(models.Model):
     """Модель лайков"""
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='likes', verbose_name='Пользователь')
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
 
 class Post(models.Model):
     """Модель поста"""
@@ -68,5 +70,3 @@ class Comment(MPTTModel):
 
     def __str__(self):
         return self.text
-
-

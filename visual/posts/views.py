@@ -36,9 +36,17 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     def list(self, request):
         user = request.user
         if user.is_authenticated:
+            ids = []
             subscripted = Follower.objects.filter(follower_id=user.id)
             serializers = FollowerSerializer(subscripted, many=True)
-        queryset = Post.objects.all()
+            querys = serializers.data
+            for query in querys:
+                id = query['author']
+                ids.append(id)
+                post=2
+            queryset = Post.objects.filter(author_id__in=ids)
+        else:
+            queryset = Post.objects.all()
         permission_classes = [permissions.AllowAny]
         serializer = ListPostSerializer(queryset, many=True)
         return Response(serializer.data)
