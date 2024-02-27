@@ -1,7 +1,6 @@
 from rest_framework import viewsets
 from rest_framework import generics
 from .serializers import PostSerializer, CommentSerializer, CreateCommentSerializer, ListPostSerializer
-    # , PostDetailSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
 from rest_framework import permissions
 from .models import Post, Comment
@@ -10,13 +9,6 @@ from accounts.serializers import FollowerSerializer
 from .mixins import LikedMixin
 from rest_framework.response import Response
 
-
-# class PostDetailView(generics.RetrieveAPIView):
-#     """Вывод полной статьи"""
-#     permission_classes = [permissions.AllowAny]
-#     queryset = Post.objects.all()
-#     serializer_class = PostDetailSerializer
-#     lookup_field = "pk"
 
 class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     serializer_class = PostSerializer
@@ -38,41 +30,16 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
         if user.is_authenticated:
             ids = []
             subscripted = Follower.objects.filter(follower_id=user.id)
-            serializers = FollowerSerializer(subscripted, many=True)
-            querys = serializers.data
+            serializer = FollowerSerializer(subscripted, many=True)
+            querys = serializer.data
             for query in querys:
                 id = query['author']
                 ids.append(id)
-                post=2
-            queryset = Post.objects.filter(author_id__in=ids)
+            queryset = Post.objects.filter(author_id__in=ids)[:10]
         else:
             queryset = Post.objects.all()
-        permission_classes = [permissions.AllowAny]
         serializer = ListPostSerializer(queryset, many=True)
         return Response(serializer.data)
-    # def perform_create(self, serializer):
-    #     post = 3
-    #     tag = serializer.validated_data['tags']
-    #     instance = serializer.save()
-    #     if 'tags' in self.request.data:
-    #         instance.tags.set(*self.request.data['tags'])
-    #         post = 2
-
-    # def create(self, request):
-    #     serializer = PostSerializer(data=request.data)
-    #     serializer.is_valid(raise_exception=True)
-    #
-    #     post = Post.objects.create(
-    #         name=serializer.validated_data['name'],
-    #         tags=serializer.validated_data['tags'],
-    #         text=serializer.validated_data['text'],
-    #         image=serializer.validated_data['image'],
-    #         author=serializer.validated_data['author'],
-    #     )
-    #
-    #     return Response({
-    #         'post_id': post.id,
-    #     })
 
     def retrieve(self, request, slug):
         post = Post.objects.get(slug=slug)
@@ -84,19 +51,12 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+
 class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
     """CRUD комментарии"""
     queryset = Comment.objects.filter(deleted=False)
     serializer_class = CreateCommentSerializer
     permission_classes = [IsAuthorComment]
-
-    # def get_queryset(self):
-    #     if 'post_slug' in self.kwargs:
-    #         post_slug = self.kwargs['post_slug'].lower()
-    #         post = Post.objects.get(slug=post_slug)
-    #         return Comment.objects.filter(post=post)
-    #     else:
-    #         return Comment.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
