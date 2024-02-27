@@ -53,7 +53,7 @@ class Post(models.Model):
 class Comment(MPTTModel):
     """Модель комментариев"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments', verbose_name='Пост')
-    author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
+    author = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True, verbose_name='Автор')
     parent = TreeForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='children',
                             verbose_name='Родительский комментарий')
     text = models.TextField(verbose_name='Комментарий')

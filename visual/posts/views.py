@@ -5,6 +5,8 @@ from .serializers import PostSerializer, CommentSerializer, CreateCommentSeriali
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
 from rest_framework import permissions
 from .models import Post, Comment
+from accounts.models import Follower
+from accounts.serializers import FollowerSerializer
 from .mixins import LikedMixin
 from rest_framework.response import Response
 
@@ -32,6 +34,10 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
     def list(self, request):
+        user = request.user
+        if user.is_authenticated:
+            subscripted = Follower.objects.filter(follower_id=user.id)
+            serializers = FollowerSerializer(subscripted, many=True)
         queryset = Post.objects.all()
         permission_classes = [permissions.AllowAny]
         serializer = ListPostSerializer(queryset, many=True)

@@ -8,11 +8,11 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from rest_framework.exceptions import NotFound
 from .models import Account, Follower
+from posts.models import Comment
 from .serializers import AccountSerializer, RegisterSerializer, FollowerSerializer, ProfileSerializer
 from posts.serializers import PostSerializer
 from .mixins import UserPostMixin
 from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
-
 
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
@@ -52,12 +52,11 @@ class RegisterView(generics.GenericAPIView):
         })
 
 
-# class ProfileViewSet(viewsets.ModelViewSet):
 class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, viewsets.GenericViewSet):
     """
     Профиль пользователя
     """
-    permission_classes = [IsUserProfile]
+    permission_classes = [IsUserProfile, permissions.IsAdminUser]
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
     http_method_names = ['get', 'patch', 'delete']
@@ -71,6 +70,14 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
             'user': serializer.data
         })
 
+    def perform_destroy(self, instance):
+        deleted_user = Account.objects.get(username='deleted')
+        user_id = instance.id
+        all_user_comment = Comment.objects.filter(author_id=user_id)
+        for comment in all_user_comment:
+            comment.author_id = deleted_user.id
+            comment.save()
+        instance.delete()
     # def partial_update(self, request, author_id):
     #     """
     #     Изменить данные пользователя
@@ -98,7 +105,6 @@ class FollowerViewSet(viewsets.ViewSet):
         else:
             serializer.delete(request.data)
             return Response(serializer.data)
-
 
     def my_subscriptions(self, request, follower_id):
         current_follower = Account.objects.get(id=follower_id)

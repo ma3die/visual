@@ -29,6 +29,18 @@ class CommentSerializer(serializers.ModelSerializer):
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)
 
+    def validate_author(self, obj):
+        if obj.author:
+            return obj.author
+        else:
+            obj.author = Account.objects.get(username='deleted')
+        return obj.author
+
+    def get_author_avatar(self, obj):
+        if obj.author:
+            return obj.author
+        return None
+
     def get_text(self, obj):
         if obj.deleted:
             return None
