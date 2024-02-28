@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Post, Comment
+from .models import Post, Comment, Image
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from accounts.models import Account
 from . import services
@@ -19,6 +19,11 @@ class RecursiveSerializer(serializers.Serializer):
     def to_representation(self, value):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
+
+class ImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Image
+        fields = '__all__'
 
 
 class CommentSerializer(serializers.ModelSerializer):
@@ -47,8 +52,8 @@ class ListPostSerializer(TaggitSerializer, serializers.ModelSerializer):
     """Сериализация списка статей"""
     author = serializers.SlugRelatedField(read_only=True, slug_field='username')
     tags = TagListSerializerField()
-
     comments_count = serializers.IntegerField(source="get_count_comments", read_only=True)
+    image = ImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
@@ -60,13 +65,14 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
     comments = CommentSerializer(many=True, read_only=True)
+    image = ImageSerializer(many=True, required=False)
 
     class Meta:
         model = Post
         fields = (
             'name', 'image', 'text', 'comments', 'created_date', 'slug', 'avialable_comment',
             'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes')
-        read_only_fields = ('created_date', 'slug', 'author_id')
+        read_only_fields = ('created_date', 'slug', 'author_id', 'image')
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'},

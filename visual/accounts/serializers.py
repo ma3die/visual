@@ -37,7 +37,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'password': 'Пароли не совпадают'})
         user = Account(first_name=first_name, last_name=last_name,
                        username=username, email=email, phone=phone)
-        if 'avatar' in validated_data:
+        if 'avatar' in validated_data:            #при регистрации не добавляется аватарка
             avatar = validated_data['avatar']
             user.avatar = avatar
         user.set_password(password)

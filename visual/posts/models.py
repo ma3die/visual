@@ -20,7 +20,6 @@ class Like(models.Model):
 class Post(models.Model):
     """Модель поста"""
     name = models.CharField(max_length=50, verbose_name='Название поста')
-    image = models.ImageField(max_length=50, verbose_name='Изображение')
     text = models.TextField(blank=True, verbose_name='Описание')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     slug = models.CharField(max_length=200, unique=True, verbose_name='Слаг')
@@ -50,6 +49,16 @@ class Post(models.Model):
     @property
     def total_likes(self):
         return self.likes.count()
+
+
+class Image(models.Model):
+    """Галерея фотографий"""
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='image', verbose_name='Пост')
+    image = models.ImageField(blank=True, verbose_name='Изображение')
+
+    class Meta:
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
 
 
 class Comment(MPTTModel):

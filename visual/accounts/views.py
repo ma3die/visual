@@ -56,7 +56,7 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
     """
     Профиль пользователя
     """
-    permission_classes = [IsUserProfile, permissions.IsAdminUser]
+    permission_classes = [IsUserProfile]
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
     http_method_names = ['get', 'patch', 'delete']

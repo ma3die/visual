@@ -1,9 +1,10 @@
 from rest_framework import viewsets
 from rest_framework import generics
-from .serializers import PostSerializer, CommentSerializer, CreateCommentSerializer, ListPostSerializer
+from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
+from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework import permissions
-from .models import Post, Comment
+from .models import Post, Comment, Image
 from accounts.models import Follower
 from accounts.serializers import FollowerSerializer
 from .mixins import LikedMixin
@@ -11,6 +12,7 @@ from rest_framework.response import Response
 
 
 class PostViewSet(LikedMixin, viewsets.ModelViewSet):
+    # parser_classes = (FormParser, MultiPartParser)
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
@@ -25,17 +27,40 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
             permission_classes = [IsOwnerOrReadOnly]
         return [permission() for permission in permission_classes]
 
+    def create(self, request, *args, **kwargs):
+        images = dict((request.data).lists()).get('image', [])
+        request.data.pop('image')
+        serializer_data = self.serializer_class(data=request.data)
+        post_obj = None
+        if serializer_data.is_valid():
+            # post_obj = Post.objects.create(**serializer_data.validated_data)
+            serializer_data.save()
+
+        if post_obj and len(images) > 0:
+            image_data = {}
+            for image in images:
+                image_data['image'] = image
+                image_data['post'] = post_obj.id
+                #     image_data['post_obj'] = post_obj.id
+                serializer_image = ImageSerializer(data=image_data)
+                serializer_image.is_valid(raise_exception=True)
+                Image.objects.create(**serializer_image.validated_data)
+        return Response({'messages': 'Пост добавлен'})
+
     def list(self, request):
         user = request.user
         if user.is_authenticated:
             ids = []
             subscripted = Follower.objects.filter(follower_id=user.id)
-            serializer = FollowerSerializer(subscripted, many=True)
-            querys = serializer.data
-            for query in querys:
-                id = query['author']
-                ids.append(id)
-            queryset = Post.objects.filter(author_id__in=ids)[:10]
+            if subscripted:
+                serializer = FollowerSerializer(subscripted, many=True)
+                querys = serializer.data
+                for query in querys:
+                    id = query['author']
+                    ids.append(id)
+                queryset = Post.objects.filter(author_id__in=ids)[:10]
+            else:
+                queryset = Post.objects.all()
         else:
             queryset = Post.objects.all()
         serializer = ListPostSerializer(queryset, many=True)
