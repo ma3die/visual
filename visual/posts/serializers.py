@@ -81,8 +81,12 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
 
     def get_is_like(self, obj) -> bool:
         '''Проверяет, лайкнул ли `request.user` post'''
-        user = self.context.get('request').user
+        try:
+            user = self.context.get('request').user
+        except:
+            user = Account.objects.get(id=obj.author_id)
         return services.is_like(obj, user)
+
 
 
 class CreateCommentSerializer(serializers.ModelSerializer):

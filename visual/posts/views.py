@@ -28,24 +28,26 @@ class PostViewSet(LikedMixin, viewsets.ModelViewSet):
         return [permission() for permission in permission_classes]
 
     def create(self, request, *args, **kwargs):
-        images = dict((request.data).lists()).get('image', [])
+        # images = dict((request.data).lists()).get('image', [])
+        images = request.data.getlist('image', [])
         request.data.pop('image')
         serializer_data = self.serializer_class(data=request.data)
         post_obj = None
         if serializer_data.is_valid():
             # post_obj = Post.objects.create(**serializer_data.validated_data)
-            serializer_data.save()
+            post = serializer_data.save(author=self.request.user)
 
-        if post_obj and len(images) > 0:
+        if post and len(images) > 0:
             image_data = {}
             for image in images:
                 image_data['image'] = image
-                image_data['post'] = post_obj.id
+                image_data['post'] = post.id
                 #     image_data['post_obj'] = post_obj.id
                 serializer_image = ImageSerializer(data=image_data)
                 serializer_image.is_valid(raise_exception=True)
                 Image.objects.create(**serializer_image.validated_data)
-        return Response({'messages': 'Пост добавлен'})
+        return Response(serializer_data.data)
+            # {'messages': 'Пост добавлен'})
 
     def list(self, request):
         user = request.user
