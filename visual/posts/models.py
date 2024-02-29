@@ -55,6 +55,7 @@ class Image(models.Model):
     """Галерея фотографий"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='image', verbose_name='Пост')
     image = models.ImageField(blank=True, verbose_name='Изображение')
+    video = models.FileField(blank=True, verbose_name='Видео')
 
     class Meta:
         verbose_name = 'Изображение'
