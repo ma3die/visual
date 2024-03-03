@@ -26,12 +26,13 @@ SECRET_KEY = 'django-insecure-&v#9*%6jn!80jx0w8-=6hvv&2bk!g5q6hd&0x)39d5t*7t*&%@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,12 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'channels',
     'corsheaders',
     'drf_spectacular',
     'mptt',
     'accounts',
     'posts',
     'taggit',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -169,3 +172,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Daphne
+ASGI_APPLICATION = 'visual.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+  # 'default': {
+  #   'BACKEND': 'channels.layers.InMemoryChannelLayer'
+  #
+}
