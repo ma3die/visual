@@ -43,30 +43,30 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
             # post_obj = Post.objects.create(**serializer_data.validated_data)
             post = serializer_data.save(author=self.request.user)
 
-        # if post:
-        #     for file in file_data:
-        #         type = get_mime_type(file)
-        #         file.choose_add(type, post)
-        if post and len(images) > 0:
-            i = 0
-            for image in images:
-                type = get_mime_type(image)
-                if 'image' not in type:
-                    continue
-                image_data = {}
-                image_data['image'] = image
-                image_data['post'] = post.id
-                if i < len(videos):
-                    type = get_mime_type(videos[i])
-                    if 'video' not in type:
-                        i += 1
-                        continue
-                    image_data['video'] = videos[i]
-                    i += 1
-                #     image_data['post_obj'] = post_obj.id
-                serializer_image = ImageSerializer(data=image_data)
-                serializer_image.is_valid(raise_exception=True)
-                Image.objects.create(**serializer_image.validated_data)
+        if post:
+            for file in file_data:
+                type = get_mime_type(file)
+                file.choose_add(type, post)
+        # if post and len(images) > 0:
+        #     i = 0
+        #     for image in images:
+        #         type = get_mime_type(image)
+        #         if 'image' not in type:
+        #             continue
+        #         image_data = {}
+        #         image_data['image'] = image
+        #         image_data['post'] = post.id
+        #         if i < len(videos):
+        #             type = get_mime_type(videos[i])
+        #             if 'video' not in type:
+        #                 i += 1
+        #                 continue
+        #             image_data['video'] = videos[i]
+        #             i += 1
+        #         #     image_data['post_obj'] = post_obj.id
+        #         serializer_image = ImageSerializer(data=image_data)
+        #         serializer_image.is_valid(raise_exception=True)
+        #         Image.objects.create(**serializer_image.validated_data)
 
         # if post and len(videos) > 0:
         #     video_data = {}

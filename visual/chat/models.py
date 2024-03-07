@@ -16,6 +16,9 @@ class Message(models.Model):
     sender = models.ForeignKey(
         Account, on_delete=models.SET_NULL, null=True, related_name='message_sender', verbose_name='Отправитель'
     )
+    receiver = models.ForeignKey(
+        Account, on_delete=models.SET_NULL, null=True, related_name='message_receiver', verbose_name='Получатель'
+    )
     text = models.CharField(max_length=500, blank=True)
     attachment = models.FileField(blank=True, verbose_name='Вложение')
     conversation_id = models.ForeignKey(Conversation, on_delete=models.CASCADE, verbose_name='id беседы')

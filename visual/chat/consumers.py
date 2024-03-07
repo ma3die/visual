@@ -8,6 +8,7 @@ from django.core.files.base import ContentFile
 from accounts.models import Account
 from .models import Message, Conversation
 from .serializers import MessageSerializer
+from accounts.models import Account
 
 
 class ChatConsumer(WebsocketConsumer):
@@ -32,12 +33,13 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data=None, bytes_data=None):
         # parse the json data into dictionary object
         text_data_json = json.loads(text_data)
-        user = self.scope['user']
-        user_id = user.id
+        sender = self.scope['user']
+        sender_id = sender.id
 
         # Send message to room group
+        # serializer = AccountSerializer(instance=sender)
         chat_type = {"type": "chat_message"}
-        return_dict = {"user": user_id, **chat_type, **text_data_json}
+        return_dict = {"sender_id": sender_id, **chat_type, **text_data_json}
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             return_dict
@@ -48,14 +50,15 @@ class ChatConsumer(WebsocketConsumer):
     def chat_message(self, event):
         text_data_json = event.copy()
         text_data_json.pop("type")
-        message, user, attachment = (
+        message, sender_id, attachment = (
             text_data_json["message"],
-            text_data_json["user"],
+            text_data_json["sender_id"],
             text_data_json.get("attachment"),
         )
 
         conversation = Conversation.objects.get(id=int(self.room_name))
-        sender = self.scope['user']
+        sender = Account.objects.get(id=sender_id)
+        receiver = self.scope['user']
 
         # Attachment
         if attachment:
@@ -66,6 +69,7 @@ class ChatConsumer(WebsocketConsumer):
             )
             _message = Message.objects.create(
                 sender=sender,
+                receiver=receiver,
                 attachment=file_data,
                 text=message,
                 conversation_id=conversation,
@@ -73,13 +77,14 @@ class ChatConsumer(WebsocketConsumer):
         else:
             _message = Message.objects.create(
                 sender=sender,
+                receiver=receiver,
                 text=message,
                 conversation_id=conversation,
             )
         serializer = MessageSerializer(instance=_message)
         # Send message to WebSocket
         data = serializer.data
-        data['user'] = user
+        # data['user'] = user
         text_data = json.dumps(
             data)
         self.send(text_data)
