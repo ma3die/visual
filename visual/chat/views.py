@@ -25,7 +25,9 @@ def start_convo(request, ):
         return redirect(reverse('get_conversation', args=(conversation[0].id,)))
     else:
         conversation = Conversation.objects.create(initiator=request.user, receiver=participant)
-        return Response(ConversationSerializer(instance=conversation).data)
+        serializer = ConversationSerializer(instance=conversation)
+        return Response(serializer.data)
+            # Response(ConversationSerializer(instance=conversation).data))
 
 
 @api_view(['GET'])

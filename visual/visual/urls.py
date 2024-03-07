@@ -35,7 +35,7 @@ urlpatterns = [
     path('api/', include('accounts.urls')),
     # path('me/', include('accounts.urls')),
     path('api/', include('posts.urls')),
-    path('conversations/', include('chat.urls')),
+    path('api/conversations/', include('chat.urls')),
     # path('', include(router.urls)),
 
 

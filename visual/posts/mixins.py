@@ -1,7 +1,8 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from . import services
-from .serializers import LikeSerializer
+from .models import Image, Video
+from .serializers import LikeSerializer, ImageSerializer, VideoSerializer
 
 
 class LikedMixin:
@@ -27,3 +28,18 @@ class LikedMixin:
         user = services.get_likes(obj)
         serializer = LikeSerializer(user, many=True)
         return Response(serializer.data)
+
+
+class AddImageVideoMixin:
+    def add_image(self, post):
+        file = self.get_obj()
+        image_data = {}
+        image_data['image'] = file
+        image_data['post'] = post.id
+        serializer_image = ImageSerializer(data=image_data)
+        serializer_image.is_valid(raise_exception=True)
+        Image.objects.create(**serializer_image.validated_data)
+
+    def choose_add(self,type, post):
+        if type == 'image':
+            return self.add_image(post)

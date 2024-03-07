@@ -32,13 +32,15 @@ class ChatConsumer(WebsocketConsumer):
     def receive(self, text_data=None, bytes_data=None):
         # parse the json data into dictionary object
         text_data_json = json.loads(text_data)
+        user = self.scope['user']
+        user_id = user.id
 
         # Send message to room group
         chat_type = {"type": "chat_message"}
-        return_dict = {**chat_type, **text_data_json}
+        return_dict = {"user": user_id, **chat_type, **text_data_json}
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
-            return_dict,
+            return_dict
         )
 
         # Receive message from room group
@@ -46,8 +48,9 @@ class ChatConsumer(WebsocketConsumer):
     def chat_message(self, event):
         text_data_json = event.copy()
         text_data_json.pop("type")
-        message, attachment = (
+        message, user, attachment = (
             text_data_json["message"],
+            text_data_json["user"],
             text_data_json.get("attachment"),
         )
 
@@ -75,8 +78,8 @@ class ChatConsumer(WebsocketConsumer):
             )
         serializer = MessageSerializer(instance=_message)
         # Send message to WebSocket
-        self.send(
-            text_data=json.dumps(
-                serializer.data
-            )
-        )
+        data = serializer.data
+        data['user'] = user
+        text_data = json.dumps(
+            data)
+        self.send(text_data)

@@ -1,7 +1,7 @@
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from . import services
-from posts.serializers import PostSerializer, ListPostSerializer
+from posts.serializers import ListPostSerializer
 
 
 class UserPostMixin:
@@ -11,3 +11,5 @@ class UserPostMixin:
         posts = services.my_post(user)
         serializer = ListPostSerializer(instance=posts, many=True)
         return Response(serializer.data)
+
+
