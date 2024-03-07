@@ -31,15 +31,14 @@ class LikedMixin:
 
 
 class AddImageVideoMixin:
-    def add_image(self, post):
-        file = self.get_obj()
+    def add_image(self, file, post_id):
         image_data = {}
         image_data['image'] = file
-        image_data['post'] = post.id
+        image_data['post'] = post_id
         serializer_image = ImageSerializer(data=image_data)
         serializer_image.is_valid(raise_exception=True)
         Image.objects.create(**serializer_image.validated_data)
 
-    def choose_add(self,type, post):
+    def choose_add(self, type, file, post_id):
         if type == 'image':
-            return self.add_image(post)
+            self.add_image(file, post_id)

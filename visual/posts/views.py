@@ -32,21 +32,27 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
     @transaction.atomic
     def create(self, request, *args, **kwargs):
         # images = dict((request.data).lists()).get('image', [])
+        file_data = []
+        request.data._mutable=True
         post = None
-        images = request.data.getlist('image', [])
-        videos = request.data.getlist('video', [])
-        file_data = images + videos
-        request.data.pop('image')
-        request.data.pop('video')
+        images = (request.FILES.getlist('image', [None]))
+        # videos = (request.data.getlist('video', [None]))
+        # file_data = images + videos
+        del request.data['image']
+        del request.data['video']
+
+
         serializer_data = self.serializer_class(data=request.data)
         if serializer_data.is_valid():
             # post_obj = Post.objects.create(**serializer_data.validated_data)
             post = serializer_data.save(author=self.request.user)
 
         if post:
+            post_id = post.id
             for file in file_data:
-                type = get_mime_type(file)
-                file.choose_add(type, post)
+                if file:
+                    type = get_mime_type(file)
+                    self.choose_add(type, file, post_id)
         # if post and len(images) > 0:
         #     i = 0
         #     for image in images:
