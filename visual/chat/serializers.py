@@ -12,15 +12,16 @@ class MessageSerializer(serializers.ModelSerializer):
 class ConversationListSerializer(serializers.ModelSerializer):
     initiator = AccountSerializer()
     receiver = AccountSerializer()
-    # last_message = serializers.SerializerMethodField()
+    last_message = serializers.SerializerMethodField()
+    # last_message = MessageSerializer(many=True)
 
     class Meta:
         model = Conversation
-        fields =  ('initiator', 'receiver')
+        fields =  ('initiator', 'receiver', 'last_message')
 
-    # def get_last_message(self, instance):
-    #     message = instance.message_set
-    #     return MessageSerializer(instance=message)
+    def get_last_message(self, instance):
+        message = instance.message_set.first()
+        return MessageSerializer(instance=message).data
 
 
 class ConversationSerializer(serializers.ModelSerializer):
