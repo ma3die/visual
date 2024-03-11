@@ -35,9 +35,14 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         file_data = []
         request.data._mutable=True
         post = None
-        images = (request.FILES.getlist('image', [None]))
-        # videos = (request.data.getlist('video', [None]))
+        images = (request.FILES.getlist('image', []))
+        if images:
+            file_data.extend(images)
+        videos = (request.FILES.getlist('video', []))
+        if videos:
+            file_data.extend(videos)
         # file_data = images + videos
+        file_data = file_data[:1]
         del request.data['image']
         del request.data['video']
 

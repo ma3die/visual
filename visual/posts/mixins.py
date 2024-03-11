@@ -39,6 +39,16 @@ class AddImageVideoMixin:
         serializer_image.is_valid(raise_exception=True)
         Image.objects.create(**serializer_image.validated_data)
 
+    def add_video(self, file, post_id):
+        video_data = {}
+        video_data['video'] = file
+        video_data['post'] = post_id
+        serializer_video = VideoSerializer(data=video_data)
+        serializer_video.is_valid(raise_exception=True)
+        Video.objects.create(**serializer_video.validated_data)
+
     def choose_add(self, type, file, post_id):
         if type == 'image':
             self.add_image(file, post_id)
+        if type == 'video':
+            self.add_video(file, post_id)

@@ -46,4 +46,5 @@ def conversations(request):
     conversation_list = Conversation.objects.filter(Q(initiator=request.user) |
                                                     Q(receiver=request.user))
     serializer = ConversationListSerializer(instance=conversation_list, many=True)
-    return Response(serializer.data)
+    data = serializer.data
+    return Response(data)
