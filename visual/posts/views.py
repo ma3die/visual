@@ -42,7 +42,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         if videos:
             file_data.extend(videos)
         # file_data = images + videos
-        file_data = file_data[:1]
+        file_data = file_data[:10]
         del request.data['image']
         del request.data['video']
 
