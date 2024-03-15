@@ -23,6 +23,7 @@ class Message(models.Model):
     attachment = models.FileField(blank=True, verbose_name='Вложение')
     conversation_id = models.ForeignKey(Conversation, on_delete=models.CASCADE, verbose_name='id беседы')
     timestamp = models.DateTimeField(auto_now_add=True, verbose_name='Дата сообщения')
+    read = models.BooleanField(default=False)
 
     class Meta:
         ordering = ('-timestamp',)

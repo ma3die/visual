@@ -44,6 +44,20 @@ class ChatConsumer(WebsocketConsumer):
         receiver = Account.objects.get(id=receiver_id)
         conversation = Conversation.objects.get(id=int(self.room_name))
 
+        if message_type == 'read_message':
+            messages_to_me = Message.objects.filter(conversation_id_id=conversation.id, receiver=sender, read=False)
+            messages_to_me.update(read=True)
+
+            # Update the unread message count
+            unread_count = Message.objects.filter(receiver=sender, read=False).count()
+            async_to_sync(self.channel_layer.group_send)(
+                sender.username + '__notifications',
+                {
+                    'type': 'unread_count',
+                    'unread_count': unread_count
+                }
+            )
+
         # Send message to room group
         if message_type == 'chat_message':
             attachment = text_data_json.get("attachment")
@@ -135,6 +149,10 @@ class ChatConsumer(WebsocketConsumer):
     def new_message_notification(self, event):
         text_data = json.dumps(event)
         self.send(text_data)
+
+    def unread_count(self, event):
+        text_data = json.dumps(event)
+        self.send(text_data)
     # def send_notification(self, message):
     #     self.send(text_data=json.dumps({
     #         "type": "notifification",
@@ -152,11 +170,22 @@ class NotificationConsumer(WebsocketConsumer):
         self.user = self.scope['user']
         self.accept()
 
+        # private notification group
         self.notification_group_name = self.user.username + '__notifications'
         async_to_sync(self.channel_layer.group_add)(
             self.notification_group_name,
             self.channel_name,
         )
+
+        # Send count of unread messages
+        unread_count = Message.objects.filter(receiver=self.user, read=False).count()
+        data = {
+            'type': 'unread_type',
+            'unread_count': unread_count
+        }
+        text_data = json.dumps(data)
+        self.send(text_data)
+
 
     def disconnect(self, code):
         async_to_sync(self.channel_layer.group_discard)(
@@ -165,5 +194,9 @@ class NotificationConsumer(WebsocketConsumer):
         )
 
     def new_message_notification(self, event):
+        text_data = json.dumps(event)
+        self.send(text_data)
+
+    def unread_count(self, event):
         text_data = json.dumps(event)
         self.send(text_data)
