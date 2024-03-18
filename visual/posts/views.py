@@ -6,8 +6,9 @@ from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorC
 from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework import permissions
 from .models import Post, Comment, Image
-from accounts.models import Follower
-from accounts.serializers import FollowerSerializer
+from followers.models import Follower
+from followers.serializers import FollowerSerializer
+from notifications.models import Notification
 from .mixins import LikedMixin, AddImageVideoMixin
 from .utils import get_mime_type
 from rest_framework.response import Response
@@ -128,7 +129,10 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
     permission_classes = [IsAuthorComment]
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        if not serializer.validated_data['parent']:
+            user = serializer.validated_data['post'].author
+            notification = Notification.objects.create(user=user)
+        serializer.save(author=self.request.user, notification_id=notification.id)
 
     def perform_destroy(self, instance):
         instance.deleted = True

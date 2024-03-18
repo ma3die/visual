@@ -7,6 +7,7 @@ from taggit.managers import TaggableManager
 from pytils.translit import slugify
 from mptt.models import MPTTModel, TreeForeignKey
 from accounts.models import Account
+from notifications.models import Notification
 
 
 class Like(models.Model):
@@ -15,6 +16,7 @@ class Like(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+    notification = models.ForeignKey(Notification, on_delete=models.CASCADE, null=True, verbose_name='Уведомление')
 
 
 class Post(models.Model):
@@ -81,6 +83,7 @@ class Comment(MPTTModel):
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     update_date = models.DateTimeField(auto_now=True, verbose_name='Обновлен')
     deleted = models.BooleanField(default=False, verbose_name='Удален')
+    notification = models.ForeignKey(Notification, on_delete=models.CASCADE, null=True, verbose_name='Уведомление')
 
     class Meta:
         verbose_name = 'Комментарий'

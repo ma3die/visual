@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'posts',
     'taggit',
     'chat',
+    'notifications',
+    'followers'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +67,7 @@ MIDDLEWARE = [
 LOGIN_URL = "api/auth/login"
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60*8),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=2),
 }
 

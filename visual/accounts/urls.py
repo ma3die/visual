@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from .views import AccountViewSet, RegisterView, ProfileViewSet, FollowerViewSet
+from .views import AccountViewSet, RegisterView, ProfileViewSet
 
 router = DefaultRouter()
 router.register(r'users', AccountViewSet, basename='users')
@@ -15,13 +15,4 @@ urlpatterns = [
     path('me/', ProfileViewSet.as_view({'get': 'retrive'}), name='profile'),
     path('me/<int:pk>/', ProfileViewSet.as_view({'patch': 'partial_update'}), name='partial_update'),
     path('me/delete/<int:pk>/', ProfileViewSet.as_view({'delete': 'destroy'}), name='destroy'),
-
-
-
-
-    #Follower
-    path('subscribe/', FollowerViewSet.as_view({'post': 'subscribe'}), name='subscribted'),
-    path('my_subscriptions/<int:follower_id>/', FollowerViewSet.as_view({'get': 'my_subscriptions'}), name='my_subscriptions'),
-    path('my_followers/<int:author_id>/', FollowerViewSet.as_view({'get': 'my_followers'}), name='my_followers'),
-    # path('reg/', views.,name='register')
 ]
