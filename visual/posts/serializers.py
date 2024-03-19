@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Post, Comment, Image, Video
 from taggit.serializers import TagListSerializerField, TaggitSerializer
 from accounts.models import Account
+from accounts.serializers import AccountSerializer
 from . import services
 
 
@@ -19,6 +20,13 @@ class RecursiveSerializer(serializers.Serializer):
     def to_representation(self, value):
         serializer = self.parent.parent.__class__(value, context=self.context)
         return serializer.data
+
+
+class LikeSerializer(serializers.ModelSerializer):
+    likes = AccountSerializer(many=True, required=False)
+    class Meta:
+        model = Account
+        fields = '__all__'
 
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -72,6 +80,7 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     is_like = serializers.SerializerMethodField()
     tags = TagListSerializerField()
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
+    likes = LikeSerializer(many=True, required=False)
     comments = CommentSerializer(many=True, read_only=True)
     image = ImageSerializer(many=True, required=False)
     video = VideoSerializer(many=True, required=False)
@@ -80,13 +89,20 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         model = Post
         fields = (
             'name', 'image', 'video', 'text', 'comments', 'created_date', 'slug', 'avialable_comment',
-            'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes')
+            'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes', 'likes')
         read_only_fields = ('created_date', 'slug', 'author_id', 'image', 'video')
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'},
             'tags': {'validators': []}
         }
+
+    # def get_likes(self, obj):
+    #     try:
+    #         user = self.context.get('request').user
+    #     except:
+    #         user = Account.objects.get(id=obj.author_id)
+    #     return services.get_likes(obj)
 
     def get_is_like(self, obj) -> bool:
         '''Проверяет, лайкнул ли `request.user` post'''
@@ -104,9 +120,3 @@ class CreateCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ('post', 'text', 'parent')
-
-
-class LikeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Account
-        fields = '__all__'
