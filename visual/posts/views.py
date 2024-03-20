@@ -39,14 +39,12 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         images = (request.FILES.getlist('image', []))
         if images:
             file_data.extend(images)
+            request.data.pop('image')
         videos = (request.FILES.getlist('video', []))
         if videos:
             file_data.extend(videos)
-        # file_data = images + videos
+            request.data.pop('video')
         file_data = file_data[:10]
-        del request.data['image']
-        del request.data['video']
-
 
         serializer_data = self.serializer_class(data=request.data)
         if serializer_data.is_valid():
