@@ -61,7 +61,7 @@ class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, Des
             followers = Follower.objects.filter(notification_id__in=ids)
             data_comments = CommentSerializer(comments, many=True).data
             data_followers = FollowerSerializer(followers, many=True).data
-            # notification.update(send=True, read=True)
+            notification.update(send=True, read=True)
             return Response({
                 'likes': data_likes,
                 'comments': data_comments,

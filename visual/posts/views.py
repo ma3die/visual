@@ -1,9 +1,11 @@
 from django.db import transaction
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, TrigramSimilarity
 from rest_framework import viewsets
 from rest_framework import generics
 from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
+from accounts.models import Account
+from accounts.serializers import AccountSerializer
 from rest_framework import permissions
 from .models import Post, Comment
 from followers.models import Follower
@@ -144,13 +146,23 @@ class SearchResultView(generics.ListAPIView):
         query = self.request.GET.get('search', None)
         search_vector = SearchVector('name')
         search_query = SearchQuery(query)
-        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by('-rank')
+        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0).order_by('-rank')
         return result
 
     def list(self, request, *args, **kwargs):
         query = request.query_params['search']
-        search_vector = SearchVector('name')
+        search_vector_post = SearchVector('name', 'tags__name')
+        search_vector_account = SearchVector('username', 'last_name')
+        # search_vector_tag = SearchVector('tags__name')
         search_query = SearchQuery(query)
-        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by(
-            '-rank')
-        return Response(result)
+        search_vector_trgm = TrigramSimilarity('name', query) + TrigramSimilarity('tags__name', query)
+        search_vector_trgm_acc = TrigramSimilarity('username', query) + TrigramSimilarity('last_name', query)
+        post_tag = Post.objects.annotate(search=search_vector_post).filter(search=search_query) or Post.objects.annotate(similarity=search_vector_trgm).filter(similarity__gt=0.2)
+        user = Account.objects.annotate(search=search_vector_account).filter(search=search_query) or Account.objects.annotate(similarity=search_vector_trgm_acc).filter(similarity__gt=0.2)
+        # result = Post.objects.filter(name__search=query)
+        post_tag = ListPostSerializer(post_tag, many=True).data
+        user = AccountSerializer(user, many=True).data
+        return Response({
+            'post_tag': post_tag,
+            'user': user
+        })
