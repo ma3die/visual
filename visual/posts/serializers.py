@@ -45,7 +45,7 @@ class CommentSerializer(serializers.ModelSerializer):
     # author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     author_avatar = serializers.CharField(source='author.avatar')
-    # post = serializers.SlugRelatedField(slug_field='slug', queryset=Post.objects.all())
+    post = serializers.SlugRelatedField(slug_field='slug', queryset=Post.objects.all())
     text = serializers.SerializerMethodField()
     children = RecursiveSerializer(many=True)
 
@@ -80,7 +80,7 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     is_like = serializers.SerializerMethodField()
     tags = TagListSerializerField()
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
-    likes = LikeSerializer(many=True, required=False)
+    likes = serializers.SerializerMethodField()
     comments = CommentSerializer(many=True, read_only=True)
     image = ImageSerializer(many=True, required=False)
     video = VideoSerializer(many=True, required=False)
@@ -97,12 +97,12 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
             'tags': {'validators': []}
         }
 
-    # def get_likes(self, obj):
-    #     try:
-    #         user = self.context.get('request').user
-    #     except:
-    #         user = Account.objects.get(id=obj.author_id)
-    #     return services.get_likes(obj)
+    def get_likes(self, obj):
+        try:
+            user = self.context.get('request').user
+        except:
+            user = Account.objects.get(id=obj.author_id)
+        return services.get_likes(obj)
 
     def get_is_like(self, obj) -> bool:
         '''Проверяет, лайкнул ли `request.user` post'''

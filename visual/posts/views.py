@@ -1,11 +1,11 @@
 from django.db import transaction
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from rest_framework import viewsets
 from rest_framework import generics
 from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
-from rest_framework.parsers import FormParser, MultiPartParser
 from rest_framework import permissions
-from .models import Post, Comment, Image
+from .models import Post, Comment
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 from notifications.models import Notification
@@ -127,11 +127,30 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
     permission_classes = [IsAuthorComment]
 
     def perform_create(self, serializer):
-        if not serializer.validated_data['parent']:
-            user = serializer.validated_data['post'].author
-            notification = Notification.objects.create(user=user)
+        # if not serializer.validated_data['parent']:
+        user = serializer.validated_data['post'].author
+        notification = Notification.objects.create(user=user)
         serializer.save(author=self.request.user, notification_id=notification.id)
 
     def perform_destroy(self, instance):
         instance.deleted = True
         instance.save()
+
+
+class SearchResultView(generics.ListAPIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get_queryset(self):
+        query = self.request.GET.get('search', None)
+        search_vector = SearchVector('name')
+        search_query = SearchQuery(query)
+        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by('-rank')
+        return result
+
+    def list(self, request, *args, **kwargs):
+        query = request.query_params['search']
+        search_vector = SearchVector('name')
+        search_query = SearchQuery(query)
+        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by(
+            '-rank')
+        return Response(result)
