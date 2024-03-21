@@ -55,11 +55,11 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
-    first_name = models.CharField(max_length=50, verbose_name='Имя')
-    last_name = models.CharField(max_length=50, verbose_name='Фамилия')
+    first_name = models.CharField(max_length=50, blank=True, verbose_name='Имя')
+    last_name = models.CharField(max_length=50, blank=True, verbose_name='Фамилия')
     username = models.CharField(max_length=50, unique=True, verbose_name='Никнейм')
     email = models.EmailField(max_length=50, unique=True, verbose_name='Электронная почта')
-    phone = models.CharField(max_length=50, verbose_name='Телефон')
+    phone = models.CharField(max_length=50, blank=True, verbose_name='Телефон')
     birthday = models.DateTimeField(blank=True, null=True, verbose_name='День рождения')
     gender = models.CharField(max_length=10, blank=True, verbose_name='Пол')
     description = models.TextField(blank=True, verbose_name='О себе')
