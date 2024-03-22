@@ -2,12 +2,13 @@ from django.db import transaction
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, TrigramSimilarity
 from rest_framework import viewsets
 from rest_framework import generics
+from . import services
 from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
 from accounts.models import Account
 from accounts.serializers import AccountSerializer
 from rest_framework import permissions
-from .models import Post, Comment
+from .models import Post, Comment, ReadPost
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 from notifications.models import Notification
@@ -96,6 +97,13 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         user = request.user
         if user.is_authenticated:
             ids = []
+            ids_posts = []
+            ids_read_posts = []
+            read_posts = ReadPost.objects.filter(user=user)
+            for read_post in read_posts:
+                if read_post.post not in read_posts:
+                    post = read_post.post
+                    ids_read_posts.append(post.id)
             subscripted = Follower.objects.filter(follower_id=user.id)
             if subscripted:
                 serializer = FollowerSerializer(subscripted, many=True)
@@ -103,11 +111,26 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
                 for query in querys:
                     id = query['author']
                     ids.append(id)
-                queryset = Post.objects.filter(author_id__in=ids)[:10]
+                queryset = Post.objects.filter(author_id__in=ids).exclude(id__in=ids_read_posts)[:10]
+                if not queryset:
+                    queryset = Post.objects.exclude(id__in=ids_read_posts)[:10]
+                for post in queryset:
+                    ReadPost.objects.create(user=user, post=post)
             else:
-                queryset = Post.objects.all()
+                queryset = Post.objects.exclude(id__in=ids_read_posts)[:10]
+                for post in queryset:
+                    ReadPost.objects.create(user=user, post=post)
         else:
+            # сделать пагинацию
+            user = services.get_user(user)
+            ids_read_posts = []
+            read_posts = ReadPost.objects.filter(user=user)
+            for read_post in read_posts:
+                post = read_post.post
+                ids_read_posts.append(post.id)
             queryset = Post.objects.all()
+            for post in queryset:
+                ReadPost.objects.create(user=user, post=post)
         serializer = ListPostSerializer(queryset, many=True)
         return Response(serializer.data)
 

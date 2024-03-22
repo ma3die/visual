@@ -1,3 +1,5 @@
+import random
+import string
 from accounts.models import Account
 from django.contrib.contenttypes.models import ContentType
 from notifications.models import Notification
@@ -39,3 +41,18 @@ def get_likes(obj):
         likes__content_type=obj_type, likes__object_id=obj.id)
     return AccountSerializer(instance=users, many=True).data
 
+
+def randomString(stringLength):
+    letters = string.ascii_letters
+    return ''.join(random.choice(letters) for i in range(stringLength))
+
+
+def get_user(user):
+    '''Функция для заполнения данных для анонимного пользователя'''
+    if user.is_anonymous:
+        random_username = f"{randomString(10)}_guest"
+        random_email = f"{randomString(5)}_guest@example.com"
+        guest_user = Account.objects.create(username=random_username, is_active=False, email=random_email)
+        return guest_user
+    else:
+        pass

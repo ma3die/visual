@@ -34,6 +34,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+        ordering = ['-created_date']
 
     def save(self, *args, **kwargs):
         self.slug = unique_slugify(self, self.name)
@@ -92,3 +93,14 @@ class Comment(MPTTModel):
 
     def __str__(self):
         return self.text
+
+
+class ReadPost(models.Model):
+    '''Модель просмотра статей'''
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='users', verbose_name='Пользователь')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='posts', verbose_name='Поcт')
+    read_post = models.BooleanField(default=False, verbose_name='Просмотр поста')
+
+    class Meta:
+        verbose_name = 'Прочитан'
+        verbose_name_plural = 'Прочитаны'
