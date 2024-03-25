@@ -1,3 +1,5 @@
+import uuid
+from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework import permissions
@@ -11,6 +13,10 @@ from .serializers import AccountSerializer, RegisterSerializer
 from .mixins import UserPostMixin
 from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
 
+from yookassa import Configuration, Payment
+
+Configuration.account_id = '357017'
+Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
     serializer_class = AccountSerializer
@@ -89,5 +95,22 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
     #     self.perform_destroy(instance)
     #     return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-
+class CreatePaymentView(generics.CreateAPIView):
+    queryset = Account.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request):
+        payment = Payment.create({
+            "amount": {
+                "value": "100.00",
+                "currency": "RUB"
+            },
+            "confirmation": {
+                "type": "redirect",
+                "return_url": "https://www.example.com/"
+            },
+            "capture": True,
+            "test": True,
+            "description": "Заказ №1"
+        }, uuid.uuid4())
+        confirmation_url = payment.confirmation.confirmation_url
+        return Response({'confirmation_url': confirmation_url})

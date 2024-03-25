@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from .views import AccountViewSet, RegisterView, ProfileViewSet
+from .views import AccountViewSet, RegisterView, ProfileViewSet, CreatePaymentView
 
 router = DefaultRouter()
 router.register(r'users', AccountViewSet, basename='users')
@@ -15,4 +15,5 @@ urlpatterns = [
     path('me/', ProfileViewSet.as_view({'get': 'retrive'}), name='profile'),
     path('me/<int:pk>/', ProfileViewSet.as_view({'patch': 'partial_update'}), name='partial_update'),
     path('me/delete/<int:pk>/', ProfileViewSet.as_view({'delete': 'destroy'}), name='destroy'),
+    path('create_payment/', CreatePaymentView.as_view(), name='create_payment'),
 ]
