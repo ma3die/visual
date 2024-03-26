@@ -153,9 +153,11 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
 
     def perform_create(self, serializer):
         # if not serializer.validated_data['parent']:
-        user = serializer.validated_data['post'].author
-        notification = Notification.objects.create(user=user)
-        serializer.save(author=self.request.user, notification_id=notification.id)
+        author = serializer.validated_data['post'].author
+        if author != self.request.user:
+            notification = Notification.objects.create(user=author)
+            serializer.save(author=self.request.user, notification_id=notification.id)
+        serializer.save(author=self.request.user)
 
     def perform_destroy(self, instance):
         instance.deleted = True

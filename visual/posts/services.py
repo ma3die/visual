@@ -4,14 +4,15 @@ from accounts.models import Account
 from django.contrib.contenttypes.models import ContentType
 from notifications.models import Notification
 from accounts.serializers import AccountSerializer
-from .models import Like
+from .models import Like, Post
 
 
 def add_like(obj, user):
     """Лайк"""
     obj_type = ContentType.objects.get_for_model(obj)
     author = obj.author
-    notification = Notification.objects.create(user=author)
+    if obj.author_id != user.id:
+        notification = Notification.objects.create(user=author)
     like, is_created = Like.objects.get_or_create(
         content_type=obj_type, object_id=obj.id, user=user, notification_id=notification.id)
     return like

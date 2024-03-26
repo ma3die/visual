@@ -1,19 +1,21 @@
 import uuid
-from django.contrib.auth.decorators import login_required
+import json
+from yookassa import Configuration, Payment
+
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework import permissions
-from .permissions import IsUserProfile
-from rest_framework.response import Response
-from django.shortcuts import get_object_or_404
-from rest_framework.exceptions import NotFound
-from .models import Account
-from posts.models import Comment
-from .serializers import AccountSerializer, RegisterSerializer
-from .mixins import UserPostMixin
 from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin
+from rest_framework.response import Response
+from rest_framework.exceptions import NotFound
 
-from yookassa import Configuration, Payment
+from django.shortcuts import get_object_or_404
+
+from posts.models import Comment, Post
+from .models import Account
+from .mixins import UserPostMixin
+from .permissions import IsUserProfile
+from .serializers import AccountSerializer, RegisterSerializer
 
 Configuration.account_id = '357017'
 Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
@@ -68,6 +70,7 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
         """
         Данные пользователя
         """
+        responce = json.loads(request.body)
         serializer = AccountSerializer(instance=request.user)
         return Response({
             'user': serializer.data
@@ -98,19 +101,53 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
 class CreatePaymentView(generics.CreateAPIView):
     queryset = Account.objects.all()
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = AccountSerializer
     def post(self, request):
+        user = request.user
+        subscription = request.data.get('subscription')
+        value = request.data.get('value')
+
         payment = Payment.create({
             "amount": {
-                "value": "100.00",
+                "value": value,
                 "currency": "RUB"
             },
             "confirmation": {
                 "type": "redirect",
-                "return_url": "https://www.example.com/"
+                "return_url": "http://127.0.0.1:8000/api/me/"
+            },
+            "metadata": {
+                "user_id": user.id,
+                "subscription": subscription
             },
             "capture": True,
             "test": True,
             "description": "Заказ №1"
         }, uuid.uuid4())
+        payment_id = payment.id
         confirmation_url = payment.confirmation.confirmation_url
         return Response({'confirmation_url': confirmation_url})
+
+
+class CreatePaymentAcceotedView(generics.CreateAPIView):
+    queryset = Account.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    def post(self, request):
+        response = request.data.get('payment_id')
+        user_id = request.data.get('user_id')
+        subscription = request.data.get('subscription')
+
+        payment = Payment.find_one(response)
+        if payment.status == 'succeeded':
+            if subscription:
+                user = Account.objects.get(id=user_id)
+                user.subscription = subscription
+                if subscription == 'premium':
+                    posts = Post.objects.filter(author_id=user_id)
+                    posts.update(premium=True)
+                    return Response(400)
+
+        else:
+            return Response(400)
+
+

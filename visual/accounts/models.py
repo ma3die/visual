@@ -67,6 +67,7 @@ class Account(AbstractBaseUser):
     avatar = models.ImageField(upload_to='avatar/', blank=True, verbose_name='Аватарка',
                                validators=[FileExtensionValidator(
                                    allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))])
+    subscription = models.CharField(max_length=10, blank=True,null=True, verbose_name='Подписка')
     date_register = models.DateTimeField(auto_now_add=True, verbose_name='Дата регистрации')
     last_join = models.DateTimeField(auto_now_add=True, verbose_name='Последний вход')
     is_admin = models.BooleanField(default=False, verbose_name='Администратор')

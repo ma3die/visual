@@ -89,8 +89,8 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         model = Post
         fields = (
             'name', 'image', 'video', 'text', 'comments', 'created_date', 'slug', 'avialable_comment',
-            'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes', 'likes')
-        read_only_fields = ('created_date', 'slug', 'author_id', 'image', 'video')
+            'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes', 'likes', 'premium')
+        read_only_fields = ('created_date', 'slug', 'author_id', 'image', 'video', 'premium')
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'},

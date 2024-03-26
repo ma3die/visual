@@ -27,6 +27,7 @@ class Post(models.Model):
     slug = models.CharField(max_length=200, unique=True, verbose_name='Слаг')
     avialable_comment = models.BooleanField(default=True, verbose_name='Доступ к комментариям')
     view_count = models.IntegerField(default=0, verbose_name='Счетчик просмотров')
+    premium = models.BooleanField(default=False, verbose_name='Премиум подписка')
     likes = GenericRelation(Like)
     tags = TaggableManager()
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
