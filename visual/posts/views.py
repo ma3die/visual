@@ -2,6 +2,7 @@ from django.db import transaction
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank, TrigramSimilarity
 from rest_framework import viewsets
 from rest_framework import generics
+from rest_framework.exceptions import NotFound
 from . import services
 from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
@@ -135,7 +136,10 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, slug):
-        post = Post.objects.get(slug=slug)
+        try:
+            post = Post.objects.get(slug=slug)
+        except:
+            raise NotFound
         post.view_count = post.view_count + 1
         post.save(update_fields=['view_count', ])
         serializer = self.get_serializer(post)

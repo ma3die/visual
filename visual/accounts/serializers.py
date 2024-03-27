@@ -1,12 +1,14 @@
 from rest_framework import serializers
 from .models import Account
-from rest_framework.serializers import ValidationError
 
 
 class AccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = Account
-        fields = '__all__'
+        fields = ('id', 'last_login', 'first_name', 'last_name', 'username', 'email',
+                  'phone', 'birthday', 'gender', 'description', 'url', 'avatar', 'subscription',
+                  'date_register', 'last_join'
+                  )
 
 
 class RegisterSerializer(serializers.ModelSerializer):

@@ -70,7 +70,6 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
         """
         Данные пользователя
         """
-        responce = json.loads(request.body)
         serializer = AccountSerializer(instance=request.user)
         return Response({
             'user': serializer.data
