@@ -3,6 +3,7 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
+from rest_framework.pagination import PageNumberPagination
 from . import services
 from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
 from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
@@ -18,12 +19,18 @@ from .utils import get_mime_type
 from rest_framework.response import Response
 
 
+class CustomPostPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+
+
 class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
     # parser_classes = (FormParser, MultiPartParser)
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
     permission_classes = [IsOwnerOrReadOnly]
+    pagination_class = CustomPostPagination
 
     def get_permissions(self):
         if self.action in ['likes']:
@@ -61,36 +68,6 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
                 if file:
                     type = get_mime_type(file)
                     self.choose_add(type, file, post_id)
-        # if post and len(images) > 0:
-        #     i = 0
-        #     for image in images:
-        #         type = get_mime_type(image)
-        #         if 'image' not in type:
-        #             continue
-        #         image_data = {}
-        #         image_data['image'] = image
-        #         image_data['post'] = post.id
-        #         if i < len(videos):
-        #             type = get_mime_type(videos[i])
-        #             if 'video' not in type:
-        #                 i += 1
-        #                 continue
-        #             image_data['video'] = videos[i]
-        #             i += 1
-        #         #     image_data['post_obj'] = post_obj.id
-        #         serializer_image = ImageSerializer(data=image_data)
-        #         serializer_image.is_valid(raise_exception=True)
-        #         Image.objects.create(**serializer_image.validated_data)
-
-        # if post and len(videos) > 0:
-        #     video_data = {}
-        #     for video in videos:
-        #         video_data['video'] = video
-        #         video_data['post'] = post.id
-        #         #     image_data['post_obj'] = post_obj.id
-        #         serializer_image = ImageSerializer(data=video_data)
-        #         serializer_image.is_valid(raise_exception=True)
-        #         Image.objects.create(**serializer_image.validated_data)
         return Response(serializer_data.data)
             # {'messages': 'Пост добавлен'})
 
@@ -122,16 +99,23 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
                 for post in queryset:
                     ReadPost.objects.create(user=user, post=post)
         else:
-            # сделать пагинацию
-            user = services.get_user(user)
-            ids_read_posts = []
-            read_posts = ReadPost.objects.filter(user=user)
-            for read_post in read_posts:
-                post = read_post.post
-                ids_read_posts.append(post.id)
-            queryset = Post.objects.all()
-            for post in queryset:
-                ReadPost.objects.create(user=user, post=post)
+        #     сделать пагинацию
+        #     user = services.get_user(user)
+        #     ids_read_posts = []
+        #     read_posts = ReadPost.objects.filter(user=user)
+        #     for read_post in read_posts:
+        #         post = read_post.post
+        #         ids_read_posts.append(post.id)
+        #     queryset = Post.objects.all()
+        #     for post in queryset:
+        #         ReadPost.objects.create(user=user, post=post)
+            queryset = self.queryset
+            page = self.paginate_queryset(queryset)
+            if page is not None:
+                serializer = ListPostSerializer(page, many=True)
+                return self.get_paginated_response(serializer.data)
+            serializer = ListPostSerializer(queryset, many=True)
+            return Response(serializer.data)
         serializer = ListPostSerializer(queryset, many=True)
         return Response(serializer.data)
 
