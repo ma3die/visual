@@ -128,23 +128,27 @@ class CreatePaymentView(generics.CreateAPIView):
         return Response({'confirmation_url': confirmation_url})
 
 
-class CreatePaymentAcceotedView(generics.CreateAPIView):
+class CreatePaymentAcceptedView(generics.CreateAPIView):
     queryset = Account.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     def post(self, request):
-        response = request.data.get('payment_id')
-        user_id = request.data.get('user_id')
-        subscription = request.data.get('subscription')
+        response = json.loads(request.body)
+        # response = request.data.get('payment_id')
+        # user_id = request.data.get('user_id')
+        # subscription = request.data.get('subscription')
 
-        payment = Payment.find_one(response)
-        if payment.status == 'succeeded':
+        payment = Payment.find_one(response['id'])
+        user_id = response['metadata']['user_id']
+        subscription = response['metadata']['subscription']
+        if response['status'] == 'succeeded':
             if subscription:
                 user = Account.objects.get(id=user_id)
-                user.subscription = subscription
+                user.subscription=subscription
+                user.save()
                 if subscription == 'premium':
                     posts = Post.objects.filter(author_id=user_id)
                     posts.update(premium=True)
-                    return Response(400)
+                    return Response(200)
 
         else:
             return Response(400)
