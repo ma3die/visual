@@ -31,6 +31,7 @@ class JwtAuthMiddleware(BaseMiddleware):
         # headers = dict(scope['headers'])
         # token_name, token = headers[b'authorization'].decode().split()
         token = parse_qs(scope['query_string'].decode('utf8'))['token'][0]
+        token = token[17:]
         try:
             UntypedToken(token)
         except (InvalidToken, TokenError) as e:
