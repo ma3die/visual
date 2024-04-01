@@ -11,10 +11,14 @@ def add_like(obj, user):
     """Лайк"""
     obj_type = ContentType.objects.get_for_model(obj)
     author = obj.author
+
     if obj.author_id != user.id:
         notification = Notification.objects.create(user=author)
-    like, is_created = Like.objects.get_or_create(
-        content_type=obj_type, object_id=obj.id, user=user, notification_id=notification.id)
+        like, is_created = Like.objects.get_or_create(
+            content_type=obj_type, object_id=obj.id, user=user, notification_id=notification.id)
+    else:
+        like, is_created = Like.objects.get_or_create(
+            content_type=obj_type, object_id=obj.id, user=user)
     return like
 
 
