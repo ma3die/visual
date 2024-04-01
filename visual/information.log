@@ -1,0 +1,22 @@
+2024-04-01 16:11:18,513 - INFO - autoreload - autoreload.py 19732 5192 Watching for file changes with StatReloader
+2024-04-01 16:11:25,412 - INFO - autoreload - autoreload.py 3280 8144 Watching for file changes with StatReloader
+2024-04-01 16:14:16,221 - INFO - autoreload - autoreload.py 3280 8144 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:14:22,418 - INFO - autoreload - autoreload.py 5240 17260 Watching for file changes with StatReloader
+2024-04-01 16:14:26,569 - INFO - autoreload - autoreload.py 5240 17260 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:14:31,290 - INFO - autoreload - autoreload.py 6200 3216 Watching for file changes with StatReloader
+2024-04-01 16:14:47,662 - INFO - autoreload - autoreload.py 6200 3216 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:14:51,773 - INFO - autoreload - autoreload.py 16864 4320 Watching for file changes with StatReloader
+2024-04-01 16:15:41,662 - INFO - autoreload - autoreload.py 16864 4320 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:15:46,168 - INFO - autoreload - autoreload.py 5968 12204 Watching for file changes with StatReloader
+2024-04-01 16:15:52,903 - INFO - autoreload - autoreload.py 5968 12204 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:15:55,996 - INFO - autoreload - autoreload.py 252 18440 Watching for file changes with StatReloader
+2024-04-01 16:17:06,467 - INFO - autoreload - autoreload.py 252 18440 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-01 16:17:10,396 - INFO - autoreload - autoreload.py 20408 19412 Watching for file changes with StatReloader
+2024-04-01 16:17:56,395 - INFO - views - views.py 20408 10904 Login user | test_username2
+2024-04-01 16:17:56,418 - INFO - runserver - runserver.py 20408 7628 HTTP GET /api/users/1/ 200 [0.27, 127.0.0.1:50520]
+2024-04-01 16:19:05,987 - INFO - views - views.py 20408 7544 Login user | test_username2
+2024-04-01 16:19:05,998 - INFO - runserver - runserver.py 20408 7628 HTTP GET /api/users/1/ 200 [0.16, 127.0.0.1:50533]
+2024-04-01 16:19:30,213 - INFO - views - views.py 20408 18396 Login user | test_username2
+2024-04-01 16:19:30,222 - INFO - runserver - runserver.py 20408 7628 HTTP GET /api/users/2/ 200 [0.15, 127.0.0.1:50533]
+2024-04-01 16:19:46,856 - WARNING - log - log.py 20408 13580 Not Found: /api/users/3/
+2024-04-01 16:19:46,857 - WARNING - runserver - runserver.py 20408 7628 HTTP GET /api/users/3/ 404 [0.17, 127.0.0.1:50533]

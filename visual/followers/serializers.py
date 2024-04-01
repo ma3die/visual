@@ -1,8 +1,10 @@
+from django.db import transaction
 from rest_framework import serializers
 from .models import Follower
 from notifications.models import Notification
 
 class FollowerSerializer(serializers.ModelSerializer):
+    @transaction.atomic
     def create(self, validated_data):
         try:
             notification = Notification.objects.create(user=validated_data['author'])

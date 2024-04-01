@@ -45,7 +45,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
     def create(self, request, *args, **kwargs):
         # images = dict((request.data).lists()).get('image', [])
         file_data = []
-        request.data._mutable=True
+        request.data._mutable = True
         post = None
         images = (request.FILES.getlist('image', []))
         if images:
@@ -59,7 +59,6 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
 
         serializer_data = self.serializer_class(data=request.data)
         if serializer_data.is_valid():
-            # post_obj = Post.objects.create(**serializer_data.validated_data)
             post = serializer_data.save(author=self.request.user)
 
         if post:
@@ -69,7 +68,6 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
                     type = get_mime_type(file)
                     self.choose_add(type, file, post_id)
         return Response(serializer_data.data)
-            # {'messages': 'Пост добавлен'})
 
     def list(self, request):
         user = request.user
@@ -139,6 +137,7 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
     serializer_class = CreateCommentSerializer
     permission_classes = [IsAuthorComment]
 
+    @transaction.atomic
     def perform_create(self, serializer):
         # if not serializer.validated_data['parent']:
         author = serializer.validated_data['post'].author

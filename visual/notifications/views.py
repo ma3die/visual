@@ -10,7 +10,9 @@ from posts.serializers import LikeSerializer, CommentSerializer, PostSerializer
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 
-class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, DestroyModelMixin, viewsets.GenericViewSet):
+
+class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, DestroyModelMixin,
+                       viewsets.GenericViewSet):
     queryset = Notification.objects.filter(hide=False)
     serializer_class = CreateSerializerNotification
     permission_classes = [permissions.IsAuthenticated]
@@ -67,11 +69,3 @@ class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, Des
                 'comments': data_comments,
                 'followers': data_followers
             })
-
-
-
-
-
-
-
-

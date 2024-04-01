@@ -64,6 +64,35 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "main_format": {
+            "format": "{asctime} - {levelname} - {module} - {filename} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "main_format",
+        },
+        "file": {
+            "class": "logging.FileHandler",
+            "formatter": "main_format",
+            "filename": "information.log"
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console", "file"],
+            "level": "INFO",
+            "propagate": True,
+        },
+    },
+}
+
 # ниже настройки JWT токена
 LOGIN_URL = "api/auth/login"
 

@@ -1,6 +1,7 @@
 import uuid
 import json
 from yookassa import Configuration, Payment
+import logging
 
 from rest_framework import viewsets
 from rest_framework import generics
@@ -20,6 +21,9 @@ from .serializers import AccountSerializer, RegisterSerializer
 Configuration.account_id = '357017'
 Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
 
+
+logger = logging.getLogger('django')
+
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
@@ -37,6 +41,7 @@ class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
         queryset = Account.objects.all()
         try:
             user = get_object_or_404(queryset, pk=pk)
+            logger.info(f'Login user | {self.request.user.username}')
         except:
             raise NotFound
         serializer = AccountSerializer(user)

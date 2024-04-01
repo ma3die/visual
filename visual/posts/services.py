@@ -1,12 +1,13 @@
 import random
 import string
+from django.db import transaction
 from accounts.models import Account
 from django.contrib.contenttypes.models import ContentType
 from notifications.models import Notification
 from accounts.serializers import AccountSerializer
 from .models import Like, Post
 
-
+@transaction.atomic
 def add_like(obj, user):
     """Лайк"""
     obj_type = ContentType.objects.get_for_model(obj)
