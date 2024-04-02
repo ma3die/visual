@@ -20,3 +20,184 @@
 2024-04-01 16:19:30,222 - INFO - runserver - runserver.py 20408 7628 HTTP GET /api/users/2/ 200 [0.15, 127.0.0.1:50533]
 2024-04-01 16:19:46,856 - WARNING - log - log.py 20408 13580 Not Found: /api/users/3/
 2024-04-01 16:19:46,857 - WARNING - runserver - runserver.py 20408 7628 HTTP GET /api/users/3/ 404 [0.17, 127.0.0.1:50533]
+2024-04-02 13:00:07,855 - INFO - autoreload - autoreload.py 16836 10276 Watching for file changes with StatReloader
+2024-04-02 13:00:17,468 - WARNING - log - log.py 16836 12156 Not Found: /
+2024-04-02 13:00:17,470 - WARNING - runserver - runserver.py 16836 10616 HTTP GET / 404 [1.01, 127.0.0.1:60803]
+2024-04-02 13:00:17,636 - WARNING - log - log.py 16836 12156 Not Found: /favicon.ico
+2024-04-02 13:00:17,638 - WARNING - runserver - runserver.py 16836 10616 HTTP GET /favicon.ico 404 [0.03, 127.0.0.1:60803]
+2024-04-02 13:01:31,002 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/ 200 [0.03, 127.0.0.1:60807]
+2024-04-02 13:01:47,349 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/users/ 200 [0.33, 127.0.0.1:60807]
+2024-04-02 13:03:22,266 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/ 200 [0.19, 127.0.0.1:60814]
+2024-04-02 13:03:40,010 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/redoc/ 200 [1.16, 127.0.0.1:60814]
+2024-04-02 13:03:40,599 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/ 200 [0.19, 127.0.0.1:60814]
+2024-04-02 13:05:27,666 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/swagger-ui/ 200 [0.21, 127.0.0.1:60828]
+2024-04-02 13:05:28,273 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/ 200 [0.12, 127.0.0.1:60828]
+2024-04-02 13:06:47,322 - WARNING - log - log.py 16836 12156 Unauthorized: /api/users/
+2024-04-02 13:06:47,323 - WARNING - runserver - runserver.py 16836 10616 HTTP POST /api/users/ 401 [0.01, 127.0.0.1:60831]
+2024-04-02 13:07:27,463 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/redoc/ 200 [0.02, 127.0.0.1:60831]
+2024-04-02 13:07:27,862 - INFO - runserver - runserver.py 16836 10616 HTTP GET /api/schema/ 200 [0.16, 127.0.0.1:60831]
+2024-04-02 13:09:06,485 - INFO - runserver - runserver.py 16836 10616 HTTP POST /api/auth/login/ 200 [0.88, 127.0.0.1:60945]
+2024-04-02 13:16:16,279 - INFO - autoreload - autoreload.py 16836 10276 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:16:19,050 - INFO - autoreload - autoreload.py 17472 7476 Watching for file changes with StatReloader
+2024-04-02 13:16:30,349 - WARNING - log - log.py 17472 12808 Bad Request: /api/auth/reg/
+2024-04-02 13:16:30,352 - WARNING - runserver - runserver.py 17472 18100 HTTP POST /api/auth/reg/ 400 [0.19, 127.0.0.1:61024]
+2024-04-02 13:18:37,876 - INFO - autoreload - autoreload.py 17472 7476 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:18:40,496 - INFO - autoreload - autoreload.py 19576 10388 Watching for file changes with StatReloader
+2024-04-02 13:18:42,056 - WARNING - log - log.py 19576 1836 Bad Request: /api/auth/reg/
+2024-04-02 13:18:42,057 - WARNING - runserver - runserver.py 19576 18644 HTTP POST /api/auth/reg/ 400 [0.09, 127.0.0.1:61051]
+2024-04-02 13:19:53,476 - INFO - autoreload - autoreload.py 19576 10388 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:19:55,515 - INFO - autoreload - autoreload.py 5208 2332 Watching for file changes with StatReloader
+2024-04-02 13:19:56,824 - INFO - views - views.py 5208 2664 Post data | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:19:56,924 - WARNING - log - log.py 5208 11424 Bad Request: /api/auth/reg/
+2024-04-02 13:19:56,925 - WARNING - runserver - runserver.py 5208 9648 HTTP POST /api/auth/reg/ 400 [0.11, 127.0.0.1:61075]
+2024-04-02 13:21:00,518 - INFO - autoreload - autoreload.py 5208 2332 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:21:02,421 - INFO - autoreload - autoreload.py 14100 20240 Watching for file changes with StatReloader
+2024-04-02 13:21:05,723 - INFO - views - views.py 14100 4288 Post data | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:21:05,809 - INFO - views - views.py 14100 4288 Post data | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:21:06,078 - ERROR - log - log.py 14100 18472 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 64, in post
+    'user': AccountSerializer(user, context=self.get_serializer()).data,
+                              ^^^^
+UnboundLocalError: cannot access local variable 'user' where it is not associated with a value
+2024-04-02 13:21:06,087 - ERROR - runserver - runserver.py 14100 19128 HTTP POST /api/auth/reg/ 500 [0.38, 127.0.0.1:61096]
+2024-04-02 13:22:30,279 - INFO - autoreload - autoreload.py 14100 20240 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:22:32,492 - INFO - autoreload - autoreload.py 14128 4968 Watching for file changes with StatReloader
+2024-04-02 13:22:34,796 - INFO - views - views.py 14128 3504 Post data try | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:22:34,883 - INFO - views - views.py 14128 3504 Post data except | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:22:34,936 - ERROR - log - log.py 14128 7908 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 64, in post
+    'user': AccountSerializer(user, context=self.get_serializer()).data,
+                              ^^^^
+UnboundLocalError: cannot access local variable 'user' where it is not associated with a value
+2024-04-02 13:22:34,946 - ERROR - runserver - runserver.py 14128 1100 HTTP POST /api/auth/reg/ 500 [0.16, 127.0.0.1:61116]
+2024-04-02 13:23:31,894 - INFO - autoreload - autoreload.py 14128 4968 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:23:34,291 - INFO - autoreload - autoreload.py 13268 11452 Watching for file changes with StatReloader
+2024-04-02 13:24:12,052 - INFO - autoreload - autoreload.py 13268 11452 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:24:14,143 - INFO - autoreload - autoreload.py 8840 18676 Watching for file changes with StatReloader
+2024-04-02 13:24:20,769 - ERROR - log - log.py 8840 19168 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 65, in post
+    'user': AccountSerializer(user, context=self.get_serializer()).data,
+                              ^^^^
+UnboundLocalError: cannot access local variable 'user' where it is not associated with a value
+2024-04-02 13:24:20,778 - ERROR - runserver - runserver.py 8840 7472 HTTP POST /api/auth/reg/ 500 [0.35, 127.0.0.1:61146]
+2024-04-02 13:26:35,028 - INFO - autoreload - autoreload.py 8840 18676 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-02 13:26:37,352 - INFO - autoreload - autoreload.py 3336 18540 Watching for file changes with StatReloader
+2024-04-02 13:26:38,644 - INFO - views - views.py 3336 14388 Post data try | {'username': 'test_username3', 'email': 'test2@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-02 13:26:38,738 - WARNING - log - log.py 3336 8516 Bad Request: /api/auth/reg/
+2024-04-02 13:26:38,739 - WARNING - runserver - runserver.py 3336 20048 HTTP POST /api/auth/reg/ 400 [0.10, 127.0.0.1:61159]
+2024-04-02 14:32:45,352 - INFO - autoreload - autoreload.py 3336 18540 C:\Users\Alex\PycharmProjects\visual\visual\followers\views.py changed, reloading.
+2024-04-02 14:32:49,405 - INFO - autoreload - autoreload.py 15368 19508 Watching for file changes with StatReloader
+2024-04-02 14:32:59,931 - INFO - views - views.py 15368 1116 Payment | test2@mail.ru {}
+2024-04-02 14:33:00,483 - INFO - runserver - runserver.py 15368 18644 HTTP GET /api/posts/ 200 [0.72, 127.0.0.1:54599]
+2024-04-02 14:34:18,986 - INFO - autoreload - autoreload.py 15368 19508 C:\Users\Alex\PycharmProjects\visual\visual\posts\views.py changed, reloading.
+2024-04-02 14:34:21,863 - INFO - autoreload - autoreload.py 6444 11292 Watching for file changes with StatReloader
+2024-04-02 14:34:29,326 - INFO - views - views.py 6444 18508 PostRetrieve | test2@mail.ru {'name': 'названи10'}
+2024-04-02 14:34:29,599 - INFO - runserver - runserver.py 6444 5504 HTTP GET /api/posts/kartinka/ 200 [0.39, 127.0.0.1:54624]

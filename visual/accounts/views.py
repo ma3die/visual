@@ -54,6 +54,7 @@ class RegisterView(generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        logger.info(f'Post data try | {request.data}')
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         return Response({
@@ -75,12 +76,14 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
         """
         Данные пользователя
         """
+        logger.info(f'User | {request.user}')
         serializer = AccountSerializer(instance=request.user)
         return Response({
             'user': serializer.data
         })
 
     def perform_destroy(self, instance):
+        logger.info(f'User | {self.request.user}')
         deleted_user = Account.objects.get(username='deleted')
         user_id = instance.id
         all_user_comment = Comment.objects.filter(author_id=user_id)
@@ -107,6 +110,7 @@ class CreatePaymentView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = AccountSerializer
     def post(self, request):
+        logger.info(f'Payment | {request.user} {request.data}')
         user = request.user
         subscription = request.data.get('subscription')
         value = request.data.get('value')
@@ -137,6 +141,7 @@ class CreatePaymentAcceptedView(generics.CreateAPIView):
     queryset = Account.objects.all()
     permission_classes = [permissions.AllowAny]
     def post(self, request):
+        logger.info(f'Paymentrequest | {request.body}')
         response = json.loads(request.body)
         # response = request.data.get('payment_id')
         # user_id = request.data.get('user_id')

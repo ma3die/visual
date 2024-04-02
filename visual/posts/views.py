@@ -17,6 +17,10 @@ from notifications.models import Notification
 from .mixins import LikedMixin, AddImageVideoMixin
 from .utils import get_mime_type
 from rest_framework.response import Response
+import logging
+
+
+logger = logging.getLogger('django')
 
 
 class CustomPostPagination(PageNumberPagination):
@@ -44,14 +48,15 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
     @transaction.atomic
     def create(self, request, *args, **kwargs):
         # images = dict((request.data).lists()).get('image', [])
+        logger.info(f'PostCreate | {request.user} {request.data}')
         file_data = []
         request.data._mutable = True
         post = None
-        images = (request.FILES.getlist('image', []))
+        images = request.FILES.getlist('image', [])
         if images:
             file_data.extend(images)
             request.data.pop('image')
-        videos = (request.FILES.getlist('video', []))
+        videos = request.FILES.getlist('video', [])
         if videos:
             file_data.extend(videos)
             request.data.pop('video')
@@ -70,6 +75,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         return Response(serializer_data.data)
 
     def list(self, request):
+        logger.info(f'PostList | {request.user} {request.data}')
         user = request.user
         if user.is_authenticated:
             ids = []
@@ -118,6 +124,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, slug):
+        logger.info(f'PostRetrieve | {request.user} {request.data}')
         try:
             post = Post.objects.get(slug=slug)
         except:
