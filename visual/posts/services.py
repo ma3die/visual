@@ -47,7 +47,6 @@ def get_likes(obj):
         likes__content_type=obj_type, likes__object_id=obj.id)
     return AccountSerializer(instance=users, many=True).data
 
-
 def randomString(stringLength):
     letters = string.ascii_letters
     return ''.join(random.choice(letters) for i in range(stringLength))

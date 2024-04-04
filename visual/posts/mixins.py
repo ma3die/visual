@@ -25,9 +25,10 @@ class LikedMixin:
     def likes(self, request, slug=None):
         """Получает всех пользователей, которые лайкнули post"""
         obj = self.get_object()
-        user = services.get_likes(obj)
-        serializer = LikeSerializer(user, many=True)
-        return Response(serializer.data)
+        users = services.get_likes(obj)
+        # serializer = LikeSerializer(user, many=True)
+        # return Response(serializer.data)
+        return Response(users)
 
 
 class AddImageVideoMixin:
