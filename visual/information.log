@@ -509,3 +509,210 @@ KeyError: "Got KeyError when attempting to get a value for field `password` on s
 2024-04-04 11:43:38,474 - INFO - runserver - runserver.py 6236 16800 HTTP GET /api/posts/kartinka/likes/ 200 [2.35, 127.0.0.1:58425]
 2024-04-04 11:46:00,932 - INFO - autoreload - autoreload.py 6236 1220 C:\Users\Alex\PycharmProjects\visual\visual\posts\mixins.py changed, reloading.
 2024-04-04 11:46:04,055 - INFO - autoreload - autoreload.py 16984 10256 Watching for file changes with StatReloader
+2024-04-04 12:02:48,312 - INFO - autoreload - autoreload.py 16984 10256 C:\Users\Alex\PycharmProjects\visual\visual\visual\settings.py changed, reloading.
+2024-04-04 12:02:52,089 - INFO - autoreload - autoreload.py 18052 13436 Watching for file changes with StatReloader
+2024-04-04 12:03:46,956 - INFO - autoreload - autoreload.py 18052 13436 C:\Users\Alex\PycharmProjects\visual\visual\visual\settings.py changed, reloading.
+2024-04-04 12:03:50,548 - INFO - autoreload - autoreload.py 20172 8048 Watching for file changes with StatReloader
+2024-04-04 12:04:38,515 - INFO - autoreload - autoreload.py 20172 8048 C:\Users\Alex\PycharmProjects\visual\visual\visual\settings.py changed, reloading.
+2024-04-04 12:04:41,815 - INFO - autoreload - autoreload.py 16816 1204 Watching for file changes with StatReloader
+2024-04-04 12:59:29,349 - INFO - autoreload - autoreload.py 16816 1204 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 12:59:35,738 - INFO - autoreload - autoreload.py 11592 10596 Watching for file changes with StatReloader
+2024-04-04 13:00:11,236 - INFO - autoreload - autoreload.py 18348 17312 Watching for file changes with StatReloader
+2024-04-04 13:02:52,652 - INFO - autoreload - autoreload.py 1692 17976 Watching for file changes with StatReloader
+2024-04-04 13:03:07,668 - INFO - autoreload - autoreload.py 16744 8688 Watching for file changes with StatReloader
+2024-04-04 13:08:00,776 - INFO - autoreload - autoreload.py 16744 8688 C:\Users\Alex\PycharmProjects\visual\visual\visual\settings.py changed, reloading.
+2024-04-04 13:08:03,373 - INFO - autoreload - autoreload.py 11240 1976 Watching for file changes with StatReloader
+2024-04-04 13:08:14,492 - INFO - autoreload - autoreload.py 14284 1808 Watching for file changes with StatReloader
+2024-04-04 13:09:07,658 - INFO - autoreload - autoreload.py 14284 1808 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:09:09,214 - INFO - autoreload - autoreload.py 9848 11676 Watching for file changes with StatReloader
+2024-04-04 13:10:22,359 - INFO - autoreload - autoreload.py 9848 11676 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:10:24,558 - INFO - autoreload - autoreload.py 5324 3296 Watching for file changes with StatReloader
+2024-04-04 13:11:14,585 - INFO - autoreload - autoreload.py 13112 18164 Watching for file changes with StatReloader
+2024-04-04 13:11:17,334 - INFO - views - views.py 13112 13820 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:15:23,955 - ERROR - log - log.py 13112 9408 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedTable: ОШИБКА:  отношение "django_site" не существует
+LINE 1: ..."django_site"."domain", "django_site"."name" FROM "django_si...
+                                                             ^
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 59, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 45, in create
+    current_site = Site.objects.get_current().domain
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\contrib\sites\models.py", line 59, in get_current
+    return self._get_site_by_id(site_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\contrib\sites\models.py", line 30, in _get_site_by_id
+    site = self.get(pk=site_id)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 645, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 382, in __len__
+    self._fetch_all()
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  отношение "django_site" не существует
+LINE 1: ..."django_site"."domain", "django_site"."name" FROM "django_si...
+                                                             ^
+
+2024-04-04 13:15:24,005 - ERROR - runserver - runserver.py 13112 10196 HTTP POST /api/auth/reg/ 500 [246.71, 127.0.0.1:59786]
+2024-04-04 13:16:49,360 - INFO - autoreload - autoreload.py 13112 18164 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:16:53,080 - INFO - autoreload - autoreload.py 4968 17352 Watching for file changes with StatReloader
+2024-04-04 13:17:14,089 - INFO - autoreload - autoreload.py 4968 17352 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:17:17,210 - INFO - autoreload - autoreload.py 16452 20900 Watching for file changes with StatReloader
+2024-04-04 13:17:57,673 - INFO - autoreload - autoreload.py 16452 20900 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:18:01,520 - INFO - autoreload - autoreload.py 11292 17780 Watching for file changes with StatReloader
+2024-04-04 13:18:03,315 - INFO - views - views.py 11292 18812 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:18:03,416 - WARNING - log - log.py 11292 16480 Bad Request: /api/auth/reg/
+2024-04-04 13:18:03,418 - WARNING - runserver - runserver.py 11292 16668 HTTP POST /api/auth/reg/ 400 [0.13, 127.0.0.1:59903]
+2024-04-04 13:19:35,674 - INFO - autoreload - autoreload.py 11292 17780 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-04 13:19:40,481 - INFO - autoreload - autoreload.py 19048 11548 Watching for file changes with StatReloader
+2024-04-04 13:19:57,347 - INFO - autoreload - autoreload.py 19048 11548 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:20:01,036 - INFO - autoreload - autoreload.py 21092 20368 Watching for file changes with StatReloader
+2024-04-04 13:20:49,592 - INFO - views - views.py 21092 7924 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:20:49,966 - ERROR - log - log.py 21092 7796 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 59, in post
+    user = serializer.save(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: BaseSerializer.save() takes 1 positional argument but 2 were given
+2024-04-04 13:20:49,978 - ERROR - runserver - runserver.py 21092 10940 HTTP POST /api/auth/reg/ 500 [0.42, 127.0.0.1:60194]
+2024-04-04 13:21:22,070 - INFO - autoreload - autoreload.py 21092 20368 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-04 13:21:27,018 - INFO - autoreload - autoreload.py 9236 5824 Watching for file changes with StatReloader
+2024-04-04 13:21:31,151 - INFO - views - views.py 9236 15640 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:21:31,734 - INFO - autoreload - autoreload.py 9236 5824 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:21:50,686 - INFO - autoreload - autoreload.py 2924 12128 Watching for file changes with StatReloader
+2024-04-04 13:22:00,946 - INFO - autoreload - autoreload.py 2032 20984 Watching for file changes with StatReloader
+2024-04-04 13:22:13,066 - INFO - views - views.py 2032 7848 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:28:00,078 - INFO - autoreload - autoreload.py 15636 19256 Watching for file changes with StatReloader
+2024-04-04 13:28:05,543 - INFO - views - views.py 15636 6184 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:31:47,269 - INFO - autoreload - autoreload.py 15636 19256 C:\Users\Alex\PycharmProjects\visual\visual\accounts\urls.py changed, reloading.
+2024-04-04 13:33:16,903 - INFO - autoreload - autoreload.py 20856 8912 Watching for file changes with StatReloader
+2024-04-04 13:33:49,736 - INFO - autoreload - autoreload.py 2916 19572 Watching for file changes with StatReloader
+2024-04-04 13:34:04,676 - INFO - views - views.py 2916 7492 Post data try | {'username': 'test_username3', 'email': 'test3@mail.ru', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:35:16,401 - INFO - runserver - runserver.py 2916 16668 HTTP POST /api/auth/reg/ 200 [71.76, 127.0.0.1:60480]
+2024-04-04 13:37:51,218 - INFO - views - views.py 2916 6256 Post data try | {'username': 'test_username3', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-04 13:38:12,350 - INFO - runserver - runserver.py 2916 16668 HTTP POST /api/auth/reg/ 200 [21.14, 127.0.0.1:60570]
+2024-04-04 13:51:22,993 - INFO - autoreload - autoreload.py 2916 19572 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-04 13:51:28,231 - INFO - autoreload - autoreload.py 2396 1096 Watching for file changes with StatReloader
+2024-04-04 13:54:32,737 - INFO - autoreload - autoreload.py 2396 1096 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-04 13:54:37,586 - INFO - autoreload - autoreload.py 21376 17804 Watching for file changes with StatReloader
+2024-04-04 13:54:45,380 - WARNING - log - log.py 21376 14640 Not Found: /confirm-email/Ng/c4yoj6-c36198a8f3ee29d4bcdeae8ea3491f5c/
+2024-04-04 13:54:45,384 - WARNING - runserver - runserver.py 21376 15576 HTTP GET /confirm-email/Ng/c4yoj6-c36198a8f3ee29d4bcdeae8ea3491f5c/ 404 [0.34, 127.0.0.1:60976]
+2024-04-04 13:55:07,925 - WARNING - log - log.py 21376 14640 Unauthorized: /api/confirm-email/Ng/c4yoj6-c36198a8f3ee29d4bcdeae8ea3491f5c/
+2024-04-04 13:55:07,927 - WARNING - runserver - runserver.py 21376 15576 HTTP GET /api/confirm-email/Ng/c4yoj6-c36198a8f3ee29d4bcdeae8ea3491f5c/ 401 [0.02, 127.0.0.1:60976]
+2024-04-04 13:56:21,530 - INFO - autoreload - autoreload.py 21376 17804 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-04 13:56:25,169 - INFO - autoreload - autoreload.py 13240 20988 Watching for file changes with StatReloader
+2024-04-04 13:57:13,644 - INFO - runserver - runserver.py 13240 19976 HTTP GET /api/confirm-email/Ng/c4yoj6-c36198a8f3ee29d4bcdeae8ea3491f5c/ 200 [46.41, 127.0.0.1:61014]
+2024-04-04 13:58:44,417 - INFO - autoreload - autoreload.py 13240 20988 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:58:47,922 - INFO - autoreload - autoreload.py 11220 15620 Watching for file changes with StatReloader
+2024-04-04 13:59:25,394 - INFO - autoreload - autoreload.py 11220 15620 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-04 13:59:29,441 - INFO - autoreload - autoreload.py 15908 1828 Watching for file changes with StatReloader

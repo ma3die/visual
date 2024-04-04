@@ -18,6 +18,11 @@ from .mixins import UserPostMixin
 from .permissions import IsUserProfile
 from .serializers import AccountSerializer, RegisterSerializer
 
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_decode
+from django.contrib.auth import login
+
+
 Configuration.account_id = '357017'
 Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
 
@@ -61,6 +66,23 @@ class RegisterView(generics.GenericAPIView):
             'user': AccountSerializer(user, context=self.get_serializer()).data,
             'message': 'Пользователь успешно создан',
         })
+
+
+class UserConfirmEmailView(generics.RetrieveAPIView):
+    permission_classes = [permissions.AllowAny]
+    def get(self, request, uidb64, token):
+        try:
+            uid = urlsafe_base64_decode(uidb64)
+            user = Account.objects.get(pk=uid)
+        except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
+            user = None
+        if user is not None and default_token_generator.check_token(user, token):
+            user.is_active = True
+            user.save()
+            login(request, user)
+            return Response({'message': 'Почта подтверждена'})
+        else:
+            return Response({'message': 'Ошибка'})
 
 
 class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, viewsets.GenericViewSet):

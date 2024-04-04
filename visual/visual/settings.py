@@ -33,6 +33,7 @@ ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'daphne',
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     'taggit',
     'chat',
     'notifications',
-    'followers'
+    'followers',
 ]
 
 MIDDLEWARE = [
@@ -231,3 +232,20 @@ CHANNEL_LAYERS = {
     'BACKEND': 'channels.layers.InMemoryChannelLayer'
   },
 }
+
+# mxed msfg cebb rxub
+
+SITE_ID = 1
+
+# Email settings
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'aatevs@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'mxed msfg cebb rxub'
+EMAIL_SERVER = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = ['aatevs@gmail.com']
