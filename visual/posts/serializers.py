@@ -78,7 +78,7 @@ class ListPostSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
     is_like = serializers.SerializerMethodField()
-    tags = TagListSerializerField()
+    tags = TagListSerializerField(required=False)
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
     likes = serializers.SerializerMethodField()
     comments = CommentSerializer(many=True, read_only=True)
@@ -90,7 +90,7 @@ class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
         fields = (
             'name', 'image', 'video', 'text', 'comments', 'created_date', 'slug', 'avialable_comment',
             'tags', 'view_count', 'author_id', 'author', 'is_like', 'total_likes', 'likes', 'premium')
-        read_only_fields = ('created_date', 'slug', 'author_id', 'image', 'video', 'premium')
+        read_only_fields = ('created_date', 'slug', 'tags', 'author_id', 'image', 'video', 'premium')
         lookup_field = 'slug'
         extra_kwargs = {
             'url': {'lookup_field': 'slug'},

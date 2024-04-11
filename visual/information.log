@@ -716,3 +716,1024 @@ TypeError: BaseSerializer.save() takes 1 positional argument but 2 were given
 2024-04-04 13:58:47,922 - INFO - autoreload - autoreload.py 11220 15620 Watching for file changes with StatReloader
 2024-04-04 13:59:25,394 - INFO - autoreload - autoreload.py 11220 15620 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
 2024-04-04 13:59:29,441 - INFO - autoreload - autoreload.py 15908 1828 Watching for file changes with StatReloader
+2024-04-05 15:46:17,073 - INFO - autoreload - autoreload.py 2844 8072 Watching for file changes with StatReloader
+2024-04-05 16:09:03,170 - INFO - autoreload - autoreload.py 20760 10324 Watching for file changes with StatReloader
+2024-04-05 16:26:58,332 - INFO - autoreload - autoreload.py 1088 4500 Watching for file changes with StatReloader
+2024-04-05 17:03:49,951 - INFO - autoreload - autoreload.py 1088 4500 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 17:03:54,802 - INFO - autoreload - autoreload.py 19500 19772 Watching for file changes with StatReloader
+2024-04-05 17:07:49,937 - INFO - autoreload - autoreload.py 19500 19772 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 17:11:17,793 - INFO - autoreload - autoreload.py 20680 8368 Watching for file changes with StatReloader
+2024-04-05 17:12:08,526 - INFO - runserver - runserver.py 20680 18700 HTTP GET /api/auth/reg?code=3f02ae1717c625c83a 301 [1.11, 127.0.0.1:56619]
+2024-04-05 17:12:19,452 - INFO - runserver - runserver.py 20680 18700 HTTP GET /api/auth/reg/?code=3f02ae1717c625c83a 302 [10.91, 127.0.0.1:56619]
+2024-04-05 17:13:23,420 - INFO - autoreload - autoreload.py 20680 8368 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 17:13:27,459 - INFO - autoreload - autoreload.py 21368 11160 Watching for file changes with StatReloader
+2024-04-05 17:13:47,392 - INFO - runserver - runserver.py 21368 2848 HTTP GET /api/auth/reg/?code=684e601fdbc5a63fd9 302 [11.18, 127.0.0.1:56635]
+2024-04-05 17:14:55,349 - INFO - autoreload - autoreload.py 21368 11160 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 17:14:58,832 - INFO - autoreload - autoreload.py 6712 16680 Watching for file changes with StatReloader
+2024-04-05 17:22:51,954 - ERROR - log - log.py 6712 4348 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2024-04-05 17:22:51,967 - ERROR - runserver - runserver.py 6712 8300 HTTP GET /api/auth/reg/?code=7abd10d8536a012339 500 [453.46, 127.0.0.1:56661]
+2024-04-05 17:22:52,169 - WARNING - log - log.py 6712 4348 Not Found: /favicon.ico
+2024-04-05 17:22:52,172 - WARNING - runserver - runserver.py 6712 8300 HTTP GET /favicon.ico 404 [0.06, 127.0.0.1:56661]
+2024-04-05 18:10:26,632 - ERROR - log - log.py 6712 4348 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2024-04-05 18:10:26,648 - ERROR - runserver - runserver.py 6712 8300 HTTP GET /api/auth/reg/?code=3dbc384c9dca72957a 500 [1114.18, 127.0.0.1:57079]
+2024-04-05 18:12:16,194 - INFO - autoreload - autoreload.py 8572 16872 Watching for file changes with StatReloader
+2024-04-05 18:12:24,357 - INFO - runserver - runserver.py 8572 14648 HTTP POST /api/auth/login/ 200 [0.79, 127.0.0.1:57459]
+2024-04-05 18:12:45,898 - INFO - runserver - runserver.py 8572 14648 WebSocket HANDSHAKING /ws/chat/1/ [127.0.0.1:57464]
+2024-04-05 18:13:54,446 - INFO - runserver - runserver.py 8572 14648 WebSocket REJECT /ws/chat/1/ [127.0.0.1:57464]
+2024-04-05 18:13:59,162 - INFO - autoreload - autoreload.py 8572 16872 C:\Users\Alex\PycharmProjects\visual\visual\chat\tokenauth_middleware.py changed, reloading.
+2024-04-05 18:14:02,769 - INFO - autoreload - autoreload.py 10000 11120 Watching for file changes with StatReloader
+2024-04-05 18:14:04,833 - INFO - runserver - runserver.py 10000 15192 WebSocket HANDSHAKING /ws/chat/1/ [127.0.0.1:57487]
+2024-04-05 18:25:36,431 - INFO - runserver - runserver.py 10000 15192 WebSocket REJECT /ws/chat/1/ [127.0.0.1:57487]
+2024-04-05 18:25:36,433 - INFO - runserver - runserver.py 10000 15192 WebSocket DISCONNECT /ws/chat/1/ [127.0.0.1:57487]
+2024-04-05 18:30:55,251 - INFO - autoreload - autoreload.py 10000 11120 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 18:30:58,992 - INFO - autoreload - autoreload.py 16092 912 Watching for file changes with StatReloader
+2024-04-05 18:33:06,134 - INFO - autoreload - autoreload.py 14556 18232 Watching for file changes with StatReloader
+2024-04-05 18:34:42,249 - ERROR - log - log.py 14556 8084 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\request.py", line 416, in __getattr__
+    return getattr(self._request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ASGIRequest' object has no attribute 'post'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 73, in get
+    response = request.post(f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/&code={token}')
+               ^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\request.py", line 418, in __getattr__
+    return self.__getattribute__(attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Request' object has no attribute 'post'
+2024-04-05 18:34:42,266 - ERROR - runserver - runserver.py 14556 16720 HTTP GET /api/auth/reg/?code=a5351f5eb9e3df6225 500 [79.18, 127.0.0.1:57700]
+2024-04-05 18:35:47,996 - ERROR - log - log.py 14556 8084 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\request.py", line 416, in __getattr__
+    return getattr(self._request, attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ASGIRequest' object has no attribute 'post'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 73, in get
+    response = request.post(f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/&code={token}')
+               ^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\request.py", line 418, in __getattr__
+    return self.__getattribute__(attr)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Request' object has no attribute 'post'
+2024-04-05 18:35:48,011 - ERROR - runserver - runserver.py 14556 16720 HTTP GET /api/auth/reg/?code=e66943215cfc7af7fb 500 [32.08, 127.0.0.1:57700]
+2024-04-05 18:38:44,612 - INFO - autoreload - autoreload.py 14556 18232 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 18:38:48,472 - INFO - autoreload - autoreload.py 17788 8988 Watching for file changes with StatReloader
+2024-04-05 18:40:41,617 - INFO - autoreload - autoreload.py 17788 8988 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 18:42:05,181 - INFO - autoreload - autoreload.py 12932 17444 Watching for file changes with StatReloader
+2024-04-05 18:43:35,630 - ERROR - log - log.py 12932 13376 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 78, in get
+    token_acces = redirect()
+                  ^^^^^^^^^^
+TypeError: redirect() missing 1 required positional argument: 'to'
+2024-04-05 18:43:35,653 - ERROR - runserver - runserver.py 12932 1460 HTTP GET /api/auth/reg/?code=b130b0576fbcbee8fe 500 [65.12, 127.0.0.1:57928]
+2024-04-05 18:43:38,883 - INFO - autoreload - autoreload.py 12932 17444 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-05 18:43:42,761 - INFO - autoreload - autoreload.py 11944 21064 Watching for file changes with StatReloader
+2024-04-05 18:45:21,343 - ERROR - log - log.py 11944 6168 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2024-04-05 18:45:21,361 - ERROR - runserver - runserver.py 11944 19792 HTTP GET /api/auth/reg/?code=4b309de42b8430d202 500 [92.15, 127.0.0.1:57946]
+2024-04-08 15:23:01,975 - INFO - autoreload - autoreload.py 18952 13616 Watching for file changes with StatReloader
+2024-04-08 15:23:42,156 - INFO - views - views.py 18952 11616 Post data try | {'username': 'test_username4', 'email': 'aatev@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-08 15:24:27,667 - INFO - autoreload - autoreload.py 7296 10620 Watching for file changes with StatReloader
+2024-04-08 15:24:31,527 - INFO - autoreload - autoreload.py 7296 10620 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-08 15:24:34,812 - INFO - autoreload - autoreload.py 19204 19496 Watching for file changes with StatReloader
+2024-04-08 15:25:02,059 - INFO - autoreload - autoreload.py 19204 19496 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-08 15:25:05,592 - INFO - autoreload - autoreload.py 5000 17988 Watching for file changes with StatReloader
+2024-04-08 15:25:12,804 - INFO - views - views.py 5000 15812 Post data try | {'username': 'test_username4', 'email': 'aatev@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-08 15:27:03,944 - INFO - autoreload - autoreload.py 5000 17988 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-08 15:27:45,617 - INFO - autoreload - autoreload.py 20104 2728 Watching for file changes with StatReloader
+2024-04-08 15:27:53,411 - INFO - views - views.py 20104 9996 Post data try | {'username': 'test_username4', 'email': 'aatev@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-08 15:43:17,904 - INFO - autoreload - autoreload.py 1900 13704 Watching for file changes with StatReloader
+2024-04-08 15:43:25,609 - INFO - views - views.py 1900 19132 Post data try | {'username': 'test_username4', 'email': 'aatev@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-08 16:00:22,124 - INFO - autoreload - autoreload.py 20096 18760 Watching for file changes with StatReloader
+2024-04-08 16:01:43,384 - INFO - autoreload - autoreload.py 11460 10860 Watching for file changes with StatReloader
+2024-04-08 16:02:04,980 - INFO - views - views.py 11460 20296 Post data try | {'username': 'test_username4', 'email': 'aatev@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-09 12:26:41,170 - INFO - autoreload - autoreload.py 25908 11916 Watching for file changes with StatReloader
+2024-04-09 12:27:50,877 - INFO - autoreload - autoreload.py 22476 1724 Watching for file changes with StatReloader
+2024-04-09 12:29:26,373 - INFO - autoreload - autoreload.py 1060 11332 Watching for file changes with StatReloader
+2024-04-09 12:30:51,477 - INFO - autoreload - autoreload.py 23512 13192 Watching for file changes with StatReloader
+2024-04-09 12:33:30,552 - INFO - autoreload - autoreload.py 28480 27808 Watching for file changes with StatReloader
+2024-04-09 12:37:46,458 - INFO - runserver - runserver.py 28480 18204 HTTP GET /api/auth/reg/redirect/ 302 [245.61, 127.0.0.1:54880]
+2024-04-09 13:59:34,841 - INFO - autoreload - autoreload.py 28480 27808 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 14:00:28,414 - INFO - autoreload - autoreload.py 3896 3644 Watching for file changes with StatReloader
+2024-04-09 14:00:40,742 - INFO - runserver - runserver.py 3896 22228 HTTP GET /api/auth/reg/redirect/ 200 [7.08, 127.0.0.1:56028]
+2024-04-09 14:02:15,068 - ERROR - log - log.py 3896 748 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 511, in dispatch
+    self.response = self.finalize_response(request, response, *args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 423, in finalize_response
+    assert isinstance(response, HttpResponseBase), (
+AssertionError: Expected a `Response`, `HttpResponse` or `HttpStreamingResponse` to be returned from the view, but received a `<class 'NoneType'>`
+2024-04-09 14:02:15,084 - ERROR - runserver - runserver.py 3896 22228 HTTP GET /api/auth/reg/callback/?code=28ab4912eea5db7929&state=HvhPNbkWTROShaKaQTRXEzhrJmWUXR 500 [64.31, 127.0.0.1:56051]
+2024-04-09 14:02:15,440 - WARNING - log - log.py 3896 748 Not Found: /favicon.ico
+2024-04-09 14:02:15,442 - WARNING - runserver - runserver.py 3896 22228 HTTP GET /favicon.ico 404 [0.17, 127.0.0.1:56051]
+2024-04-09 14:05:22,646 - INFO - autoreload - autoreload.py 3896 3644 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 14:05:27,689 - INFO - autoreload - autoreload.py 6920 22028 Watching for file changes with StatReloader
+2024-04-09 14:06:39,271 - INFO - autoreload - autoreload.py 6920 22028 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 14:06:43,310 - INFO - autoreload - autoreload.py 25056 7232 Watching for file changes with StatReloader
+2024-04-09 14:43:15,952 - INFO - autoreload - autoreload.py 5588 9716 Watching for file changes with StatReloader
+2024-04-09 14:43:44,306 - INFO - autoreload - autoreload.py 13944 18968 Watching for file changes with StatReloader
+2024-04-09 14:43:52,473 - INFO - runserver - runserver.py 13944 3644 HTTP POST /api/auth/login/ 200 [0.80, 127.0.0.1:56627]
+2024-04-09 14:45:55,706 - INFO - views - views.py 13944 21464 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'tags[0]': ['testtag'], 'tags[1]': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 14:45:57,094 - INFO - runserver - runserver.py 13944 3644 HTTP POST /api/posts/ 200 [1.60, 127.0.0.1:56674]
+2024-04-09 14:51:47,172 - INFO - views - views.py 13944 8032 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 14:51:47,179 - INFO - runserver - runserver.py 13944 3644 HTTP POST /api/posts/ 200 [0.13, 127.0.0.1:56718]
+2024-04-09 14:52:30,272 - INFO - views - views.py 13944 17084 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 14:52:30,280 - INFO - runserver - runserver.py 13944 3644 HTTP POST /api/posts/ 200 [0.12, 127.0.0.1:56718]
+2024-04-09 14:53:16,711 - INFO - autoreload - autoreload.py 1516 1188 Watching for file changes with StatReloader
+2024-04-09 14:53:21,730 - INFO - views - views.py 1516 15284 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 14:57:35,831 - INFO - autoreload - autoreload.py 16496 2644 Watching for file changes with StatReloader
+2024-04-09 14:57:44,931 - INFO - views - views.py 16496 8904 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 14:59:17,000 - INFO - autoreload - autoreload.py 9336 16940 Watching for file changes with StatReloader
+2024-04-09 14:59:23,320 - INFO - views - views.py 9336 13704 PostCreate | test2@mail.ru <QueryDict: {'name': ['Картинка'], 'author': ['admin'], 'image': [<TemporaryUploadedFile: 7-image.png (image/png)>, <TemporaryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-04-09 15:01:36,701 - INFO - runserver - runserver.py 9336 16560 HTTP POST /api/posts/ 200 [133.63, 127.0.0.1:56832]
+2024-04-09 15:26:54,099 - INFO - runserver - runserver.py 9336 16560 HTTP GET /api/auth/reg/redirect/ 200 [8.59, 127.0.0.1:50626]
+2024-04-09 15:28:42,011 - INFO - autoreload - autoreload.py 14188 28512 Watching for file changes with StatReloader
+2024-04-09 15:28:51,880 - INFO - runserver - runserver.py 14188 23760 HTTP GET /api/auth/reg/redirect/ 200 [4.99, 127.0.0.1:50670]
+2024-04-09 15:29:40,953 - INFO - autoreload - autoreload.py 14968 21268 Watching for file changes with StatReloader
+2024-04-09 15:29:47,213 - INFO - runserver - runserver.py 14968 7224 HTTP GET /api/auth/reg/redirect/ 200 [2.38, 127.0.0.1:50704]
+2024-04-09 16:46:27,564 - INFO - autoreload - autoreload.py 2848 5560 Watching for file changes with StatReloader
+2024-04-09 16:46:42,071 - INFO - autoreload - autoreload.py 16000 18616 Watching for file changes with StatReloader
+2024-04-09 16:46:50,493 - INFO - runserver - runserver.py 16000 3768 HTTP GET /api/auth/reg/redirect/ 200 [5.29, 127.0.0.1:51110]
+2024-04-09 16:47:06,893 - WARNING - log - log.py 16000 6188 Unauthorized: /api/auth/reg/callback/
+2024-04-09 16:47:06,896 - WARNING - runserver - runserver.py 16000 3768 HTTP GET /api/auth/reg/callback/?code=8a30246adccefa3865&state=PGncTyTdTTfyuEPpaTUZSHVScJDPUD 401 [0.02, 127.0.0.1:51131]
+2024-04-09 16:48:35,524 - INFO - autoreload - autoreload.py 16000 18616 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 16:48:39,554 - INFO - autoreload - autoreload.py 15736 5428 Watching for file changes with StatReloader
+2024-04-09 16:49:20,232 - INFO - autoreload - autoreload.py 17664 6508 Watching for file changes with StatReloader
+2024-04-09 16:49:32,711 - INFO - runserver - runserver.py 17664 18604 HTTP GET /api/auth/reg/redirect/ 200 [2.35, 127.0.0.1:51176]
+2024-04-09 16:52:27,092 - WARNING - log - log.py 17664 4052 Bad Request: /api/auth/reg/callback/
+2024-04-09 16:52:27,094 - WARNING - runserver - runserver.py 17664 18604 HTTP GET /api/auth/reg/callback/?code=e019bd6efbe431b2e9&state=jtAbYuNuuqPmJsaxFisqIyJyrQIgfN 400 [145.01, 127.0.0.1:51187]
+2024-04-09 16:53:57,143 - INFO - autoreload - autoreload.py 17664 6508 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 16:54:01,067 - INFO - autoreload - autoreload.py 17860 14592 Watching for file changes with StatReloader
+2024-04-09 16:55:18,974 - INFO - runserver - runserver.py 17860 17932 HTTP GET /api/auth/reg/redirect/ 200 [70.70, 127.0.0.1:51241]
+2024-04-09 16:58:19,008 - ERROR - log - log.py 17860 7752 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 133, in get
+    vk_access_token = vk_login.get_token(code=code)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 78, in get_token
+    raise "Failed to obtain access token from Google."
+TypeError: exceptions must derive from BaseException
+2024-04-09 16:58:19,020 - ERROR - runserver - runserver.py 17860 17932 HTTP GET /api/auth/reg/callback/?code=42dce68d36da50bd1c&state=TXkRUUqZylFbluDyZMDTxbQAPSSlVH 500 [161.79, 127.0.0.1:51260]
+2024-04-09 16:58:20,145 - INFO - autoreload - autoreload.py 17860 14592 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-09 16:58:23,992 - INFO - autoreload - autoreload.py 13728 3348 Watching for file changes with StatReloader
+2024-04-09 16:58:30,269 - INFO - runserver - runserver.py 13728 9552 HTTP GET /api/auth/reg/redirect/ 200 [3.79, 127.0.0.1:51295]
+2024-04-09 17:01:04,472 - ERROR - log - log.py 13728 15552 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 284, in _get_response_async
+    response = await sync_to_async(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\renderers.py", line 99, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\utils\json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\utils\encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2024-04-09 17:01:04,492 - ERROR - runserver - runserver.py 13728 9552 HTTP GET /api/auth/reg/callback/?code=cab0c5ac2db71fb70b&state=nJKFzkBuZrySKpNNHroErPBMZtINmE 500 [144.14, 127.0.0.1:51305]
+2024-04-09 17:04:20,587 - INFO - runserver - runserver.py 13728 9552 HTTP GET /api/auth/reg/redirect/ 200 [2.25, 127.0.0.1:51350]
+2024-04-09 17:07:06,313 - ERROR - log - log.py 13728 15552 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 284, in _get_response_async
+    response = await sync_to_async(
+               ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\template\response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\response.py", line 70, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\renderers.py", line 99, in render
+    ret = json.dumps(
+          ^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\utils\json.py", line 25, in dumps
+    return json.dumps(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\utils\encoders.py", line 67, in default
+    return super().default(obj)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type Response is not JSON serializable
+2024-04-09 17:07:06,321 - ERROR - runserver - runserver.py 13728 9552 HTTP GET /api/auth/reg/callback/?code=bbd0ca609e91bdb0ae&state=HUFJJMTHcSsYcMKPGemOfJsrDeUwEa 500 [153.73, 127.0.0.1:51361]
+2024-04-09 17:07:48,065 - INFO - autoreload - autoreload.py 18852 17812 Watching for file changes with StatReloader
+2024-04-09 17:07:56,181 - INFO - runserver - runserver.py 18852 7028 HTTP GET /api/auth/reg/redirect/ 200 [1.52, 127.0.0.1:51406]
+2024-04-09 17:11:03,533 - INFO - autoreload - autoreload.py 18852 17812 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-09 17:15:05,069 - INFO - autoreload - autoreload.py 4388 14988 Watching for file changes with StatReloader
+2024-04-09 17:15:11,648 - ERROR - log - log.py 4388 4956 Internal Server Error: /api/auth/reg/redirect/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 95, in get
+    vk_login = VKLoginService()
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 38, in __init__
+    self.credentials = vk_login_get_credentials()
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 111, in vk_login_get_credentials
+    credentials = VKLoginCredentials(
+                  ^^^^^^^^^^^^^^^^^^^
+TypeError: VKLoginCredentials.__init__() got an unexpected keyword argument 'service_key'
+2024-04-09 17:15:11,696 - ERROR - runserver - runserver.py 4388 16860 HTTP GET /api/auth/reg/redirect/ 500 [1.57, 127.0.0.1:51511]
+2024-04-09 17:16:01,623 - INFO - autoreload - autoreload.py 10124 1916 Watching for file changes with StatReloader
+2024-04-09 17:16:16,974 - INFO - runserver - runserver.py 10124 9336 HTTP GET /api/auth/reg/redirect/ 200 [2.85, 127.0.0.1:51535]
+2024-04-09 17:17:11,728 - ERROR - log - log.py 10124 17724 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 133, in get
+    vk_access_token = vk_login.get_token(code=code)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 78, in get_token
+    f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/redirect/&code={token}')
+                                                                                                                                                         ^^^^^
+NameError: name 'token' is not defined
+2024-04-09 17:17:11,741 - ERROR - runserver - runserver.py 10124 9336 HTTP GET /api/auth/reg/callback/?code=6f983f2b9a428ec34b&state=FakdEiIjVxjwVnjyNeWLqyiNGJVOQH 500 [37.42, 127.0.0.1:51549]
+2024-04-09 17:17:13,777 - INFO - autoreload - autoreload.py 10124 1916 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-09 17:17:17,051 - INFO - autoreload - autoreload.py 8892 9860 Watching for file changes with StatReloader
+2024-04-09 17:17:21,789 - INFO - runserver - runserver.py 8892 17828 HTTP GET /api/auth/reg/redirect/ 200 [2.73, 127.0.0.1:51571]
+2024-04-09 17:19:05,353 - INFO - runserver - runserver.py 8892 17828 HTTP GET /api/auth/reg/callback/?code=2d7b1c3c247099fb09&state=BiRrPrYnMUMAnXTAhWIFXOMBfrvqDq 200 [93.88, 127.0.0.1:51578]
+2024-04-09 17:28:32,636 - INFO - autoreload - autoreload.py 8892 9860 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 17:28:36,594 - INFO - autoreload - autoreload.py 3580 19284 Watching for file changes with StatReloader
+2024-04-09 17:29:05,514 - INFO - autoreload - autoreload.py 3580 19284 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 17:29:09,212 - INFO - autoreload - autoreload.py 15252 4580 Watching for file changes with StatReloader
+2024-04-09 17:30:06,706 - INFO - autoreload - autoreload.py 960 8768 Watching for file changes with StatReloader
+2024-04-09 17:30:14,780 - INFO - runserver - runserver.py 960 15844 HTTP GET /api/auth/reg/redirect/ 200 [2.04, 127.0.0.1:51698]
+2024-04-09 17:32:26,163 - INFO - autoreload - autoreload.py 960 8768 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-09 17:34:35,701 - ERROR - runserver - runserver.py 960 15844 HTTP POST /api/auth/login/ 500 [0.78, 127.0.0.1:51721]
+2024-04-09 17:34:53,351 - INFO - autoreload - autoreload.py 2576 8892 Watching for file changes with StatReloader
+2024-04-09 17:34:56,141 - INFO - runserver - runserver.py 2576 10312 HTTP POST /api/auth/login/ 200 [0.78, 127.0.0.1:51738]
+2024-04-09 17:35:30,392 - INFO - runserver - runserver.py 2576 10312 WebSocket HANDSHAKING /ws/chat/1/ [127.0.0.1:51743]
+2024-04-09 17:36:27,632 - INFO - runserver - runserver.py 2576 10312 WebSocket REJECT /ws/chat/1/ [127.0.0.1:51743]
+2024-04-09 17:36:27,633 - INFO - runserver - runserver.py 2576 10312 WebSocket DISCONNECT /ws/chat/1/ [127.0.0.1:51743]
+2024-04-09 17:37:08,334 - INFO - runserver - runserver.py 2576 10312 HTTP GET /api/auth/reg/redirect/ 200 [5.56, 127.0.0.1:51751]
+2024-04-09 17:37:18,806 - INFO - runserver - runserver.py 2576 10312 HTTP GET /api/auth/reg/redirect/ 200 [4.50, 127.0.0.1:51751]
+2024-04-09 17:38:21,683 - INFO - autoreload - autoreload.py 976 14576 Watching for file changes with StatReloader
+2024-04-09 17:38:27,026 - INFO - runserver - runserver.py 976 7036 HTTP GET /api/auth/reg/redirect/ 200 [1.47, 127.0.0.1:51781]
+2024-04-09 17:38:42,498 - INFO - runserver - runserver.py 976 7036 HTTP GET /api/auth/reg/callback/?code=56c43e8229304bd46f&state=ItsErPBbZUdxWbRGInbvfdDCItDMiY 200 [6.71, 127.0.0.1:51790]
+2024-04-10 11:16:04,600 - INFO - autoreload - autoreload.py 7480 12452 Watching for file changes with StatReloader
+2024-04-10 11:22:46,285 - INFO - autoreload - autoreload.py 7480 12452 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 11:22:49,976 - INFO - autoreload - autoreload.py 15024 7080 Watching for file changes with StatReloader
+2024-04-10 11:44:24,360 - INFO - autoreload - autoreload.py 13444 13320 Watching for file changes with StatReloader
+2024-04-10 11:44:40,133 - INFO - runserver - runserver.py 13444 7904 HTTP GET /api/auth/reg/redirect/ 200 [4.96, 127.0.0.1:62948]
+2024-04-10 11:46:14,625 - ERROR - log - log.py 13444 4352 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 138, in get
+    user_info = vk_login.get_user_info(vk_access_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 95, in get_user_info
+    user_info = response.json()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-04-10 11:46:14,650 - ERROR - runserver - runserver.py 13444 7904 HTTP GET /api/auth/reg/callback/?code=1295ec920069cef561&state=mZCHdCKJqwBjeecXUiKHooMOktVxnp 500 [79.19, 127.0.0.1:62960]
+2024-04-10 11:46:47,594 - INFO - runserver - runserver.py 13444 7904 HTTP GET /api/auth/reg/redirect/ 200 [2.92, 127.0.0.1:62980]
+2024-04-10 11:52:46,487 - ERROR - log - log.py 13444 4352 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 138, in get
+    user_info = vk_login.get_user_info(vk_access_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 95, in get_user_info
+    user_info = response.json()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-04-10 11:52:46,508 - ERROR - runserver - runserver.py 13444 7904 HTTP GET /api/auth/reg/callback/?code=4ffc89cbc5ef573a6c&state=SgAQVokURNsUMrZnFwOcmIXGrDPQvF 500 [342.25, 127.0.0.1:62960]
+2024-04-10 12:43:36,373 - INFO - autoreload - autoreload.py 13444 13320 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:43:42,964 - INFO - autoreload - autoreload.py 16860 4804 Watching for file changes with StatReloader
+2024-04-10 12:44:01,709 - INFO - autoreload - autoreload.py 16860 4804 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:44:05,080 - INFO - autoreload - autoreload.py 10856 17024 Watching for file changes with StatReloader
+2024-04-10 12:46:44,304 - INFO - autoreload - autoreload.py 10856 17024 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:46:48,032 - INFO - autoreload - autoreload.py 3564 18560 Watching for file changes with StatReloader
+2024-04-10 12:46:54,628 - INFO - autoreload - autoreload.py 3564 18560 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:46:58,409 - INFO - autoreload - autoreload.py 17468 2556 Watching for file changes with StatReloader
+2024-04-10 12:47:27,550 - INFO - autoreload - autoreload.py 17468 2556 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:47:32,324 - INFO - autoreload - autoreload.py 9624 10556 Watching for file changes with StatReloader
+2024-04-10 12:47:39,758 - INFO - runserver - runserver.py 9624 17040 HTTP GET /api/auth/reg/redirect/ 200 [4.50, 127.0.0.1:56439]
+2024-04-10 12:50:04,129 - ERROR - log - log.py 9624 8844 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 138, in get
+    user_info = vk_login.get_user_info(vk_access_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 98, in get_user_info
+    user_info = response.json()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-04-10 12:50:04,158 - ERROR - runserver - runserver.py 9624 17040 HTTP GET /api/auth/reg/callback/?code=61c7eba161ea3cdf67&state=kYhKgAcTZhXenqbzPsOzCguASospeJ 500 [127.29, 127.0.0.1:56450]
+2024-04-10 12:50:07,254 - INFO - autoreload - autoreload.py 9624 10556 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:50:10,744 - INFO - autoreload - autoreload.py 9900 16860 Watching for file changes with StatReloader
+2024-04-10 12:50:19,178 - INFO - autoreload - autoreload.py 304 8292 Watching for file changes with StatReloader
+2024-04-10 12:50:28,622 - INFO - runserver - runserver.py 304 7952 HTTP GET /api/auth/reg/redirect/ 200 [3.04, 127.0.0.1:56500]
+2024-04-10 12:52:13,892 - ERROR - log - log.py 304 17104 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 971, in json
+    return complexjson.loads(self.text, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 138, in get
+    user_info = vk_login.get_user_info(vk_access_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 100, in get_user_info
+    user_info = response.json()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\requests\models.py", line 975, in json
+    raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+requests.exceptions.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2024-04-10 12:52:13,908 - ERROR - runserver - runserver.py 304 7952 HTTP GET /api/auth/reg/callback/?code=b8c980ea2fa2d5e79b&state=RiltBkmadxzUqLbaOQVCQjBdyqQWsP 500 [93.87, 127.0.0.1:56507]
+2024-04-10 12:52:20,890 - INFO - autoreload - autoreload.py 304 8292 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:52:24,338 - INFO - autoreload - autoreload.py 5772 11144 Watching for file changes with StatReloader
+2024-04-10 12:52:30,268 - INFO - runserver - runserver.py 5772 14728 HTTP GET /api/auth/reg/redirect/ 200 [3.11, 127.0.0.1:56535]
+2024-04-10 12:53:12,527 - INFO - runserver - runserver.py 5772 14728 HTTP GET /api/auth/reg/callback/?code=26cf10df9c23f9db20&state=wVEwDrJvGdDMiSzbLsGyRzfwxuArHa 200 [30.49, 127.0.0.1:56545]
+2024-04-10 12:58:47,414 - INFO - autoreload - autoreload.py 5772 11144 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 12:58:51,402 - INFO - autoreload - autoreload.py 15336 16416 Watching for file changes with StatReloader
+2024-04-10 12:58:58,910 - INFO - runserver - runserver.py 15336 4440 HTTP GET /api/auth/reg/redirect/ 200 [2.38, 127.0.0.1:56602]
+2024-04-10 13:12:20,044 - INFO - runserver - runserver.py 15336 4440 HTTP POST /api/auth/login/ 200 [0.68, 127.0.0.1:56697]
+2024-04-10 13:17:51,457 - INFO - autoreload - autoreload.py 15336 16416 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 13:17:59,105 - INFO - autoreload - autoreload.py 9168 2976 Watching for file changes with StatReloader
+2024-04-10 13:18:08,453 - INFO - autoreload - autoreload.py 9168 2976 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 13:18:11,763 - INFO - autoreload - autoreload.py 8752 9016 Watching for file changes with StatReloader
+2024-04-10 13:30:25,668 - INFO - autoreload - autoreload.py 8752 9016 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 13:30:32,581 - INFO - autoreload - autoreload.py 1916 14544 Watching for file changes with StatReloader
+2024-04-10 13:43:35,445 - INFO - autoreload - autoreload.py 1916 14544 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 13:43:41,483 - INFO - autoreload - autoreload.py 7508 9716 Watching for file changes with StatReloader
+2024-04-10 14:05:18,010 - INFO - autoreload - autoreload.py 6612 1924 Watching for file changes with StatReloader
+2024-04-10 14:05:33,226 - INFO - runserver - runserver.py 6612 6576 HTTP GET /api/auth/reg/redirect/ 200 [4.13, 127.0.0.1:57305]
+2024-04-10 14:07:50,753 - INFO - autoreload - autoreload.py 6612 1924 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 14:10:43,228 - INFO - autoreload - autoreload.py 13200 13692 Watching for file changes with StatReloader
+2024-04-10 14:11:00,295 - INFO - runserver - runserver.py 13200 5772 HTTP GET /api/auth/reg/redirect/ 200 [5.34, 127.0.0.1:57598]
+2024-04-10 14:14:38,056 - ERROR - log - log.py 13200 10392 Internal Server Error: /api/auth/reg/callback/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 140, in get
+    user = vk_login.save_user(user_info)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py", line 122, in save_user
+    user.save()
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 180, in save
+    assert hasattr(self, '_errors'), (
+AssertionError: You must call `.is_valid()` before calling `.save()`.
+2024-04-10 14:14:38,077 - ERROR - runserver - runserver.py 13200 5772 HTTP GET /api/auth/reg/callback/?code=40ec7203b26e7b6683&state=ihpxwtsUBSHCEZJaMYMfwQUPBtRimm 500 [205.25, 127.0.0.1:57615]
+2024-04-10 14:14:40,234 - INFO - autoreload - autoreload.py 13200 13692 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 14:14:44,656 - INFO - autoreload - autoreload.py 14212 2320 Watching for file changes with StatReloader
+2024-04-10 14:14:52,321 - INFO - runserver - runserver.py 14212 8160 HTTP GET /api/auth/reg/redirect/ 200 [0.22, 127.0.0.1:57775]
+2024-04-10 14:19:00,557 - INFO - autoreload - autoreload.py 14212 2320 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-10 14:20:13,592 - INFO - autoreload - autoreload.py 13184 13932 Watching for file changes with StatReloader
+2024-04-10 14:20:21,365 - INFO - runserver - runserver.py 13184 12580 HTTP GET /api/auth/reg/redirect/ 200 [0.23, 127.0.0.1:58129]
+2024-04-10 14:21:39,966 - INFO - runserver - runserver.py 13184 12580 HTTP GET /api/auth/reg/callback/?code=1c168f522b213f8001&state=qGEsYCRTDCvhGRVRPrGjiyNxjQtXHL 200 [48.14, 127.0.0.1:58142]
+2024-04-10 14:23:48,661 - INFO - autoreload - autoreload.py 13184 13932 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:23:52,845 - INFO - autoreload - autoreload.py 9592 8592 Watching for file changes with StatReloader
+2024-04-10 14:25:25,236 - INFO - autoreload - autoreload.py 9592 8592 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:25:29,304 - INFO - autoreload - autoreload.py 1124 6076 Watching for file changes with StatReloader
+2024-04-10 14:25:31,086 - WARNING - log - log.py 1124 2496 Method Not Allowed: /api/auth/login/
+2024-04-10 14:25:31,088 - WARNING - runserver - runserver.py 1124 12096 HTTP GET /api/auth/login/ 405 [0.06, 127.0.0.1:58231]
+2024-04-10 14:25:31,765 - WARNING - log - log.py 1124 2496 Not Found: /favicon.ico
+2024-04-10 14:25:31,768 - WARNING - runserver - runserver.py 1124 12096 HTTP GET /favicon.ico 404 [0.47, 127.0.0.1:58232]
+2024-04-10 14:26:57,375 - INFO - autoreload - autoreload.py 1124 6076 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:27:01,320 - INFO - autoreload - autoreload.py 11064 17204 Watching for file changes with StatReloader
+2024-04-10 14:36:22,658 - INFO - autoreload - autoreload.py 11064 17204 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:36:26,617 - INFO - autoreload - autoreload.py 14372 13228 Watching for file changes with StatReloader
+2024-04-10 14:41:39,638 - INFO - autoreload - autoreload.py 14372 13228 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:41:43,645 - INFO - autoreload - autoreload.py 18232 6784 Watching for file changes with StatReloader
+2024-04-10 14:44:43,212 - INFO - autoreload - autoreload.py 18232 6784 C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py changed, reloading.
+2024-04-10 14:44:46,743 - INFO - autoreload - autoreload.py 5044 8512 Watching for file changes with StatReloader
+2024-04-10 14:44:58,663 - INFO - runserver - runserver.py 5044 15980 HTTP GET /api/auth/reg/redirect/ 200 [0.32, 127.0.0.1:58564]
+2024-04-10 14:46:43,938 - INFO - runserver - runserver.py 5044 15980 HTTP GET /api/auth/reg/callback/?code=739f2f3d0ee01dafe6&state=VFtdwNhZcesGuTjTrVKQDdRDsWjWsu 302 [90.11, 127.0.0.1:58578]
+2024-04-10 14:52:49,829 - INFO - runserver - runserver.py 5044 15980 HTTP POST /api/auth/login/ 200 [0.56, 127.0.0.1:58804]
+2024-04-10 14:53:21,743 - INFO - autoreload - autoreload.py 7700 11476 Watching for file changes with StatReloader
+2024-04-10 14:53:26,737 - INFO - runserver - runserver.py 7700 15300 HTTP POST /api/auth/login/ 200 [0.59, 127.0.0.1:58827]
+2024-04-10 17:13:41,984 - WARNING - log - log.py 7700 8408 Not Found: /favicon.ico
+2024-04-10 17:13:42,002 - WARNING - runserver - runserver.py 7700 15300 HTTP GET /favicon.ico 404 [0.71, 127.0.0.1:49394]

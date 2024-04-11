@@ -32,7 +32,7 @@ from drf_spectacular.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('accounts.urls')),
+    path('api/', include(('accounts.urls', 'api'))),
     # path('me/', include('accounts.urls')),
     path('api/', include('posts.urls')),
     path('api/', include('followers.urls')),

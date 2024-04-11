@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
-from .views import AccountViewSet, RegisterView, ProfileViewSet, CreatePaymentView, CreatePaymentAcceptedView, UserConfirmEmailView
+from .views import AccountViewSet, RegisterView, ProfileViewSet, CreatePaymentView, CreatePaymentAcceptedView, UserConfirmEmailView, VKLoginRedirectView, VKLoginView
 
 router = DefaultRouter()
 router.register(r'users', AccountViewSet, basename='users')
@@ -10,6 +10,8 @@ router.register(r'users', AccountViewSet, basename='users')
 urlpatterns = [
     path('', include(router.urls)),
     path('auth/reg/', RegisterView.as_view(), name='register'),
+    path('auth/reg/callback/', VKLoginView.as_view(), name='callback'),
+    path('auth/reg/redirect/', VKLoginRedirectView.as_view(), name='redirect'),
     path('auth/login/', TokenObtainPairView.as_view(), name='token'),
     path('auth/refresh_token/', TokenRefreshView.as_view(), name='refresh_token'),
     path('confirm-email/<str:uidb64>/<str:token>/', UserConfirmEmailView.as_view(), name='confirm_email'),
