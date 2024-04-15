@@ -160,3 +160,81 @@ def vk_login_get_credentials() -> VKLoginCredentials:
     )
 
     return credentials
+
+
+@define
+class GoogleLoginCredentials:
+    client_id: str
+    client_secret: str
+    project_id: str
+
+
+class GoogleLoginService:
+    API_URI = reverse_lazy('api:callback_google')
+    GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth'
+    GOOGLE_ACCESS_TOKEN_OBTAIN_URL = 'https://oauth2.googleapis.com/token'
+    GOOGLE_USER_INFO_URL = "https://www.googleapis.com/oauth2/v3/userinfo"
+
+    SCOPES = [
+        "https://www.googleapis.com/auth/userinfo.email",
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "openid",
+    ]
+    def __init__(self):
+        self.credentials = google_login_get_credentials()
+
+    @staticmethod
+    def generate_state_session_token(length=30):
+        letters = string.ascii_letters
+        state = ''.join(random.choice(letters) for i in range(length))
+        return state
+
+    def get_redirect_uri(self):
+        # domain = Site.objects.get_current().domain
+        domain = 'http://localhost:8000'
+        api_uri = self.API_URI
+        redirect_uri = f'{domain}{api_uri}'
+        return redirect_uri
+
+    def get_authorization_url(self):
+        redirect_uri = self.get_redirect_uri()
+
+        state = self.generate_state_session_token()
+
+        params = {
+            'response_type': 'code',
+            'client_id': self.credentials.client_id,
+            'redirect_uri': redirect_uri,
+            'scope': ' '.join(self.SCOPES),
+            'state': state,
+            'access_type': 'offline',
+            'include_granted_scopes': 'true',
+            'promt': 'select_account',
+        }
+
+        query_params = urlencode(params)
+        authorization_url = f'{self.GOOGLE_AUTH_URL}?{query_params}'
+
+        return authorization_url, state
+
+def google_login_get_credentials() -> GoogleLoginCredentials:
+    client_id = settings.SOCIAL_AUTH_GOOGLE_CLIENT_ID
+    client_secret = settings.SOCIAL_AUTH_GOOGLE_CLIENT_SECRET
+    project_id = settings.SOCIAL_AUTH_GOOGLE_PROJECT_ID
+
+    if not client_id:
+        raise ImproperlyConfigured("SOCIAL_AUTH_GOOGLE_CLIENT_ID отсутствует")
+
+    if not client_secret:
+        raise ImproperlyConfigured("SOCIAL_AUTH_GOOGLE_CLIENT_SECRET отсутствует")
+
+    if not project_id:
+        raise ImproperlyConfigured("SOCIAL_AUTH_GOOGLE_PROJECT_ID отсутствует")
+
+    credentials = GoogleLoginCredentials(
+        client_id=client_id,
+        client_secret=client_secret,
+        project_id=project_id
+    )
+
+    return credentials

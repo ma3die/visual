@@ -19,7 +19,6 @@ from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyM
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 
-
 from django.shortcuts import get_object_or_404, redirect
 
 from posts.models import Comment, Post
@@ -27,18 +26,17 @@ from .models import Account
 from .mixins import UserPostMixin
 from .permissions import IsUserProfile
 from .serializers import AccountSerializer, RegisterSerializer
-from.services import VKLoginService, get_tokens_for_user
+from .services import VKLoginService, get_tokens_for_user, GoogleLoginService
 
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login
 
-
 Configuration.account_id = '357017'
 Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
 
-
 logger = logging.getLogger('django')
+
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
     serializer_class = AccountSerializer
@@ -83,7 +81,8 @@ class RegisterView(generics.GenericAPIView):
 
     def get(self, request):
         token = request.query_params['code']
-        response = requests.post(f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/redirect/&code={token}')
+        response = requests.post(
+            f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/redirect/&code={token}')
         token_acces = response.json()
         post = 1
 
@@ -147,8 +146,22 @@ class VKLoginView(PublicApi):
 
         # return Response({'user_info': user_info,})
         return redirect('https://visualapp.ru/#/')
+
+class GoogleLoginRedirectView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    def get(self, request):
+        google_login = GoogleLoginService()
+        authorization_url, state = google_login.get_authorization_url()
+        request.session['google_oauth2_state'] = state
+        return Response(authorization_url)
+        # return redirect(authorization_url)
+
+
+
 class UserConfirmEmailView(generics.RetrieveAPIView):
     permission_classes = [permissions.AllowAny]
+
     def get(self, request, uidb64, token):
         try:
             uid = urlsafe_base64_decode(uidb64)
@@ -206,10 +219,12 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
     #     self.perform_destroy(instance)
     #     return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class CreatePaymentView(generics.CreateAPIView):
     queryset = Account.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = AccountSerializer
+
     def post(self, request):
         logger.info(f'Payment | {request.user} {request.data}')
         user = request.user
@@ -241,6 +256,7 @@ class CreatePaymentView(generics.CreateAPIView):
 class CreatePaymentAcceptedView(generics.CreateAPIView):
     queryset = Account.objects.all()
     permission_classes = [permissions.AllowAny]
+
     def post(self, request):
         logger.info(f'Paymentrequest | {request.body}')
         response = json.loads(request.body)
@@ -254,7 +270,7 @@ class CreatePaymentAcceptedView(generics.CreateAPIView):
         if response['object']['status'] == 'succeeded':
             if subscription:
                 user = Account.objects.get(id=user_id)
-                user.subscription=subscription
+                user.subscription = subscription
                 user.save()
                 posts = Post.objects.filter(author_id=user_id)
                 posts.update(premium=False)
@@ -265,5 +281,3 @@ class CreatePaymentAcceptedView(generics.CreateAPIView):
 
         else:
             return Response(400)
-
-

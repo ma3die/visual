@@ -1737,3 +1737,66 @@ AssertionError: You must call `.is_valid()` before calling `.save()`.
 2024-04-10 14:53:26,737 - INFO - runserver - runserver.py 7700 15300 HTTP POST /api/auth/login/ 200 [0.59, 127.0.0.1:58827]
 2024-04-10 17:13:41,984 - WARNING - log - log.py 7700 8408 Not Found: /favicon.ico
 2024-04-10 17:13:42,002 - WARNING - runserver - runserver.py 7700 15300 HTTP GET /favicon.ico 404 [0.71, 127.0.0.1:49394]
+2024-04-12 11:17:53,686 - INFO - autoreload - autoreload.py 9204 7912 Watching for file changes with StatReloader
+2024-04-12 13:44:16,737 - INFO - autoreload - autoreload.py 8996 3856 Watching for file changes with StatReloader
+2024-04-12 17:58:59,756 - INFO - autoreload - autoreload.py 7860 10628 Watching for file changes with StatReloader
+2024-04-12 17:59:12,561 - WARNING - log - log.py 7860 8640 Bad Request: /api/auth/reg/callback_google/
+2024-04-12 17:59:12,565 - WARNING - runserver - runserver.py 7860 6572 HTTP GET /api/auth/reg/callback_google/ 400 [0.08, 127.0.0.1:51385]
+2024-04-12 18:01:44,173 - INFO - runserver - runserver.py 7860 6572 HTTP GET /api/auth/reg/redirect_google/ 200 [84.48, 127.0.0.1:51403]
+2024-04-12 18:07:44,101 - INFO - runserver - runserver.py 7860 6572 HTTP GET /api/auth/reg/redirect_google/ 200 [152.23, 127.0.0.1:51464]
+2024-04-12 18:22:16,748 - INFO - autoreload - autoreload.py 10952 3076 Watching for file changes with StatReloader
+2024-04-12 18:23:01,114 - INFO - runserver - runserver.py 10952 8700 HTTP GET /api/auth/reg/redirect_google/ 200 [37.51, 127.0.0.1:51656]
+2024-04-12 18:24:27,384 - INFO - runserver - runserver.py 10952 8700 HTTP GET /api/auth/reg/redirect_google/ 200 [6.55, 127.0.0.1:51680]
+2024-04-12 18:26:51,131 - ERROR - log - log.py 10952 3980 Internal Server Error: /api/auth/reg/callback_google/
+Traceback (most recent call last):
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\visual\accounts\views.py", line 139, in get
+    user_info = vk_login.get_user_info(vk_access_data)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\visual\accounts\services.py", line 107, in get_user_info
+    'user_ids': vk_access_data['user_id'],
+                ~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\http\response.py", line 199, in __getitem__
+    return self.headers[header]
+           ~~~~~~~~~~~~^^^^^^^^
+  File "C:\Users\ALeX\PycharmProjects\visual\venv\Lib\site-packages\django\utils\datastructures.py", line 308, in __getitem__
+    return self._store[key.lower()][1]
+           ~~~~~~~~~~~^^^^^^^^^^^^^
+KeyError: 'user_id'
+2024-04-12 18:26:51,177 - ERROR - runserver - runserver.py 10952 8700 HTTP GET /api/auth/reg/callback_google/?state=kdRvJVprGrHMtclKCEAwYylzcWuOBG&code=4%2F0AeaYSHCRqbRXuCDKfH551qBLR2Y1QUNOZo4rpwW3FF-w1gdee316KjINoqseYHA0rGp65w&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent 500 [114.80, 127.0.0.1:51706]
+2024-04-12 18:26:53,166 - WARNING - log - log.py 10952 3980 Not Found: /favicon.ico
+2024-04-12 18:26:53,171 - WARNING - runserver - runserver.py 10952 8700 HTTP GET /favicon.ico 404 [0.83, 127.0.0.1:51706]
