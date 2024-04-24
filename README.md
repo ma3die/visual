@@ -31,8 +31,7 @@ Python 3.11, Channel 4.0.0, Daphne 4.1.0, Django 5.0.2, django-taggit 5.0.1, dja
 
 Список всех endpoint:
 
-- POST [Section /api/auth/login/](#/api/auth/login/)
-- POST <a href="https://github.com/ma3die/visual/edit/master/README.md#my-anchor">/api/auth/login/</a>
+- POST /api/auth/login/
 - POST /api/auth/reg/
 - GET /api/auth/callback/
 - GET /api/auth/redirect/
@@ -97,6 +96,5 @@ Python 3.11, Channel 4.0.0, Daphne 4.1.0, Django 5.0.2, django-taggit 5.0.1, dja
 
 ### Описание работы:
 - Регистрация пользователей.
-  <a name="my-anchor"></a>
-  Для регистрации пользователей используется точка ```/api/auth/reg/ <a id='/api/auth/login/'></a>```
+  Для регистрации пользователей используется точка ```/api/auth/reg/```
 
