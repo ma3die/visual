@@ -23,26 +23,32 @@ class RecursiveSerializer(serializers.Serializer):
 
 
 class LikeSerializer(serializers.ModelSerializer):
+    """Сериалайзер лайков"""
     likes = AccountSerializer(many=True, required=False)
+
     class Meta:
         model = Account
         fields = '__all__'
 
 
 class ImageSerializer(serializers.ModelSerializer):
+    """Сериалайзер картинок"""
+
     class Meta:
         model = Image
         fields = '__all__'
 
 
 class VideoSerializer(serializers.ModelSerializer):
+    """Сериалайзер видео"""
+
     class Meta:
         model = Video
         fields = '__all__'
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    # author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())
+    """Сериалайзер Комментария"""
     author = serializers.SlugRelatedField(slug_field='username', read_only=True)
     author_avatar = serializers.CharField(source='author.avatar')
     post = serializers.SlugRelatedField(slug_field='slug', queryset=Post.objects.all())
@@ -77,6 +83,7 @@ class ListPostSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 
 class PostSerializer(TaggitSerializer, serializers.ModelSerializer):
+    """Сериалайзер поста"""
     is_like = serializers.SerializerMethodField()
     tags = TagListSerializerField(required=False)
     author = serializers.SlugRelatedField(slug_field='username', queryset=Account.objects.all())

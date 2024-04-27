@@ -23,15 +23,15 @@ def get_user(validated_token):
 
 
 class JwtAuthMiddleware(BaseMiddleware):
+    """Middleware авторизации"""
+
     def __init__(self, inner):
         self.inner = inner
 
     async def __call__(self, scope, receive, send):
         close_old_connections()
-        # headers = dict(scope['headers'])
-        # token_name, token = headers[b'authorization'].decode().split()
         token = parse_qs(scope['query_string'].decode('utf8'))['token'][0]
-        token = token[17:]
+        token = token[17:]  # Можно удалить. Костыль для нашего проекта
         try:
             UntypedToken(token)
         except (InvalidToken, TokenError) as e:

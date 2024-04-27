@@ -5,6 +5,7 @@ from posts.serializers import ListPostSerializer
 
 
 class UserPostMixin:
+    """Миксин для получения своей страницы пользователя"""
     @action(detail=True, methods=['GET'])
     def my_posts(self, request, pk=None):
         user = self.get_object()

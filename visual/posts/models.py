@@ -18,6 +18,8 @@ class Like(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
     notification = models.ForeignKey(Notification, on_delete=models.CASCADE, null=True, verbose_name='Уведомление')
 
+    objects = models.Manager()
+
 
 class Post(models.Model):
     """Модель поста"""
@@ -31,6 +33,8 @@ class Post(models.Model):
     likes = GenericRelation(Like)
     tags = TaggableManager()
     author = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Автор')
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Пост'
@@ -60,6 +64,8 @@ class Image(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='image', verbose_name='Пост')
     image = models.ImageField(blank=True, verbose_name='Изображение')
 
+    objects = models.Manager()
+
     class Meta:
         verbose_name = 'Изображение'
         verbose_name_plural = 'Изображения'
@@ -69,6 +75,8 @@ class Video(models.Model):
     """Галерея видео"""
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='video', verbose_name='Пост')
     video = models.FileField(blank=True, verbose_name='Видео')
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Видео'
@@ -87,6 +95,8 @@ class Comment(MPTTModel):
     deleted = models.BooleanField(default=False, verbose_name='Удален')
     notification = models.ForeignKey(Notification, on_delete=models.CASCADE, null=True, verbose_name='Уведомление')
 
+    objects = models.Manager()
+
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Комментарии'
@@ -101,6 +111,8 @@ class ReadPost(models.Model):
     user = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='users', verbose_name='Пользователь')
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='posts', verbose_name='Поcт')
     read_post = models.BooleanField(default=False, verbose_name='Просмотр поста')
+
+    objects = models.Manager()
 
     class Meta:
         verbose_name = 'Прочитан'

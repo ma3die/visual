@@ -4,9 +4,8 @@ from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
-from . import services
-from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer, ImageSerializer
-from accounts.permissions import IsOwnerOrReadOnly, IsAdminOrReadOnly, IsAuthorComment
+from .serializers import PostSerializer, CreateCommentSerializer, ListPostSerializer
+from accounts.permissions import IsOwnerOrReadOnly, IsAuthorComment
 from accounts.models import Account
 from accounts.serializers import AccountSerializer
 from rest_framework import permissions
@@ -19,7 +18,6 @@ from .utils import get_mime_type
 from rest_framework.response import Response
 import logging
 
-
 logger = logging.getLogger('django')
 
 
@@ -29,7 +27,7 @@ class CustomPostPagination(PageNumberPagination):
 
 
 class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
-    # parser_classes = (FormParser, MultiPartParser)
+    """View для постов"""
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'slug'
@@ -47,7 +45,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
 
     @transaction.atomic
     def create(self, request, *args, **kwargs):
-        # images = dict((request.data).lists()).get('image', [])
+        """Создание поста"""
         logger.info(f'PostCreate | {request.user} {request.data}')
         file_data = []
         request.data._mutable = True
@@ -75,6 +73,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         return Response(serializer_data.data)
 
     def list(self, request):
+        """Лента постов, реализация не доделана"""
         logger.info(f'PostList | {request.user} {request.data}')
         user = request.user
         if user.is_authenticated:
@@ -103,16 +102,16 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
                 for post in queryset:
                     ReadPost.objects.create(user=user, post=post)
         else:
-        #     сделать пагинацию
-        #     user = services.get_user(user)
-        #     ids_read_posts = []
-        #     read_posts = ReadPost.objects.filter(user=user)
-        #     for read_post in read_posts:
-        #         post = read_post.post
-        #         ids_read_posts.append(post.id)
-        #     queryset = Post.objects.all()
-        #     for post in queryset:
-        #         ReadPost.objects.create(user=user, post=post)
+            #     сделать пагинацию
+            #     user = services.get_user(user)
+            #     ids_read_posts = []
+            #     read_posts = ReadPost.objects.filter(user=user)
+            #     for read_post in read_posts:
+            #         post = read_post.post
+            #         ids_read_posts.append(post.id)
+            #     queryset = Post.objects.all()
+            #     for post in queryset:
+            #         ReadPost.objects.create(user=user, post=post)
             queryset = self.queryset
             page = self.paginate_queryset(queryset)
             if page is not None:
@@ -124,6 +123,7 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         return Response(serializer.data)
 
     def retrieve(self, request, slug):
+        """Получение одного поста"""
         logger.info(f'PostRetrieve | {request.user} {request.data}')
         try:
             post = Post.objects.get(slug=slug)
@@ -134,9 +134,6 @@ class PostViewSet(LikedMixin, AddImageVideoMixin, viewsets.ModelViewSet):
         serializer = self.get_serializer(post)
         return Response(serializer.data, status=200)
 
-    # def perform_create(self, serializer):
-    #     serializer.save(author=self.request.user)
-
 
 class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.DestroyAPIView):
     """CRUD комментарии"""
@@ -146,7 +143,6 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
 
     @transaction.atomic
     def perform_create(self, serializer):
-        # if not serializer.validated_data['parent']:
         author = serializer.validated_data['post'].author
         if author != self.request.user:
             notification = Notification.objects.create(user=author)
@@ -159,26 +155,29 @@ class CommentView(generics.CreateAPIView, generics.UpdateAPIView, generics.Destr
 
 
 class SearchResultView(generics.ListAPIView):
+    """View для поиска через Postgre"""
     permission_classes = [permissions.AllowAny]
 
     def get_queryset(self):
         query = self.request.GET.get('search', None)
         search_vector = SearchVector('name')
         search_query = SearchQuery(query)
-        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0).order_by('-rank')
+        result = Post.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0).order_by(
+            '-rank')
         return result
 
     def list(self, request, *args, **kwargs):
         query = request.query_params['search']
         search_vector_post = SearchVector('name', 'tags__name')
         search_vector_account = SearchVector('username', 'last_name')
-        # search_vector_tag = SearchVector('tags__name')
         search_query = SearchQuery(query)
         search_vector_trgm = TrigramSimilarity('name', query) + TrigramSimilarity('tags__name', query)
         search_vector_trgm_acc = TrigramSimilarity('username', query) + TrigramSimilarity('last_name', query)
-        post_tag = Post.objects.annotate(search=search_vector_post).filter(search=search_query) or Post.objects.annotate(similarity=search_vector_trgm).filter(similarity__gt=0.2)
-        user = Account.objects.annotate(search=search_vector_account).filter(search=search_query) or Account.objects.annotate(similarity=search_vector_trgm_acc).filter(similarity__gt=0.2)
-        # result = Post.objects.filter(name__search=query)
+        post_tag = Post.objects.annotate(search=search_vector_post).filter(
+            search=search_query) or Post.objects.annotate(similarity=search_vector_trgm).filter(similarity__gt=0.2)
+        user = Account.objects.annotate(search=search_vector_account).filter(
+            search=search_query) or Account.objects.annotate(similarity=search_vector_trgm_acc).filter(
+            similarity__gt=0.2)
         post_tag = ListPostSerializer(post_tag, many=True).data
         user = AccountSerializer(user, many=True).data
         return Response({

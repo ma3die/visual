@@ -3,7 +3,10 @@ from rest_framework import serializers
 from .models import Follower
 from notifications.models import Notification
 
+
 class FollowerSerializer(serializers.ModelSerializer):
+    """Сериалайзер подписки и отписки от юзера"""
+
     @transaction.atomic
     def create(self, validated_data):
         try:

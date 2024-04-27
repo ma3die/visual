@@ -5,7 +5,7 @@ from accounts.models import Account
 from django.contrib.contenttypes.models import ContentType
 from notifications.models import Notification
 from accounts.serializers import AccountSerializer
-from .models import Like, Post
+from .models import Like
 
 @transaction.atomic
 def add_like(obj, user):

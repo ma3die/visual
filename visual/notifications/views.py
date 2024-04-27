@@ -1,23 +1,24 @@
 from rest_framework import viewsets
-from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.mixins import RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, ListModelMixin
 from .models import Notification
 from .serializers import CreateSerializerNotification
 from posts.models import Post, Like, Comment
-from posts.serializers import LikeSerializer, CommentSerializer, PostSerializer
+from posts.serializers import CommentSerializer, PostSerializer
 from followers.models import Follower
 from followers.serializers import FollowerSerializer
 
 
 class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, DestroyModelMixin,
                        viewsets.GenericViewSet):
+    """View для уведомлейни"""
     queryset = Notification.objects.filter(hide=False)
     serializer_class = CreateSerializerNotification
     permission_classes = [permissions.IsAuthenticated]
 
     def count_notification(self, request, check=False):
+        """Количество уведомлений"""
         count = Notification.objects.filter(user=request.user, read=False, hide=False).count()
         if not check:
             return Response({'count_notification': count})
@@ -25,6 +26,7 @@ class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, Des
             return count
 
     def push(self, request):
+        """Метод который пингует фронт для получения новых уведомлений"""
         count = self.count_notification(request, check=True)
         if not count:
             return Response({'message': 'Новых уведомлений нет'})
@@ -32,18 +34,11 @@ class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, Des
             return Response({'count_notification': count})
 
     def list(self, request):
+        """Список всех уведомлений"""
         user = request.user
-        ids_dict = {'likes': [], 'followers': [], 'comments': []}
         notification = Notification.objects.filter(user=user, hide=False)
         if notification:
-            # posts = Post.objects.filter(author=user)
-            # ids_post = []
             ids = []
-            # for post in posts:
-            #     ids_post.append(post.id)
-            # likes = Like.objects.filter(object_id__in=ids_post)
-            # comments = Comment.objects.filter(post_id__in=ids_post)
-            # followers = Follower.objects.filter(author=user)
             serializer_notif = CreateSerializerNotification(notification, many=True)
             querys = serializer_notif.data
             for query in querys:
@@ -69,3 +64,4 @@ class NotificationView(RetrieveModelMixin, ListModelMixin, UpdateModelMixin, Des
                 'comments': data_comments,
                 'followers': data_followers
             })
+        return Response({'message': 'Новых уведомлений нет'})

@@ -2,7 +2,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from . import services
 from .models import Image, Video
-from .serializers import LikeSerializer, ImageSerializer, VideoSerializer
+from .serializers import ImageSerializer, VideoSerializer
 
 
 class LikedMixin:
@@ -32,7 +32,10 @@ class LikedMixin:
 
 
 class AddImageVideoMixin:
+    """Миксин для выбора типа файла и записи в модель"""
+
     def add_image(self, file, post_id):
+        """Сохраняем картинки"""
         image_data = {}
         image_data['image'] = file
         image_data['post'] = post_id
@@ -41,6 +44,7 @@ class AddImageVideoMixin:
         Image.objects.create(**serializer_image.validated_data)
 
     def add_video(self, file, post_id):
+        """Сохраняем видео"""
         video_data = {}
         video_data['video'] = file
         video_data['post'] = post_id
@@ -49,6 +53,7 @@ class AddImageVideoMixin:
         Video.objects.create(**serializer_video.validated_data)
 
     def choose_add(self, type, file, post_id):
+        """Проверка типа файла"""
         if type == 'image':
             self.add_image(file, post_id)
         if type == 'video':

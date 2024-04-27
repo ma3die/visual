@@ -3,11 +3,14 @@ from accounts.models import Account
 
 
 class Notification(models.Model):
+    """Модель для уведомлений"""
     user = models.ForeignKey(Account, on_delete=models.CASCADE, verbose_name='Пользователь')
     send = models.BooleanField(default=False, verbose_name='Отправлено')
     read = models.BooleanField(default=False, verbose_name='Прочитано')
     hide = models.BooleanField(default=False, verbose_name='Скрыть')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    objects = models.Manager()
 
 
     class Meta:

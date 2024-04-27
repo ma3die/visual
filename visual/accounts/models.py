@@ -5,15 +5,11 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 
 
 class AccountManager(BaseUserManager):
-    """
-    Пользовательский Manager, где адрес email является уникальным
-    идентификатором для аутентификации вместо username
-    """
+    """Пользовательский Manager, где адрес email является уникальным
+    идентификатором для аутентификации вместо username"""
 
     def create_user(self, first_name, last_name, username, email, password=None):
-        """
-        Создаем и сохраняем Юзера
-        """
+        """Создаем и сохраняем Юзера"""
         if not email:
             raise ValueError('У пользователя нет электронного адреса')
         if not username:
@@ -31,9 +27,7 @@ class AccountManager(BaseUserManager):
         return user
 
     def create_superuser(self, first_name, last_name, username, email, password=None):
-        """
-        Создаем и сохраняем суперюзера
-        """
+        """Создаем и сохраняем суперюзера"""
         if not email:
             raise ValueError('У пользователя нет электронного адреса')
         if not username:
@@ -55,6 +49,7 @@ class AccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
+    """Модель Аккаунта пользователя"""
     first_name = models.CharField(max_length=50, blank=True, verbose_name='Имя')
     last_name = models.CharField(max_length=50, blank=True, verbose_name='Фамилия')
     username = models.CharField(max_length=50, unique=True, verbose_name='Никнейм')
@@ -67,7 +62,7 @@ class Account(AbstractBaseUser):
     avatar = models.ImageField(upload_to='avatar/', blank=True, verbose_name='Аватарка',
                                validators=[FileExtensionValidator(
                                    allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))])
-    subscription = models.CharField(max_length=10, blank=True,null=True, verbose_name='Подписка')
+    subscription = models.CharField(max_length=10, blank=True, null=True, verbose_name='Подписка')
     date_register = models.DateTimeField(auto_now_add=True, verbose_name='Дата регистрации')
     last_join = models.DateTimeField(auto_now_add=True, verbose_name='Последний вход')
     is_admin = models.BooleanField(default=False, verbose_name='Администратор')

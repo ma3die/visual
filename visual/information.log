@@ -1800,3 +1800,429 @@ KeyError: 'user_id'
 2024-04-12 18:26:51,177 - ERROR - runserver - runserver.py 10952 8700 HTTP GET /api/auth/reg/callback_google/?state=kdRvJVprGrHMtclKCEAwYylzcWuOBG&code=4%2F0AeaYSHCRqbRXuCDKfH551qBLR2Y1QUNOZo4rpwW3FF-w1gdee316KjINoqseYHA0rGp65w&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=consent 500 [114.80, 127.0.0.1:51706]
 2024-04-12 18:26:53,166 - WARNING - log - log.py 10952 3980 Not Found: /favicon.ico
 2024-04-12 18:26:53,171 - WARNING - runserver - runserver.py 10952 8700 HTTP GET /favicon.ico 404 [0.83, 127.0.0.1:51706]
+2024-04-15 12:12:49,602 - INFO - autoreload - autoreload.py 13180 17516 Watching for file changes with StatReloader
+2024-04-15 12:13:14,750 - INFO - autoreload - autoreload.py 7468 10660 Watching for file changes with StatReloader
+2024-04-15 12:14:55,556 - INFO - runserver - runserver.py 7468 18648 HTTP GET /api/auth/reg/redirect_google/ 200 [27.19, 127.0.0.1:62355]
+2024-04-15 12:19:06,231 - INFO - autoreload - autoreload.py 16324 10208 Watching for file changes with StatReloader
+2024-04-15 12:19:22,074 - INFO - runserver - runserver.py 16324 1676 HTTP GET /api/auth/reg/redirect_google/ 200 [0.20, 127.0.0.1:62433]
+2024-04-15 12:21:05,144 - INFO - autoreload - autoreload.py 3492 12108 Watching for file changes with StatReloader
+2024-04-15 12:21:10,266 - INFO - runserver - runserver.py 3492 1252 HTTP GET /api/auth/reg/redirect_google/ 200 [0.29, 127.0.0.1:62573]
+2024-04-15 12:26:10,054 - INFO - autoreload - autoreload.py 1132 17600 Watching for file changes with StatReloader
+2024-04-15 12:26:14,500 - INFO - runserver - runserver.py 1132 15132 HTTP GET /api/auth/reg/redirect_google/ 200 [0.22, 127.0.0.1:62636]
+2024-04-15 12:27:08,779 - WARNING - log - log.py 1132 9224 Not Found: /api/auth/reg/callback_google/
+2024-04-15 12:27:08,780 - WARNING - runserver - runserver.py 1132 15132 HTTP GET /api/auth/reg/callback_google/?state=XvREUybPpYldyMaAJFrySYOsqUDASX&code=4%2F0AeaYSHAQTAoDTmvQztaIvkCy2SfpwBCI4HM5R8TGI2SGuA9ik96nrM_L0ZNqxFi0gXhA0Q&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none 404 [42.12, 127.0.0.1:62643]
+2024-04-15 12:27:09,187 - WARNING - log - log.py 1132 9224 Not Found: /favicon.ico
+2024-04-15 12:27:09,189 - WARNING - runserver - runserver.py 1132 15132 HTTP GET /favicon.ico 404 [0.27, 127.0.0.1:62643]
+2024-04-15 12:29:13,634 - INFO - autoreload - autoreload.py 11108 17508 Watching for file changes with StatReloader
+2024-04-15 12:29:25,024 - INFO - runserver - runserver.py 11108 11788 HTTP GET /api/auth/reg/redirect_google/ 200 [0.25, 127.0.0.1:62685]
+2024-04-15 12:30:50,706 - INFO - runserver - runserver.py 11108 11788 HTTP GET /api/auth/reg/callback_google/?state=VFivchiTHHEkKlWUECbMUsCMFrDcPM&code=4%2F0AeaYSHDpFpN8ZIgpq9TNUqNWCyA0vx5V6Qelh97Zmm6WY61ErdtaAPNpUgR1rI8hQkY9fA&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&authuser=0&prompt=none 200 [75.84, 127.0.0.1:62796]
+2024-04-15 12:30:50,821 - WARNING - log - log.py 11108 17320 Not Found: /favicon.ico
+2024-04-15 12:30:50,823 - WARNING - runserver - runserver.py 11108 11788 HTTP GET /favicon.ico 404 [0.07, 127.0.0.1:62796]
+2024-04-23 16:37:26,831 - INFO - autoreload - autoreload.py 3380 11916 Watching for file changes with StatReloader
+2024-04-23 16:38:03,204 - WARNING - log - log.py 3380 9380 Not Found: /
+2024-04-23 16:38:03,206 - WARNING - runserver - runserver.py 3380 11592 HTTP GET / 404 [0.81, 127.0.0.1:52611]
+2024-04-23 16:38:03,468 - WARNING - log - log.py 3380 9380 Not Found: /favicon.ico
+2024-04-23 16:38:03,469 - WARNING - runserver - runserver.py 3380 11592 HTTP GET /favicon.ico 404 [0.01, 127.0.0.1:52611]
+2024-04-23 16:38:04,236 - INFO - autoreload - autoreload.py 3380 11916 C:\Users\Alex\PycharmProjects\visual\visual\accounts\models.py changed, reloading.
+2024-04-23 16:38:06,694 - INFO - autoreload - autoreload.py 19972 18256 Watching for file changes with StatReloader
+2024-04-23 16:38:20,412 - INFO - runserver - runserver.py 19972 19872 HTTP GET /api/schema/swagger-ui/ 200 [0.67, 127.0.0.1:52619]
+2024-04-23 16:38:21,146 - INFO - runserver - runserver.py 19972 19872 HTTP GET /api/schema/ 200 [0.15, 127.0.0.1:52619]
+2024-04-23 16:53:18,382 - INFO - runserver - runserver.py 19972 19872 HTTP GET /api/schema/swagger-ui/ 200 [0.03, 127.0.0.1:52725]
+2024-04-23 16:53:19,607 - INFO - runserver - runserver.py 19972 19872 HTTP GET /api/schema/ 200 [0.12, 127.0.0.1:52725]
+2024-04-23 17:54:29,912 - INFO - autoreload - autoreload.py 19972 18256 C:\Users\Alex\PycharmProjects\visual\visual\accounts\services.py changed, reloading.
+2024-04-23 17:54:35,744 - INFO - autoreload - autoreload.py 12080 15636 Watching for file changes with StatReloader
+2024-04-23 19:41:13,026 - WARNING - log - log.py 12080 12292 Method Not Allowed: /api/auth/reg/
+2024-04-23 19:41:13,051 - WARNING - runserver - runserver.py 12080 13024 HTTP GET /api/auth/reg/ 405 [1.09, 127.0.0.1:54697]
+2024-04-26 14:32:24,383 - INFO - autoreload - autoreload.py 14300 5400 Watching for file changes with StatReloader
+2024-04-26 14:32:37,487 - WARNING - log - log.py 14300 21052 Not Found: /
+2024-04-26 14:32:37,489 - WARNING - runserver - runserver.py 14300 4724 HTTP GET / 404 [0.87, 127.0.0.1:64663]
+2024-04-26 14:32:37,832 - WARNING - log - log.py 14300 21052 Not Found: /favicon.ico
+2024-04-26 14:32:37,833 - WARNING - runserver - runserver.py 14300 4724 HTTP GET /favicon.ico 404 [0.03, 127.0.0.1:64663]
+2024-04-26 14:32:41,853 - WARNING - log - log.py 14300 21052 Not Found: /
+2024-04-26 14:32:41,854 - WARNING - runserver - runserver.py 14300 4724 HTTP GET / 404 [0.04, 127.0.0.1:64674]
+2024-04-26 14:32:42,692 - WARNING - log - log.py 14300 21052 Not Found: /favicon.ico
+2024-04-26 14:32:42,693 - WARNING - runserver - runserver.py 14300 4724 HTTP GET /favicon.ico 404 [0.17, 127.0.0.1:64674]
+2024-04-26 14:32:47,222 - INFO - runserver - runserver.py 14300 4724 HTTP GET /api/schema/swagger-ui/ 200 [0.07, 127.0.0.1:64674]
+2024-04-26 14:32:47,885 - INFO - runserver - runserver.py 14300 4724 HTTP GET /api/schema/ 200 [0.15, 127.0.0.1:64674]
+2024-04-26 15:16:24,866 - INFO - autoreload - autoreload.py 14300 5400 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 15:16:29,105 - INFO - autoreload - autoreload.py 6540 12564 Watching for file changes with StatReloader
+2024-04-26 15:23:31,947 - INFO - autoreload - autoreload.py 16368 13580 Watching for file changes with StatReloader
+2024-04-26 15:23:50,453 - INFO - views - views.py 16368 15432 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 15:23:50,926 - WARNING - log - log.py 16368 2496 Bad Request: /api/auth/reg/
+2024-04-26 15:23:50,942 - WARNING - runserver - runserver.py 16368 20528 HTTP POST /api/auth/reg/ 400 [0.52, 127.0.0.1:50653]
+2024-04-26 15:29:08,016 - INFO - views - views.py 16368 19988 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:07:42,406 - ERROR - log - log.py 16368 2496 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 52, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
+2024-04-26 16:07:43,169 - ERROR - runserver - runserver.py 16368 20528 HTTP POST /api/auth/reg/ 500 [2315.15, 127.0.0.1:51138]
+2024-04-26 16:10:38,848 - INFO - autoreload - autoreload.py 16368 13580 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 16:10:54,326 - INFO - autoreload - autoreload.py 12596 19532 Watching for file changes with StatReloader
+2024-04-26 16:11:00,940 - INFO - views - views.py 12596 8556 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:12:38,606 - ERROR - log - log.py 12596 7492 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 52, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'email' not found. 'email' is not a valid view function or pattern name.
+2024-04-26 16:12:38,631 - ERROR - runserver - runserver.py 12596 1264 HTTP POST /api/auth/reg/ 500 [97.72, 127.0.0.1:53239]
+2024-04-26 16:15:39,989 - INFO - autoreload - autoreload.py 12596 19532 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 16:15:43,712 - INFO - autoreload - autoreload.py 6168 21256 Watching for file changes with StatReloader
+2024-04-26 16:16:03,419 - INFO - views - views.py 6168 5376 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:20:25,738 - ERROR - log - log.py 6168 1076 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 52, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
+2024-04-26 16:20:25,758 - ERROR - runserver - runserver.py 6168 21020 HTTP POST /api/auth/reg/ 500 [262.36, 127.0.0.1:53523]
+2024-04-26 16:20:43,000 - INFO - autoreload - autoreload.py 6168 21256 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 16:20:46,326 - INFO - autoreload - autoreload.py 17132 16528 Watching for file changes with StatReloader
+2024-04-26 16:24:27,312 - INFO - views - views.py 17132 8828 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:26:02,347 - INFO - autoreload - autoreload.py 17132 16528 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 16:26:42,192 - INFO - autoreload - autoreload.py 22072 22080 Watching for file changes with StatReloader
+2024-04-26 16:26:48,902 - INFO - autoreload - autoreload.py 22072 22080 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-04-26 16:26:52,730 - INFO - autoreload - autoreload.py 21400 21820 Watching for file changes with StatReloader
+2024-04-26 16:27:06,344 - INFO - views - views.py 21400 5020 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:30:21,457 - ERROR - log - log.py 21400 17916 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 54, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
+2024-04-26 16:30:21,474 - ERROR - runserver - runserver.py 21400 13448 HTTP POST /api/auth/reg/ 500 [195.15, 127.0.0.1:54854]
+2024-04-26 16:32:47,196 - INFO - autoreload - autoreload.py 16960 18168 Watching for file changes with StatReloader
+2024-04-26 16:32:50,282 - INFO - views - views.py 16960 15640 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:33:11,409 - ERROR - log - log.py 16960 17272 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 54, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
+2024-04-26 16:33:11,434 - ERROR - runserver - runserver.py 16960 11468 HTTP POST /api/auth/reg/ 500 [21.17, 127.0.0.1:55634]
+2024-04-26 16:36:24,988 - INFO - autoreload - autoreload.py 16960 18168 C:\Users\Alex\PycharmProjects\visual\visual\accounts\urls.py changed, reloading.
+2024-04-26 16:36:28,876 - INFO - autoreload - autoreload.py 1236 11956 Watching for file changes with StatReloader
+2024-04-26 16:37:02,525 - INFO - views - views.py 1236 6644 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:38:33,889 - INFO - autoreload - autoreload.py 12416 19816 Watching for file changes with StatReloader
+2024-04-26 16:38:43,220 - INFO - views - views.py 12416 16240 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-04-26 16:38:43,986 - ERROR - log - log.py 12416 19220 Internal Server Error: /api/auth/reg/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\views.py", line 75, in post
+    user = serializer.save()
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 212, in save
+    self.instance = self.create(validated_data)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py", line 54, in create
+    f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 155, in __format__
+    return format(self.__cast(), format_spec)
+                  ^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\utils\functional.py", line 110, in __cast
+    return func(*self._args, **self._kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\urls\resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
+2024-04-26 16:38:43,995 - ERROR - runserver - runserver.py 12416 7904 HTTP POST /api/auth/reg/ 500 [0.80, 127.0.0.1:55997]

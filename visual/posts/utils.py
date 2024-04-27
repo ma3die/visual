@@ -3,6 +3,7 @@ from pytils.translit import slugify
 import magic
 
 def get_mime_type(file):
+    """Функция для проверки типа фаула"""
     initial_pos = file.tell()
     file.seek(0)
     mime_type = magic.from_buffer(file.read(2048), mime=True)

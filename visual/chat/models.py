@@ -3,6 +3,7 @@ from accounts.models import Account
 
 
 class Conversation(models.Model):
+    """Модель чата"""
     initiator = models.ForeignKey(
         Account, on_delete=models.SET_NULL, null=True, related_name='convo_starter', verbose_name='Инициатор'
     )
@@ -13,6 +14,7 @@ class Conversation(models.Model):
 
 
 class Message(models.Model):
+    """Модель сообщений"""
     sender = models.ForeignKey(
         Account, on_delete=models.SET_NULL, null=True, related_name='message_sender', verbose_name='Отправитель'
     )

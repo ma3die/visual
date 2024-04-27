@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Account
 from django.urls import reverse_lazy
 from django.contrib.auth.tokens import default_token_generator
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
@@ -12,7 +12,9 @@ from django.contrib.sites.shortcuts import get_current_site
 
 
 
+
 class AccountSerializer(serializers.ModelSerializer):
+    """Сериалайзер юзеров"""
     class Meta:
         model = Account
         fields = ('id', 'last_login', 'first_name', 'last_name', 'username', 'email',
@@ -22,6 +24,7 @@ class AccountSerializer(serializers.ModelSerializer):
 
 
 class RegisterSerializer(serializers.ModelSerializer):
+    """Сериалайзер для регистрации"""
     password2 = serializers.CharField(write_only=True)
 
     class Meta:
@@ -41,21 +44,23 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.is_active = True
         user.save()
         # Функционал для отправки письма и генерации токена
-        # token = default_token_generator.make_token(user)
-        # uid = urlsafe_base64_encode(force_bytes(user.pk))
-        # activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
+        token = default_token_generator.make_token(user)
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
+        current_site = 'http://127.0.0.1:8000/'
         # current_site = Site.objects.get_current().domain
-        # send_mail(
-        #     'Подтвердите свой электронный адрес',
-        #     f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
-        #     'service.notehunter@gmail.com',
-        #     [user.email],
-        #     fail_silently=False,
-        # )
+        send_mail(
+            'Подтвердите свой электронный адрес',
+            f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
+            'service.notehunter@gmail.com',
+            [user.email],
+            fail_silently=False,
+        )
         return user
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """Сериалайзер для профиля юзера"""
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 
     class Meta:

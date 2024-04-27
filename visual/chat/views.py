@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import redirect, reverse
 from .models import Conversation
-from rest_framework.decorators import api_view, permission_classes #
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import permissions
 from rest_framework.response import Response
 from accounts.models import Account
@@ -8,10 +8,10 @@ from .serializers import ConversationListSerializer, ConversationSerializer
 from django.db.models import Q
 
 
-
 @api_view(['POST'])
 @permission_classes((permissions.AllowAny,))
 def start_convo(request, ):
+    """Старт чата"""
     data = request.data
     username = data.pop('username')
     try:
@@ -27,12 +27,13 @@ def start_convo(request, ):
         conversation = Conversation.objects.create(initiator=request.user, receiver=participant)
         serializer = ConversationSerializer(instance=conversation)
         return Response(serializer.data)
-            # Response(ConversationSerializer(instance=conversation).data))
+        # Response(ConversationSerializer(instance=conversation).data))
 
 
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 def get_conversation(request, convo_id):
+    """Получение чата"""
     conversation = Conversation.objects.filter(id=convo_id)
     if not conversation.exists():
         return Response({'message': 'Чат не найден'})
@@ -40,9 +41,11 @@ def get_conversation(request, convo_id):
         serializer = ConversationSerializer(instance=conversation[0])
         return Response(serializer.data)
 
+
 @api_view(['GET'])
 @permission_classes((permissions.AllowAny,))
 def conversations(request):
+    """Получение всех чатов юзера"""
     conversation_list = Conversation.objects.filter(Q(initiator=request.user) |
                                                     Q(receiver=request.user))
     serializer = ConversationListSerializer(instance=conversation_list, many=True)

@@ -1,22 +1,22 @@
 import random
 import string
 import requests
-from .models import Account
+import jwt
 from posts.models import Post
 from attrs import define
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from random import SystemRandom
 from rest_framework.response import Response
 from urllib.parse import urlencode
 from django.urls import reverse_lazy
-from django.contrib.sites.models import Site
 from django.utils.crypto import get_random_string
 from .serializers import RegisterSerializer
 
 from rest_framework_simplejwt.tokens import RefreshToken
 
+
 def get_tokens_for_user(user):
+    """Получение токенов для пользователя"""
     refresh = RefreshToken.for_user(user)
 
     return {
@@ -24,26 +24,26 @@ def get_tokens_for_user(user):
         'access': str(refresh.access_token),
     }
 
+
 def my_post(user):
     return Post.objects.filter(author_id=user.id)
 
+
 def random_string(length):
+    """Создание случайной строки"""
     string = get_random_string(length=length, allowed_chars='abcdefghjkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ123456789')
     return string
 
+
 @define
-class VKLoginCredentials:  # GoogleRawLoginCredentials
+class VKLoginCredentials:
     client_id: str
     service_key: str
     client_secret: str
 
 
-@define
-class VKAccessToken:
-    pass
-
-
 class VKLoginService:
+    """Класс для обработки данных от VK"""
     API_URI = reverse_lazy("api:callback")
 
     VK_AUTH_URL = 'https://oauth.vk.com/authorize'
@@ -61,6 +61,7 @@ class VKLoginService:
         return state
 
     def get_redirect_uri(self):
+        """Делаем URI для перенаправления пользователя"""
         # domain = Site.objects.get_current().domain
         domain = 'http://localhost:80'
         api_uri = self.API_URI
@@ -68,6 +69,7 @@ class VKLoginService:
         return redirect_uri
 
     def get_authorization_url(self):
+        """Создаем URL для перенаправления пользователя на стринцу входа VK"""
         redirect_uri = self.get_redirect_uri()
         state = self.generate_state_session_token()
         params = {
@@ -84,6 +86,7 @@ class VKLoginService:
         return authorization_url, state
 
     def get_access_data(self, code):
+        """Получение данных от VK"""
         redirect_uri = self.get_redirect_uri()
 
         data = {
@@ -103,6 +106,7 @@ class VKLoginService:
         return vk_access_data
 
     def get_user_info(self, vk_access_data):
+        """Получение информации о юзере"""
         data = {
             'user_ids': vk_access_data['user_id'],
             'access_token': vk_access_data['access_token'],
@@ -116,10 +120,11 @@ class VKLoginService:
         return user_info
 
     def save_user(self, user_info):
+        """Сохранение юзера в базе"""
         password = random_string(10)
-        random_email = f'{random_string(6)}_vk@example.com' #ПРОВЕРЯТЬ ПОЧТУ НА УНИКАЛЬНОСТЬ
+        random_email = f'{random_string(6)}_vk@example.com'  # ПРОВЕРЯТЬ ПОЧТУ НА УНИКАЛЬНОСТЬ
         username = f"vk_{user_info['response'][0]['id']}"
-        data ={
+        data = {
             'username': username,
             'email': random_email,
             'password': password,
@@ -134,12 +139,8 @@ class VKLoginService:
         return user
 
 
-
-
 def vk_login_get_credentials() -> VKLoginCredentials:
-    """
-    Получаем данные для входа
-    """
+    """Получение данных для входа"""
     client_id = settings.SOCIAL_AUTH_VK_CLIENT_ID
     service_key = settings.SOCIAL_AUTH_VK_SERVICE_ACCESS_KEY
     client_secret = settings.SOCIAL_AUTH_VK_SECRET_KEY
@@ -169,7 +170,20 @@ class GoogleLoginCredentials:
     project_id: str
 
 
+@define
+class GoogleAccessTokens:
+    id_token: str
+    access_token: str
+
+    def decode_id_token(self):
+        """Расшифрование токена"""
+        id_token = self.id_token
+        decoded_token = jwt.decode(jwt=id_token, options={'verify_signature': False})
+        return decoded_token
+
+
 class GoogleLoginService:
+    """Класс для обработки данных от Google"""
     API_URI = reverse_lazy('api:callback_google')
     GOOGLE_AUTH_URL = 'https://accounts.google.com/o/oauth2/v2/auth'
     GOOGLE_ACCESS_TOKEN_OBTAIN_URL = 'https://oauth2.googleapis.com/token'
@@ -180,6 +194,7 @@ class GoogleLoginService:
         "https://www.googleapis.com/auth/userinfo.profile",
         "openid",
     ]
+
     def __init__(self):
         self.credentials = google_login_get_credentials()
 
@@ -190,6 +205,7 @@ class GoogleLoginService:
         return state
 
     def get_redirect_uri(self):
+        """Делаем URI для перенаправления пользователя"""
         # domain = Site.objects.get_current().domain
         domain = 'http://localhost:8000'
         api_uri = self.API_URI
@@ -197,6 +213,7 @@ class GoogleLoginService:
         return redirect_uri
 
     def get_authorization_url(self):
+        """Создаем URL для перенаправления пользователя на стринцу входа Google"""
         redirect_uri = self.get_redirect_uri()
 
         state = self.generate_state_session_token()
@@ -217,7 +234,67 @@ class GoogleLoginService:
 
         return authorization_url, state
 
+    def get_tokens(self, code):
+        """Получение токенов"""
+        redirect_uri = self.get_redirect_uri()
+
+        data = {
+            'code': code,
+            'client_id': self.credentials.client_id,
+            'client_secret': self.credentials.client_secret,
+            'redirect_uri': redirect_uri,
+            'grant_type': 'authorization_code',
+        }
+
+        response = requests.post(self.GOOGLE_ACCESS_TOKEN_OBTAIN_URL, data=data)
+
+        if not response.ok:
+            return Response({'error': 'Failed to obtain access token from Google.'})
+
+        tokens = response.json()
+
+        google_tokens = GoogleAccessTokens(
+            id_token=tokens['id_token'],
+            access_token=tokens['access_token']
+        )
+
+        return google_tokens
+
+    def get_user_info(self, *, google_tokens):
+        """Получение информации о юзере"""
+        access_token = google_tokens.access_token
+
+        response = requests.get(
+            self.GOOGLE_USER_INFO_URL,
+            params={'access_token': access_token}
+        )
+
+        if not response.ok:
+            return Response({'error': 'Failed to obtain user info from Google.'})
+
+        return response.json()
+
+    def save_user(self, user_info):
+        """Сохранение юзера в базе"""
+        password = random_string(10)
+        username = f"google_{user_info['sub']}"
+        data = {
+            'username': username,
+            'email': user_info['email'],
+            'password': password,
+            'password2': password
+        }
+        serializer = RegisterSerializer(data=data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.save()
+        user.first_name = user_info['given_name']
+        user.last_name = user_info['family_name']
+        user.save()
+        return user
+
+
 def google_login_get_credentials() -> GoogleLoginCredentials:
+    """Получение данных для входа"""
     client_id = settings.SOCIAL_AUTH_GOOGLE_CLIENT_ID
     client_secret = settings.SOCIAL_AUTH_GOOGLE_CLIENT_SECRET
     project_id = settings.SOCIAL_AUTH_GOOGLE_PROJECT_ID

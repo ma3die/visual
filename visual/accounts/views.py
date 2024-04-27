@@ -39,6 +39,7 @@ logger = logging.getLogger('django')
 
 
 class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
+    """View для получения пользователей"""
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
 
@@ -63,6 +64,7 @@ class AccountViewSet(UserPostMixin, viewsets.ModelViewSet):
 
 
 class RegisterView(generics.GenericAPIView):
+    """"View для регистрации пользователей"""
     permission_classes = [permissions.AllowAny]
     serializer_class = RegisterSerializer
 
@@ -76,16 +78,6 @@ class RegisterView(generics.GenericAPIView):
             'message': 'Пользователь успешно создан',
         })
 
-    # def get_token(self, token):
-    #     response = requests
-
-    def get(self, request):
-        token = request.query_params['code']
-        response = requests.post(
-            f'https://oauth.vk.com/access_token?client_id=51895987&client_secret=R7N5jmhZLiaKq8n44jgW&redirect_uri=http://localhost/api/auth/reg/redirect/&code={token}')
-        token_acces = response.json()
-        post = 1
-
 
 class PublicApi(APIView):
     authentication_classes = ()
@@ -93,6 +85,7 @@ class PublicApi(APIView):
 
 
 class VKLoginRedirectView(APIView):
+    """View для перенаправления пользователей регистрирующихся через VK"""
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
@@ -104,7 +97,10 @@ class VKLoginRedirectView(APIView):
 
 
 class VKLoginView(PublicApi):
+    """View для входа пользователей через VK"""
+
     class InputSerializer(serializers.Serializer):
+        """Сериалайзер для проверки кода от VK"""
         code = serializers.CharField(required=False)
         error = serializers.CharField(required=False)
         state = serializers.CharField(required=False)
@@ -147,7 +143,9 @@ class VKLoginView(PublicApi):
         # return Response({'user_info': user_info,})
         return redirect('https://visualapp.ru/#/')
 
+
 class GoogleLoginRedirectView(APIView):
+    """View для перенаправления пользователей регистрирующихся через Google"""
     permission_classes = [permissions.AllowAny]
 
     def get(self, request):
@@ -158,8 +156,54 @@ class GoogleLoginRedirectView(APIView):
         # return redirect(authorization_url)
 
 
+class GoogleLoginView(PublicApi):
+    """View для входа пользователей через Google"""
+
+    class InputSerializer(serializers.Serializer):
+        """Сериалайзер для проверки кода от Google"""
+        code = serializers.CharField(required=False)
+        error = serializers.CharField(required=False)
+        state = serializers.CharField(required=False)
+
+    def get(self, request):
+        input_serializer = self.InputSerializer(data=request.GET)
+        input_serializer.is_valid(raise_exception=True)
+
+        validated_data = input_serializer.validated_data
+
+        code = validated_data.get('code')
+        error = validated_data.get('error')
+        state = validated_data.get('state')
+
+        if error is not None:
+            return Response({'error': error}, status=status.HTTP_400_BAD_REQUEST)
+
+        if code is None or state is None:
+            return Response({'error': 'Нет code или status'}, status=status.HTTP_400_BAD_REQUEST)
+
+        google_login = GoogleLoginService()
+
+        google_tokens = google_login.get_tokens(code=code)
+        id_token_decoded = google_tokens.decode_id_token()
+        user_info = google_login.get_user_info(google_tokens=google_tokens)
+
+        # user_email = id_token_decoded["email"]
+        # request_user_list = Account.objects.filter(email=user_email)
+        # user = request_user_list.get() if request_user_list else None
+        #
+        # if user is None:
+        #     return Response({"error": f"User with email {user_email} is not found."}, status=status.HTTP_404_NOT_FOUND)
+
+        user = google_login.save_user(user_info)
+
+        login(request, user)
+
+        return Response({'user_info': user_info, })
+        # return redirect('https://visualapp.ru/#/')
+
 
 class UserConfirmEmailView(generics.RetrieveAPIView):
+    """View для подтверждения почты пользователя"""
     permission_classes = [permissions.AllowAny]
 
     def get(self, request, uidb64, token):
@@ -178,18 +222,14 @@ class UserConfirmEmailView(generics.RetrieveAPIView):
 
 
 class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, viewsets.GenericViewSet):
-    """
-    Профиль пользователя
-    """
+    """View профиля пользователя"""
     permission_classes = [IsUserProfile]
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
     http_method_names = ['get', 'patch', 'delete']
 
     def retrive(self, request):
-        """
-        Данные пользователя
-        """
+        """Данные пользователя"""
         logger.info(f'User | {request.user}')
         serializer = AccountSerializer(instance=request.user)
         return Response({
@@ -197,6 +237,7 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
         })
 
     def perform_destroy(self, instance):
+        """Удаление пользователя и переназначение его комментариев к пользователю deleted"""
         logger.info(f'User | {self.request.user}')
         deleted_user = Account.objects.get(username='deleted')
         user_id = instance.id
@@ -205,22 +246,10 @@ class ProfileViewSet(RetrieveModelMixin, UpdateModelMixin, DestroyModelMixin, vi
             comment.author_id = deleted_user.id
             comment.save()
         instance.delete()
-    # def partial_update(self, request, author_id):
-    #     """
-    #     Изменить данные пользователя
-    #     """
-    #     serializer = ProfileSerializer(instance=request.user, data=request.data, partial=True)
-    #     serializer.is_valid()
-    #     serializer.save()
-    #     return Response(serializer.data)
-    # @action(detail=True, methods=['DELETE'])
-    # def delete(self, request, *args, **kwargs):
-    #     instance = self.get_object()
-    #     self.perform_destroy(instance)
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 class CreatePaymentView(generics.CreateAPIView):
+    """View для оплаты подписки"""
     queryset = Account.objects.all()
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = AccountSerializer
@@ -254,17 +283,13 @@ class CreatePaymentView(generics.CreateAPIView):
 
 
 class CreatePaymentAcceptedView(generics.CreateAPIView):
+    """View для проверки оплаты"""
     queryset = Account.objects.all()
     permission_classes = [permissions.AllowAny]
 
     def post(self, request):
         logger.info(f'Paymentrequest | {request.body}')
         response = json.loads(request.body)
-        # response = request.data.get('payment_id')
-        # user_id = request.data.get('user_id')
-        # subscription = request.data.get('subscription')
-
-        # payment = Payment.find_one(response['id'])
         user_id = response['object']['metadata']['user_id']
         subscription = response['object']['metadata']['subscription']
         if response['object']['status'] == 'succeeded':
@@ -278,6 +303,7 @@ class CreatePaymentAcceptedView(generics.CreateAPIView):
                     posts = Post.objects.filter(author_id=user_id)
                     posts.update(premium=True)
                     return Response(200)
+                return Response(200)
 
         else:
             return Response(400)

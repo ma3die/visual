@@ -12,6 +12,8 @@ from accounts.models import Account
 
 
 class ChatConsumer(WebsocketConsumer):
+    """Чат между пользователями"""
+
     def connect(self):
         self.room_name = self.scope["url_route"]["kwargs"]["room_name"]
         self.room_group_name = f"chat_{self.room_name}"
@@ -28,15 +30,10 @@ class ChatConsumer(WebsocketConsumer):
             self.room_group_name, self.channel_name
         )
 
-    # def get_receiver(self):
-    #     username = self.room_name.split("__")
-    #     return username
     # Receive message from WebSocket
     def receive(self, text_data=None, bytes_data=None):
         # parse the json data into dictionary object
-        # user = self.get_receiver()
         text_data_json = json.loads(text_data)
-        # message = text_data_json['message']
         receiver_id = text_data_json['receiver']
         message_type = text_data_json['type']
         sender = self.scope['user']
@@ -81,10 +78,8 @@ class ChatConsumer(WebsocketConsumer):
                     text=text_data_json['message'],
                     conversation_id=conversation,
                 )
-        # chat_type = {"type": "chat_message"}
-        # return_dict = {"sender_id": sender_id, **chat_type, **text_data_json}
             async_to_sync(self.channel_layer.group_send)(
-                self.room_group_name,{
+                self.room_group_name, {
                     'type': 'chat_message',
                     'message': MessageSerializer(_message).data
                 }
@@ -99,51 +94,11 @@ class ChatConsumer(WebsocketConsumer):
                 }
             )
 
-
-
-
     # Receive message from room group
     def chat_message(self, event):
         text_data_json = event.copy()
         text_data_json.pop("type")
         text_data = json.dumps(text_data_json['message'])
-        # message, sender_id, attachment = (
-        #     text_data_json["message"],
-        #     text_data_json["sender_id"],
-        #     text_data_json.get("attachment"),
-        # )
-
-        # conversation = Conversation.objects.get(id=int(self.room_name))
-        # sender = Account.objects.get(id=sender_id)
-        # receiver = self.scope['user']
-
-        # Attachment
-        # if attachment:
-        #     file_str, file_ext = attachment["data"], attachment["format"]
-        #
-        #     file_data = ContentFile(
-        #         base64.b64decode(file_str), name=f"{secrets.token_hex(8)}.{file_ext}"
-        #     )
-        #     _message = Message.objects.create(
-        #         sender=sender,
-        #         receiver=receiver,
-        #         attachment=file_data,
-        #         text=message,
-        #         conversation_id=conversation,
-        #     )
-        # else:
-        #     _message = Message.objects.create(
-        #         sender=sender,
-        #         receiver=receiver,
-        #         text=message,
-        #         conversation_id=conversation,
-        #     )
-        # serializer = MessageSerializer(instance=_message)
-        # Send message to WebSocket
-        # data = serializer.data
-        # data['user'] = user
-        # text_data = json.dumps(
-        #     data)
         self.send(text_data)
 
     def new_message_notification(self, event):
@@ -153,14 +108,11 @@ class ChatConsumer(WebsocketConsumer):
     def unread_count(self, event):
         text_data = json.dumps(event)
         self.send(text_data)
-    # def send_notification(self, message):
-    #     self.send(text_data=json.dumps({
-    #         "type": "notifification",
-    #         "message": message
-    #     }))
 
 
 class NotificationConsumer(WebsocketConsumer):
+    """Создание уведомлений о сообщении"""
+
     def __init__(self, *args, **kwargs):
         super().__init__(args, kwargs)
         self.user = None
@@ -185,7 +137,6 @@ class NotificationConsumer(WebsocketConsumer):
         }
         text_data = json.dumps(data)
         self.send(text_data)
-
 
     def disconnect(self, code):
         async_to_sync(self.channel_layer.group_discard)(
