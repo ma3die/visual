@@ -2226,3 +2226,43 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'confirm_email' is not a valid view function or pattern name.
 2024-04-26 16:38:43,995 - ERROR - runserver - runserver.py 12416 7904 HTTP POST /api/auth/reg/ 500 [0.80, 127.0.0.1:55997]
+2024-05-02 13:14:40,048 - INFO - autoreload - autoreload.py 21164 17464 Watching for file changes with StatReloader
+2024-05-02 13:14:57,463 - INFO - views - views.py 21164 9836 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-05-02 13:14:57,731 - WARNING - log - log.py 21164 13468 Bad Request: /api/auth/reg/
+2024-05-02 13:14:57,734 - WARNING - runserver - runserver.py 21164 10592 HTTP POST /api/auth/reg/ 400 [0.31, 127.0.0.1:55129]
+2024-05-02 13:36:51,228 - INFO - views - views.py 21164 17260 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-05-02 13:37:54,673 - INFO - runserver - runserver.py 21164 10592 HTTP POST /api/auth/reg/ 200 [63.46, 127.0.0.1:55519]
+2024-05-02 13:39:20,654 - WARNING - log - log.py 21164 13468 Not Found: //api/confirm-email/MTg/c6ej5l-60c0ad25cf9f12c71ddbe93e9c2c77eb/
+2024-05-02 13:39:20,654 - WARNING - runserver - runserver.py 21164 10592 HTTP GET //api/confirm-email/MTg/c6ej5l-60c0ad25cf9f12c71ddbe93e9c2c77eb/ 404 [0.40, 127.0.0.1:55567]
+2024-05-02 13:39:20,883 - WARNING - log - log.py 21164 13468 Not Found: /favicon.ico
+2024-05-02 13:39:20,886 - WARNING - runserver - runserver.py 21164 10592 HTTP GET /favicon.ico 404 [0.09, 127.0.0.1:55567]
+2024-05-02 13:40:32,065 - INFO - autoreload - autoreload.py 21164 17464 C:\Users\Alex\PycharmProjects\visual\visual\accounts\serializers.py changed, reloading.
+2024-05-02 13:40:36,190 - INFO - autoreload - autoreload.py 12240 13084 Watching for file changes with StatReloader
+2024-05-02 13:40:42,789 - INFO - views - views.py 12240 9836 Post data try | {'username': 'test_username4', 'email': 'aatevs@gmail.com', 'password': '123456', 'password2': '123456'}
+2024-05-02 13:40:53,006 - INFO - runserver - runserver.py 12240 9304 HTTP POST /api/auth/reg/ 200 [10.24, 127.0.0.1:55615]
+2024-05-02 13:41:42,311 - INFO - runserver - runserver.py 12240 9304 HTTP GET /api/confirm-email/MTk/c6ejbz-394611d6468b7a3f7699a27d30b148a8/ 200 [37.50, 127.0.0.1:55627]
+2024-05-14 13:33:49,647 - INFO - autoreload - autoreload.py 8968 15692 Watching for file changes with StatReloader
+2024-05-14 13:34:01,767 - WARNING - log - log.py 8968 14976 Not Found: /
+2024-05-14 13:34:01,769 - WARNING - runserver - runserver.py 8968 19584 HTTP GET / 404 [0.63, 127.0.0.1:51223]
+2024-05-14 13:34:01,963 - WARNING - log - log.py 8968 14976 Not Found: /favicon.ico
+2024-05-14 13:34:01,964 - WARNING - runserver - runserver.py 8968 19584 HTTP GET /favicon.ico 404 [0.03, 127.0.0.1:51223]
+2024-05-14 13:34:16,671 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/schema/swagger-ui/ 200 [0.15, 127.0.0.1:51223]
+2024-05-14 13:34:17,664 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/schema/ 200 [0.21, 127.0.0.1:51223]
+2024-05-14 15:11:51,344 - INFO - runserver - runserver.py 8968 19584 HTTP POST /api/auth/login/ 200 [1.48, 127.0.0.1:52370]
+2024-05-14 15:12:25,746 - WARNING - log - log.py 8968 14976 Not Found: /api/me/10/
+2024-05-14 15:12:25,747 - WARNING - runserver - runserver.py 8968 19584 HTTP PATCH /api/me/10/ 404 [0.50, 127.0.0.1:52370]
+2024-05-14 15:12:29,778 - WARNING - log - log.py 8968 14976 Method Not Allowed: /api/me/
+2024-05-14 15:12:29,778 - WARNING - runserver - runserver.py 8968 19584 HTTP PATCH /api/me/ 405 [0.07, 127.0.0.1:52370]
+2024-05-14 15:12:36,375 - INFO - views - views.py 8968 17572 User | test2@mail.ru
+2024-05-14 15:12:36,520 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/me/ 200 [0.72, 127.0.0.1:52370]
+2024-05-14 15:13:02,941 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/users/2/my_posts/ 200 [0.61, 127.0.0.1:52370]
+2024-05-14 15:13:51,594 - WARNING - log - log.py 8968 14976 Unauthorized: /api/users/2/my_posts/
+2024-05-14 15:13:51,595 - WARNING - runserver - runserver.py 8968 19584 HTTP GET /api/users/2/my_posts/ 401 [0.01, 127.0.0.1:52446]
+2024-05-14 15:36:26,212 - INFO - runserver - runserver.py 8968 19584 HTTP POST /api/conversations/start/ 200 [1.39, 127.0.0.1:52852]
+2024-05-14 15:36:43,407 - INFO - runserver - runserver.py 8968 19584 HTTP POST /api/conversations/start/ 302 [0.19, 127.0.0.1:52852]
+2024-05-14 15:36:43,533 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/1/ 200 [0.12, 127.0.0.1:52852]
+2024-05-14 15:45:15,386 - WARNING - log - log.py 8968 14976 Not Found: /conversations/1/
+2024-05-14 15:45:15,387 - WARNING - runserver - runserver.py 8968 19584 HTTP GET /conversations/1/ 404 [0.28, 127.0.0.1:52962]
+2024-05-14 15:46:00,240 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/1/ 200 [0.09, 127.0.0.1:52962]
+2024-05-14 15:47:26,385 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/5/ 200 [0.21, 127.0.0.1:52970]
+2024-05-14 15:48:54,764 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/ 200 [0.12, 127.0.0.1:52978]

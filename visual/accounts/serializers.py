@@ -46,8 +46,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         # Функционал для отправки письма и генерации токена
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
-        activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
-        current_site = 'http://127.0.0.1:8000/'
+        activation_url = reverse_lazy('api:confirm_email', kwargs={'uidb64': uid, 'token': token})
+        current_site = '127.0.0.1:8000'
         # current_site = Site.objects.get_current().domain
         send_mail(
             'Подтвердите свой электронный адрес',
