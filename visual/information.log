@@ -2266,3 +2266,115 @@ django.urls.exceptions.NoReverseMatch: Reverse for 'confirm_email' not found. 'c
 2024-05-14 15:46:00,240 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/1/ 200 [0.09, 127.0.0.1:52962]
 2024-05-14 15:47:26,385 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/5/ 200 [0.21, 127.0.0.1:52970]
 2024-05-14 15:48:54,764 - INFO - runserver - runserver.py 8968 19584 HTTP GET /api/conversations/ 200 [0.12, 127.0.0.1:52978]
+2024-05-20 16:05:42,763 - INFO - autoreload - autoreload.py 16408 17728 Watching for file changes with StatReloader
+2024-05-20 16:12:38,656 - INFO - runserver - runserver.py 16408 6184 HTTP POST /api/auth/login/ 200 [1.83, 127.0.0.1:63086]
+2024-05-20 16:12:52,544 - INFO - views - views.py 16408 17704 PostList | test2@mail.ru {}
+2024-05-20 16:12:52,972 - INFO - runserver - runserver.py 16408 6184 HTTP GET /api/posts/ 200 [0.52, 127.0.0.1:63086]
+2024-05-20 16:13:06,866 - WARNING - log - log.py 16408 18600 Not Found: /
+2024-05-20 16:13:06,867 - WARNING - runserver - runserver.py 16408 6184 HTTP GET / 404 [0.57, 127.0.0.1:63097]
+2024-05-20 16:13:07,079 - WARNING - log - log.py 16408 18600 Not Found: /favicon.ico
+2024-05-20 16:13:07,080 - WARNING - runserver - runserver.py 16408 6184 HTTP GET /favicon.ico 404 [0.03, 127.0.0.1:63097]
+2024-05-20 16:13:43,710 - INFO - runserver - runserver.py 16408 6184 HTTP GET /api/schema/swagger-ui/ 200 [0.06, 127.0.0.1:63097]
+2024-05-20 16:13:44,621 - INFO - runserver - runserver.py 16408 6184 HTTP GET /api/schema/ 200 [0.17, 127.0.0.1:63097]
+2024-05-20 16:36:53,517 - INFO - views - views.py 16408 10216 PostCreate | test2@mail.ru <QueryDict: {'name': ['Тест'], 'tags[0]': ['testtag'], 'tags[1]': ['foto'], 'image': [<InMemoryUploadedFile: 8eea983c8a0511eebd34badf81d486ab upscaled.jpg (image/jpeg)>]}>
+2024-05-20 16:36:53,530 - INFO - runserver - runserver.py 16408 6184 HTTP POST /api/posts/ 200 [0.16, 127.0.0.1:63809]
+2024-05-20 16:43:24,634 - INFO - runserver - runserver.py 16408 6184 HTTP POST /api/posts/kartinka/like/ 200 [0.46, 127.0.0.1:63837]
+2024-05-20 16:47:03,737 - INFO - runserver - runserver.py 16408 6184 HTTP GET /api/posts/kartinka/likes/ 200 [0.13, 127.0.0.1:63936]
+2024-05-20 16:49:24,394 - WARNING - log - log.py 16408 18600 Unauthorized: /api/search/
+2024-05-20 16:49:24,395 - WARNING - runserver - runserver.py 16408 6184 HTTP GET /api/search/?search=test 401 [0.01, 127.0.0.1:63964]
+2024-05-20 16:49:36,049 - ERROR - log - log.py 16408 18600 Internal Server Error: /api/search/
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.errors.UndefinedFunction: ОШИБКА:  функция similarity(character varying, unknown) не существует
+LINE 1: ...posts_post"."premium", "posts_post"."author_id", (SIMILARITY...
+                                                             ^
+HINT:  Функция с данными именем и типами аргументов не найдена. Возможно, вам следует добавить явные приведения типов.
+
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\exception.py", line 42, in inner
+    response = await get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 534, in thread_handler
+    raise exc_info[1]
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\core\handlers\base.py", line 253, in _get_response_async
+    response = await wrapped_callback(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 479, in __call__
+    ret: _R = await loop.run_in_executor(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\asgiref\sync.py", line 538, in thread_handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\generics.py", line 199, in get
+    return self.list(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\visual\posts\views.py", line 181, in list
+    post_tag = ListPostSerializer(post_tag, many=True).data
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 768, in data
+    ret = super().data
+          ^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 253, in data
+    self._data = self.to_representation(self.instance)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\rest_framework\serializers.py", line 686, in to_representation
+    return [
+           ^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 400, in __iter__
+    self._fetch_all()
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 1928, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Alex\PycharmProjects\visual\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.ProgrammingError: ОШИБКА:  функция similarity(character varying, unknown) не существует
+LINE 1: ...posts_post"."premium", "posts_post"."author_id", (SIMILARITY...
+                                                             ^
+HINT:  Функция с данными именем и типами аргументов не найдена. Возможно, вам следует добавить явные приведения типов.
+
+2024-05-20 16:49:36,069 - ERROR - runserver - runserver.py 16408 6184 HTTP GET /api/search/?search=test 500 [0.95, 127.0.0.1:63964]

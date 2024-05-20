@@ -314,38 +314,6 @@ Python 3.11, Channel 4.0.0, Daphne 4.1.0, Django 5.0.2, django-taggit 5.0.1, dja
 - GoogleAccessTokens (Сервис для расшифровки Google токенов),
 - GoogleLoginService (Сервис для обработки данных VK)
 
-### Описание работы:
-- Регистрация пользователей.
-  Для регистрации пользователей используется точка ```/api/auth/reg/```.  
-  Запрос:
-  ```
-  {
-  "username": "string",
-  "email": "user@example.com",
-  "password": "string",
-  "password2": "string"
-  }
-  ```
-  При регистрации используется представление RegisterView, в котором определен сериалайзер RegisterSerializer и в нем метод create, который шифрует пароль, устанавливает атрибут is_active  в True и сохраняет пользователя в базу.  
-  Ответ:
-  ```
-  {
-  "username": "string",
-  "email": "user@example.com"
-  "message": "Пользователь успешно создан"
-  }
-  ```
-  При попытке повторной регистрации ответ будет следующим:
-  ```
-  {
-    "email": ["Учетная запись с таким Электронная почта уже существует."]
-  }
-  ```
-  Как писалось выше, некоторый функционал еще на стадии разработки. Поэтому для отправки письма для подтверждения электронной почты
-  необходимо в файле seriaziers.py убрать комментарии на строках 46-56 и в строке 43 ```user.is_active = True``` исправить на False.
-  Теперь пр попытке регистрации, в сериалайзере RegisterSerializer генерируется токен ```token = default_token_generator.make_token(user)``` используя объект User. Этот токен используется для создания URL-адреса активации.
-  Для кодирования индентификатора пользователя используется функция ```urlsafe_base64_encode```, а затем этот идентификатор и токен используются в ```reverse_lazy()``` для создания URL-адреса активации.
-  Далее текущий домен сайта получается с помощью ```Site.objects.get_current().domain```.
   
 ## Chat
 Live Chat. Написан с использованием Django Channels. Сам чат работает по WebSocket.
@@ -659,23 +627,214 @@ Middleware:
 комментариев и лайков.
 
 Список всех endpoint:  
-- GET /api/posts/
-- POST /api/posts/
-- GET /api/posts/{slug}/
-- PUT /api/posts/{slug}/
-- PATCH /api/posts/{slug}/
-- DELETE /api/posts/{slug}/
-- POST /api/posts/{slug}/like/
-- GET /api/posts/{slug}/likes/
-- POST /api/posts/{slug}/unlike/
-- GET /api/search/
-- POST /api/comments/
-- PUT /api/comments/
-- PATCH /api/comments/
-- DELETE /api/comments/
-- POST /api/comments/{id}/
-- PUT /api/comments/{id}/
-- PATCH /api/comments/{id}/
-- DELETE /api/comments/{id}/
+- GET /api/posts/ Выводит все посты  
+
+&emsp;Ответ:
+```
+{
+  "count": 123,
+  "next": "http://api.example.org/accounts/?page=4",
+  "previous": "http://api.example.org/accounts/?page=2",
+  "results": [
+    {
+      "name": "string",
+      "image": [
+        {
+          "id": 0,
+          "image": "string",
+          "post": 0
+        }
+      ],
+      "video": [
+        {
+          "id": 0,
+          "video": "string",
+          "post": 0
+        }
+      ],
+      "text": "string",
+      "comments": [
+        {
+          "id": 0,
+          "author": "string",
+          "author_avatar": "string",
+          "post": "string",
+          "text": "string",
+          "created_date": "2024-05-20T13:13:52.409Z",
+          "update_date": "2024-05-20T13:13:52.409Z",
+          "deleted": true,
+          "lft": 0,
+          "rght": 0,
+          "tree_id": 0,
+          "level": 0,
+          "parent": 0,
+          "notification": 0
+        }
+      ],
+      "created_date": "2024-05-20T13:13:52.409Z",
+      "slug": "string",
+      "avialable_comment": true,
+      "tags": [
+        "string"
+      ],
+      "view_count": 2147483647,
+      "author_id": 0,
+      "author": "string",
+      "is_like": true,
+      "total_likes": "string",
+      "likes": "string",
+      "premium": true
+    }
+  ]
+}
+```
+- POST /api/posts/ Создание поста
+
+&emsp;Запрос:  
+&emsp;Например в Postman делается через form-data.  
+&emsp;name - название поста  
+&emsp;tags[0] - первый тэг  
+&emsp;tags[1] - второй тэг  
+&emsp;image - картинка
+&emsp;video - видеофайл
+
+&emsp;Ответ:  
+```
+{
+  "name": "string",
+  "image": [
+    {
+      "image": "string",
+      "post": 0
+    }
+  ],
+  "video": [
+    {
+      "video": "string",
+      "post": 0
+    }
+  ],
+  "text": "string",
+  "avialable_comment": true,
+  "tags": [
+    "string"
+  ],
+  "view_count": 2147483647,
+  "author": "string"
+}
+```
+- GET /api/posts/{slug}/ Получение поста по слагу
+
+&emsp;Ответ:  
+```
+{
+  "name": "string",
+  "image": [
+    {
+      "id": 0,
+      "image": "string",
+      "post": 0
+    }
+  ],
+  "video": [
+    {
+      "id": 0,
+      "video": "string",
+      "post": 0
+    }
+  ],
+  "text": "string",
+  "comments": [
+    {
+      "id": 0,
+      "author": "string",
+      "author_avatar": "string",
+      "post": "string",
+      "text": "string",
+      "created_date": "2024-05-20T13:40:05.491Z",
+      "update_date": "2024-05-20T13:40:05.491Z",
+      "deleted": true,
+      "lft": 0,
+      "rght": 0,
+      "tree_id": 0,
+      "level": 0,
+      "parent": 0,
+      "notification": 0
+    }
+  ],
+  "created_date": "2024-05-20T13:40:05.491Z",
+  "slug": "string",
+  "avialable_comment": true,
+  "tags": [
+    "string"
+  ],
+  "view_count": 2147483647,
+  "author_id": 0,
+  "author": "string",
+  "is_like": true,
+  "total_likes": "string",
+  "likes": "string",
+  "premium": true
+}
+```
+- PUT /api/posts/{slug}/ Изменение поста по слагу
+- PATCH /api/posts/{slug}/ Изменение поста по слагу
+- DELETE /api/posts/{slug}/ Удаление поста по слагу
+- POST /api/posts/{slug}/like/ Лайк поста по слагу
+- GET /api/posts/{slug}/likes/ Получение профилей кто лайкнул пост
+- POST /api/posts/{slug}/unlike/ Убрать лайк с поста
+- GET /api/search/ Поиск через Postgre
+- POST /api/comments/ Создание комментария к посту  
+
+&emsp;Запрос:   
+&emsp;post - slug поста  
+&emsp;parent - id комментария. Для ответа на комментарий - вставляем его id.
+```
+{
+  "post": "string",
+  "text": "string",
+  "parent": 0
+}
+```
+
+- PUT /api/comments/{id}/ Изменить комментарий
+- PATCH /api/comments/{id}/ Изменить комментарий
+- DELETE /api/comments/{id}/ Удалить комментарий
 
 Модели:
+- Like (Модель для лайков)
+- Post (Модель поста)
+- Image (Галерея фотографий)
+- Video (Галерея видео)
+- Comment (Модель для комментариев)
+- ReadPost (Модель просмотра статей)
+
+Представления:
+- PostViewSet (Представление CRUD для постов)
+- CommentView (Представление CRUD для комментариев)
+- SearchResultView (Поиск с помощью Postgre)
+
+Сериализатры:
+- FilterCommentListSerializer (Фильтр комментариев, только parents)
+- RecursiveSerializer (Вывод рекурсивно children)
+- LikeSerializer (Лайки)
+- ImageSerializer (Картинки)
+- VideoSerializer (Видео)
+- CommentSerializer (Комментарии)
+- ListPostSerializer (Список статей)
+- PostSerializer (Пост)
+- CreateCommentSerializer (CRUD комментариев)
+
+Миксины:
+- LikedMixin (Поставить, удалить просмотреть лайки)
+- AddImageVideoMixin(Миксин для выбора типа файла и записи в модель)
+
+Сервисы:
+- add_like (Добавить лайк)
+- remove_like (Удалить лайк)
+- is_like (Проверка лайкнул ли юзер пост)
+- get_likes (Получаем всех пользователей, которые лайкнули пост)
+
+Утилиты:
+- get_mime_typ (Функция для проверки типа фаула)
+- unique_slugify (Генератор уникальных SLUG для моделей)
