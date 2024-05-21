@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 from datetime import timedelta
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,8 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+env = environ.Env()
+
+environ.Env.read_env(env_file=Path('.env'))
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&v#9*%6jn!80jx0w8-=6hvv&2bk!g5q6hd&0x)39d5t*7t*&%@'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -228,6 +233,7 @@ CHANNEL_LAYERS = {
     #         "hosts": [('127.0.0.1', 6379)],
     #     },
     # },
+    # Для тестов, чтобы не запускать Redis
   'default': {
     'BACKEND': 'channels.layers.InMemoryChannelLayer'
   },
@@ -240,20 +246,29 @@ SITE_ID = 1
 # Email settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
+EMAIL_HOST = env('EMAIL_HOST')
+EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'aatevs@gmail.com'
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 
-EMAIL_HOST_PASSWORD = 'mxed msfg cebb rxub'
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_USER')
 EMAIL_SERVER = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-EMAIL_ADMIN = ['aatevs@gmail.com']
+EMAIL_ADMIN = [env('EMAIL_HOST_USER')]
 
-SOCIAL_AUTH_VK_SECRET_KEY = 'R7N5jmhZLiaKq8n44jgW'
-SOCIAL_AUTH_VK_SERVICE_ACCESS_KEY = '58954ee458954ee458954ee4895b8290575589558954ee43e9a88378ea1cd56b74c8c7e'
-SOCIAL_AUTH_VK_CLIENT_ID = '51895987'
+# VK auth
 
-SOCIAL_AUTH_GOOGLE_CLIENT_ID = '386092252274-08se1jefa0q7255ubqsbto3hf312eb8o.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_CLIENT_SECRET = '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'
-SOCIAL_AUTH_GOOGLE_PROJECT_ID = 'zippy-brand-420108'
+SOCIAL_AUTH_VK_SECRET_KEY = env('SOCIAL_AUTH_VK_SECRET_KEY')
+SOCIAL_AUTH_VK_SERVICE_ACCESS_KEY = env('SOCIAL_AUTH_VK_SECRET_KEY')
+SOCIAL_AUTH_VK_CLIENT_ID = env('SOCIAL_AUTH_VK_SECRET_KEY')
+
+# Google auth
+
+SOCIAL_AUTH_GOOGLE_CLIENT_ID = env('SOCIAL_AUTH_GOOGLE_CLIENT_ID')
+SOCIAL_AUTH_GOOGLE_CLIENT_SECRET = env('SOCIAL_AUTH_GOOGLE_CLIENT_ID')
+SOCIAL_AUTH_GOOGLE_PROJECT_ID = env('SOCIAL_AUTH_GOOGLE_CLIENT_ID')
+
+# YOOKASSA
+
+YOOKASSA_SECRET_KEY = ('YOOKASSA_SECRET_KEY')
+YOOKASSA_ACCOUNT_ID = env('YOOKASSA_ACCOUNT_ID')

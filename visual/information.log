@@ -2378,3 +2378,10 @@ LINE 1: ...posts_post"."premium", "posts_post"."author_id", (SIMILARITY...
 HINT:  ‘ункци€ с данными именем и типами аргументов не найдена. ¬озможно, вам следует добавить €вные приведени€ типов.
 
 2024-05-20 16:49:36,069 - ERROR - runserver - runserver.py 16408 6184 HTTP GET /api/search/?search=test 500 [0.95, 127.0.0.1:63964]
+2024-05-21 13:31:11,611 - INFO - autoreload - autoreload.py 9916 5780 Watching for file changes with StatReloader
+2024-05-21 13:31:33,332 - INFO - autoreload - autoreload.py 9116 16696 Watching for file changes with StatReloader
+2024-05-21 13:41:13,649 - INFO - autoreload - autoreload.py 10704 2308 Watching for file changes with StatReloader
+2024-05-21 13:41:53,598 - INFO - autoreload - autoreload.py 4244 19228 Watching for file changes with StatReloader
+2024-05-21 13:42:16,371 - INFO - autoreload - autoreload.py 9264 8408 Watching for file changes with StatReloader
+2024-05-21 13:44:54,227 - INFO - autoreload - autoreload.py 19064 6940 Watching for file changes with StatReloader
+2024-05-21 14:19:30,433 - INFO - autoreload - autoreload.py 5700 18860 Watching for file changes with StatReloader

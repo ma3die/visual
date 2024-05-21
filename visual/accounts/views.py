@@ -2,6 +2,7 @@ import uuid
 import json
 from yookassa import Configuration, Payment
 import logging
+from visual import settings
 import jwt
 from jwt import decode as jwt_decode
 from urllib.parse import parse_qs
@@ -32,8 +33,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
 from django.contrib.auth import login
 
-Configuration.account_id = '357017'
-Configuration.secret_key = 'test_okbLKMNPtyaarXd2dH8sAicWQdi_Ok_hifBC2z4mKVg'
+Configuration.account_id = settings.YOOKASSA_ACCOUNT_ID
+Configuration.secret_key = settings.YOOKASSA_SECRET_KEY
 
 logger = logging.getLogger('django')
 

@@ -9,12 +9,9 @@ from django.core.mail import send_mail
 from django.contrib.sites.shortcuts import get_current_site
 
 
-
-
-
-
 class AccountSerializer(serializers.ModelSerializer):
     """Сериалайзер юзеров"""
+
     class Meta:
         model = Account
         fields = ('id', 'last_login', 'first_name', 'last_name', 'username', 'email',
